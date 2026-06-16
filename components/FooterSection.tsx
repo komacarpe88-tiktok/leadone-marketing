@@ -14,7 +14,7 @@ export default function FooterSection() {
           {/* Brand */}
           <div className="flex flex-col gap-4">
             <a href="/" aria-label="LeadOne startsida">
-              <Image src="/assets/logo.png" alt="LeadOne" height={60} width={60} className="object-contain" />
+              <Image src="/assets/logo.webp" alt="LeadOne" height={60} width={60} className="object-contain" />
             </a>
             <p className="text-[13px] text-zinc-500 leading-relaxed max-w-[28ch]">
               Lokal synlighet för svenska småföretag.

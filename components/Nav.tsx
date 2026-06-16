@@ -57,7 +57,7 @@ export default function Nav() {
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 h-[72px] flex items-center justify-between gap-6">
 
           <a href="/" className="shrink-0" aria-label="LeadOne startsida">
-            <Image src="/assets/logo.png" alt="LeadOne" height={52} width={52} className="object-contain" priority />
+            <Image src="/assets/logo.webp" alt="LeadOne" height={52} width={52} className="object-contain" priority />
           </a>
 
           {/* Desktop nav */}

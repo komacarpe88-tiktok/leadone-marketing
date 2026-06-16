@@ -198,7 +198,7 @@ export default function BokaPage() {
                   className="bg-[#0A0A0C] px-6 py-4 border-b flex items-center gap-3"
                   style={{ borderColor: "var(--border)" }}
                 >
-                  <Image src="/assets/logo.png" alt="LeadOne" height={36} width={36} className="object-contain" />
+                  <Image src="/assets/logo.webp" alt="LeadOne" height={36} width={36} className="object-contain" />
                   <div>
                     <p className="text-[13px] font-semibold text-[#F4F4F5]">Gratis Analyssamtal</p>
                     <p className="text-[11px] text-zinc-500">15 min · Google Meet</p>

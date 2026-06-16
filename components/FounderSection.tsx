@@ -24,12 +24,12 @@ export default function FounderSection() {
           >
             <div className="relative rounded-3xl overflow-hidden aspect-[3/4] max-w-[420px] max-h-[420px] lg:max-h-none">
               <Image
-                src="/assets/profile_pic.png"
+                src="/assets/profile_pic.webp"
                 alt="Douglas, grundare av LeadOne Marketing"
                 fill
+                loading="lazy"
                 className="object-cover object-top"
                 sizes="(max-width: 1024px) 100vw, 420px"
-                priority
               />
               {/* Subtle gold gradient overlay at bottom */}
               <div
