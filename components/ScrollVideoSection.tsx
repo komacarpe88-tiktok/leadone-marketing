@@ -14,7 +14,6 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
-import { useScroll, useTransform, motion } from "motion/react";
 
 const SCROLL_VH   = 5;
 const FRAME_COUNT = 61;
@@ -363,120 +362,8 @@ function DesktopScrollVideoSection() {
   );
 }
 
-const MOBILE_SCROLL_VH = 3;
 
-function MobileScrollSection() {
-  const outerRef = useRef<HTMLDivElement>(null);
-  const reduce   = useState(() =>
-    typeof window !== "undefined"
-      ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      : false
-  )[0];
-
-  const { scrollYProgress } = useScroll({
-    target:  outerRef,
-    offset:  ["start start", "end end"],
-  });
-
-  // Each line fades in then out across its slice of the scroll range
-  const op0 = useTransform(scrollYProgress, [0.00, 0.08, 0.28, 0.36], [0, 1, 1, 0]);
-  const op1 = useTransform(scrollYProgress, [0.33, 0.41, 0.61, 0.69], [0, 1, 1, 0]);
-  const op2 = useTransform(scrollYProgress, [0.66, 0.74, 0.94, 1.00], [0, 1, 1, 0]);
-  const opacities = [op0, op1, op2];
-
-  // Subtle parallax: bg drifts upward as you scroll
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
-
-  return (
-    <div ref={outerRef} style={{ height: `${MOBILE_SCROLL_VH * 100}svh` }}>
-      <section
-        className="sticky top-0 w-full overflow-hidden bg-[#08080A]"
-        style={{ height: "100svh" }}
-        aria-label="Scrollanimationssektion"
-      >
-        {/* Background image with parallax */}
-        <motion.div
-          className="absolute inset-0 w-full h-full"
-          style={{ y: reduce ? "0%" : bgY }}
-        >
-          <Image
-            src="/assets/hero-bg.webp"
-            alt=""
-            fill
-            className="object-cover"
-            style={{ objectPosition: "center 40%" }}
-            priority
-            aria-hidden="true"
-          />
-        </motion.div>
-
-        {/* Gradient overlay */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.58) 60%,#08080A 100%)",
-          }}
-          aria-hidden="true"
-        />
-
-        {/* Scroll-driven text lines */}
-        {COPY.map((line, i) => (
-          <motion.div
-            key={i}
-            className="absolute inset-0 z-10 flex items-center justify-center px-8 pointer-events-none"
-            style={{ opacity: reduce ? (i === 1 ? 1 : 0) : opacities[i] }}
-            aria-hidden="true"
-          >
-            <p
-              className="text-white text-center font-cormorant"
-              style={{
-                fontSize:      "clamp(1.75rem, 6.5vw, 2.6rem)",
-                fontWeight:    300,
-                fontStyle:     "italic",
-                lineHeight:    1.22,
-                letterSpacing: "-0.01em",
-                maxWidth:      "22ch",
-                textShadow:    "0 2px 28px rgba(0,0,0,0.8), 0 1px 8px rgba(0,0,0,0.6)",
-              }}
-            >
-              {line}
-            </p>
-          </motion.div>
-        ))}
-
-        {/* Scroll hint — fades out as soon as user starts scrolling */}
-        <motion.div
-          className="absolute bottom-10 left-0 right-0 z-10 flex flex-col items-center gap-2 pointer-events-none"
-          style={{ opacity: useTransform(scrollYProgress, [0, 0.06], [1, 0]) }}
-          aria-hidden="true"
-        >
-          <span className="text-[10px] uppercase tracking-[0.22em] font-mono text-zinc-400">
-            Scrolla
-          </span>
-          <motion.div
-            className="w-px h-8 bg-zinc-500 origin-top"
-            animate={{ scaleY: [0.4, 1, 0.4] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </motion.div>
-
-        {/* Screen-reader text */}
-        <div className="sr-only" aria-live="polite">
-          {COPY.map((line, i) => <p key={i}>{line}</p>)}
-        </div>
-
-        {/* Bottom fade */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none z-20"
-          style={{ background: "linear-gradient(to bottom, transparent 0%, #08080A 100%)" }}
-          aria-hidden="true"
-        />
-      </section>
-    </div>
-  );
-}
-
+// Mobile gets HeroStatic (in page.tsx) — this component only renders desktop scroll animation
 export default function ScrollVideoSection() {
   const [isMobile, setIsMobile] = useState(false);
   const [checked, setChecked]   = useState(false);
@@ -486,6 +373,6 @@ export default function ScrollVideoSection() {
     setChecked(true);
   }, []);
 
-  if (!checked) return null;
-  return isMobile ? <MobileScrollSection /> : <DesktopScrollVideoSection />;
+  if (!checked || isMobile) return null;
+  return <DesktopScrollVideoSection />;
 }
