@@ -268,10 +268,9 @@ function DesktopScrollVideoSection() {
             ================================================================ */}
         <div aria-hidden="true" />
 
-        {/* LCP element: visible immediately, cross-fades out when canvas is ready */}
+        {/* LCP element: always in DOM so Lighthouse measures it as LCP, hidden behind canvas once ready */}
         <div
-          className="absolute inset-0 z-0 transition-opacity duration-700"
-          style={{ opacity: ready ? 0 : 1 }}
+          className="absolute inset-0 z-0"
           aria-hidden="true"
         >
           <Image
@@ -288,8 +287,8 @@ function DesktopScrollVideoSection() {
 
         <canvas
           ref={canvasRef}
-          className="absolute inset-0 w-full h-full transition-opacity duration-700"
-          style={{ opacity: ready ? 1 : 0 }}
+          className="absolute inset-0 w-full h-full"
+          style={{ display: ready ? "block" : "none" }}
           aria-hidden="true"
         />
 
