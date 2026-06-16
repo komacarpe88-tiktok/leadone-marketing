@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: #C9A84C;
+  --accent-dim: rgba(201, 168, 76, 0.1);
+  --border: rgba(255, 255, 255, 0.07);
+  --surface: #111113;
+  --surface-elevated: #1A1A1E;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+::selection {
+  background: rgba(201, 168, 76, 0.25);
+  color: #f4f4f5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Blog prose styles ─────────────────────────────────────────── */
+.prose-blogg {
+  color: #a1a1aa;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+.prose-blogg h2 {
+  color: #f4f4f5;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-top: 2.8rem;
+  margin-bottom: 1rem;
+}
+.prose-blogg h3 {
+  color: #f4f4f5;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-top: 2rem;
+  margin-bottom: 0.6rem;
+}
+.prose-blogg p {
+  margin-bottom: 1.4rem;
+}
+.prose-blogg a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(201,168,76,0.35);
+  text-underline-offset: 3px;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+.prose-blogg a:hover {
+  color: #D4B87A;
+  text-decoration-color: rgba(212,184,122,0.6);
+}
+.prose-blogg ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.prose-blogg ul li {
+  padding-left: 1.5rem;
+  position: relative;
+}
+.prose-blogg ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.7;
+}
+.prose-blogg ol {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.4rem;
+  counter-reset: prose-ol;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.prose-blogg ol li {
+  padding-left: 2rem;
+  position: relative;
+  counter-increment: prose-ol;
+}
+.prose-blogg ol li::before {
+  content: counter(prose-ol);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.1);
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.15em;
+}
+.prose-blogg strong {
+  color: #f4f4f5;
+  font-weight: 600;
+}
+.prose-blogg blockquote {
+  border-left: 2px solid var(--accent);
+  padding-left: 1.25rem;
+  margin: 1.8rem 0;
+  color: #71717a;
+  font-style: italic;
+}
+.prose-blogg table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.8rem;
+  font-size: 0.9rem;
+}
+.prose-blogg th {
+  text-align: left;
+  padding: 0.6rem 0.8rem;
+  color: #f4f4f5;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.prose-blogg td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.prose-blogg tr:last-child td {
+  border-bottom: none;
+}
+.prose-blogg .callout {
+  background: rgba(201,168,76,0.06);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+  color: #d4b87a;
+  font-size: 0.95rem;
+}
+.prose-blogg .summary-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin: 2.5rem 0;
+}
+.prose-blogg .summary-box h4 {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-bottom: 0.75rem;
+}
+
+@layer utilities {
+  .border-subtle {
+    border-color: var(--border);
+  }
+  .bg-surface {
+    background-color: var(--surface);
+  }
+  .bg-surface-elevated {
+    background-color: var(--surface-elevated);
+  }
+  .text-accent {
+    color: var(--accent);
+  }
+  .bg-accent-dim {
+    background-color: var(--accent-dim);
+  }
+}
