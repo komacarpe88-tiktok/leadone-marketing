@@ -16,7 +16,6 @@ export const metadata: Metadata = {
 };
 import ScrollProgress    from "@/components/ScrollProgress";
 import HeroStatic        from "@/components/HeroStatic";
-import ScrollVideoSection from "@/components/ScrollVideoSection";
 import StatementSection  from "@/components/StatementSection";
 import ProblemSection    from "@/components/ProblemSection";
 import TrustedBySection  from "@/components/TrustedBySection";
@@ -37,7 +36,6 @@ export default function Home() {
       <Nav />
       <h1 className="sr-only">Lokal SEO & Google Maps-optimering för svenska småföretag — LeadOne Marketing</h1>
       <HeroStatic />
-      <ScrollVideoSection />
       <StatementSection />
       <ProblemSection />
       <TestimonialsSection />
