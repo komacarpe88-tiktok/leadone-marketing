@@ -239,13 +239,13 @@ export default function RootLayout({
       </head>
       <body className="bg-[#08080A] text-[#F4F4F5] antialiased font-sans">
         {children}
-        {/* LeadConnector chat widget */}
-        <Script
+        {/* LeadConnector chat widget — temporarily disabled for performance testing */}
+        {/* <Script
           src="https://beta.leadconnectorhq.com/loader.js"
           data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js"
           data-widget-id="69401fe0cd1517fa28a99c85"
           strategy="lazyOnload"
-        />
+        /> */}
       </body>
     </html>
   );
