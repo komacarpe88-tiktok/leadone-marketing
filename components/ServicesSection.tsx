@@ -36,7 +36,7 @@ export default function ServicesSection() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           whileHover={{ y: -4, scale: 1.01, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
         >
-          <Image src="/assets/lm-gbp.png" alt="Google Business Profile optimering" fill className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 66vw" />
+          <Image src="/assets/lm-gbp.png" alt="Google Business Profile optimering" fill loading="lazy" className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 66vw" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#08080A] via-[#08080A]/55 to-transparent" />
           {/* Shimmer effect */}
           <motion.div
@@ -115,7 +115,7 @@ export default function ServicesSection() {
           transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           whileHover={{ y: -4, scale: 1.01, borderColor: "rgba(201,168,76,0.3)", transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
         >
-          <Image src="/assets/lm-strategy.png" alt="" fill className="object-cover object-center opacity-[0.45] transition-transform duration-700 ease-out group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 33vw" aria-hidden="true" />
+          <Image src="/assets/lm-strategy.png" alt="" fill loading="lazy" className="object-cover object-center opacity-[0.45] transition-transform duration-700 ease-out group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 33vw" aria-hidden="true" />
           <div className="absolute inset-0 bg-gradient-to-br from-[#08080A]/88 via-[#08080A]/92 to-[#08080A]/88" />
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, #C9A84C 1px, transparent 1px)", backgroundSize: "20px 20px" }} aria-hidden="true" />
           <div className="relative w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "rgba(201,168,76,0.12)" }}>
@@ -138,7 +138,7 @@ export default function ServicesSection() {
           transition={{ duration: 0.6, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
           whileHover={{ y: -4, scale: 1.01, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
         >
-          <Image src="/assets/stars-phone.png" alt="Telefon med glänsande Google-recensioner" fill className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 33vw" />
+          <Image src="/assets/stars-phone.png" alt="Telefon med glänsande Google-recensioner" fill loading="lazy" className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 33vw" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#08080A] via-[#08080A]/50 to-transparent" />
           <div className="relative z-10 p-7">
             <h3 className="font-semibold text-[17px] text-[#F4F4F5] mb-2 tracking-tight">Recensionshantering</h3>

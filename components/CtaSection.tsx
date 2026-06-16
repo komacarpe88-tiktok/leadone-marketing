@@ -12,7 +12,7 @@ export default function CtaSection() {
   return (
     <section id="contact" className="relative py-24 lg:py-36 overflow-hidden" style={{ borderTop: "1px solid var(--border)" }}>
       <div className="absolute inset-0 z-0">
-        <Image src="/assets/gold-particles.jpg" alt="" fill className="object-cover object-center opacity-30" sizes="100vw" aria-hidden="true" />
+        <Image src="/assets/gold-particles.jpg" alt="" fill loading="lazy" className="object-cover object-center opacity-30" sizes="100vw" aria-hidden="true" />
         <div className="absolute inset-0 bg-[#08080A]/75" />
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 50% 50%, transparent 30%, #08080A 100%)" }} aria-hidden="true" />
       </div>

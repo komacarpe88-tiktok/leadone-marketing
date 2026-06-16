@@ -72,7 +72,7 @@ export default function ResultsSection() {
           style={{ y: reduce || !isDesktop ? 0 : y, opacity: reduce ? 0.2 : opacity }}
           className="w-full h-full"
         >
-          <Image src="/assets/marble-rays.png" alt="" fill className="object-cover object-center" sizes="100vw" aria-hidden="true" />
+          <Image src="/assets/marble-rays.png" alt="" fill loading="lazy" className="object-cover object-center" sizes="100vw" aria-hidden="true" />
         </motion.div>
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, var(--surface) 0%, transparent 25%, transparent 75%, var(--surface) 100%)" }} />
       </div>
