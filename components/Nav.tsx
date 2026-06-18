@@ -4,6 +4,7 @@ import { useMotionValue, useTransform, motion, AnimatePresence, useReducedMotion
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ArrowRight, Phone, CaretDown, List, X } from "@phosphor-icons/react";
+import LanguageToggle from "@/components/LanguageToggle";
 
 const BOOKING_URL = "/boka";
 
@@ -131,6 +132,7 @@ export default function Nav() {
           </nav>
 
           <div className="flex items-center gap-3 ml-auto lg:ml-0">
+            <LanguageToggle />
             <a href="tel:0764796630"
               className="hidden lg:flex items-center gap-1.5 text-[13px] text-zinc-500 hover:text-zinc-300 transition-colors duration-200 whitespace-nowrap">
               <Phone size={13} aria-hidden="true" />

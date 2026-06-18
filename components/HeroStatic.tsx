@@ -4,8 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "motion/react";
+import { t, type Locale } from "@/lib/i18n";
 
-export default function HeroStatic() {
+export default function HeroStatic({ locale = "sv" }: { locale?: Locale }) {
+  const copy = t[locale].hero;
+  const bookingHref = locale === "en" ? "/en/book" : "/boka";
   const reduce = useReducedMotion();
 
   return (
@@ -46,7 +49,7 @@ export default function HeroStatic() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          Lokal SEO &amp; Google Maps-optimering
+          {copy.eyebrow}
         </motion.p>
 
         <motion.p
@@ -64,7 +67,7 @@ export default function HeroStatic() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.25 }}
         >
-          Vi tar dig in i Local Pack — topp 3 på Google Maps
+          {copy.headline}
         </motion.p>
 
         <motion.p
@@ -80,7 +83,7 @@ export default function HeroStatic() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
         >
-          Fler recensioner. Fler samtal. Mer omsättning.
+          {copy.sub}
         </motion.p>
 
         <motion.div
@@ -89,10 +92,10 @@ export default function HeroStatic() {
           transition={{ duration: 0.6, delay: 0.55 }}
         >
           <Link
-            href="/boka"
+            href={bookingHref}
             className="flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-[14px] text-[#08080A] bg-accent hover:bg-[#D4B87A] transition-colors duration-200"
           >
-            Boka gratis analys
+            {copy.cta}
             <ArrowRight size={14} weight="bold" aria-hidden="true" />
           </Link>
         </motion.div>
@@ -107,7 +110,7 @@ export default function HeroStatic() {
         aria-hidden="true"
       >
         <span className="text-[10px] uppercase tracking-[0.22em] font-mono text-zinc-400">
-          Scrolla
+          {copy.scroll}
         </span>
         <motion.div
           className="w-px h-8 bg-zinc-500 origin-top"
