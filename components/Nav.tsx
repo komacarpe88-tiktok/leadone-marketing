@@ -2,25 +2,11 @@
 
 import { useMotionValue, useTransform, motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { ArrowRight, Phone, CaretDown, List, X } from "@phosphor-icons/react";
 import LanguageToggle from "@/components/LanguageToggle";
-
-const BOOKING_URL = "/boka";
-
-const SERVICES = [
-  { name: "LaunchMap™",       desc: "GBP-optimering på 30 dagar",        href: "/tjanster/launchmap" },
-  { name: "Omdömesmaskinen",  desc: "Request · Response · Repurpose",     href: "/tjanster/omdomes"   },
-  { name: "Komplett Paket",   desc: "Allt i ett — bäst värde",            href: "/tjanster/komplett"  },
-];
-
-const NAV_LINKS = [
-  { label: "Process",  href: "/#process"  },
-  { label: "Resultat", href: "/#results"  },
-  { label: "Blogg",    href: "/blogg"     },
-  { label: "Om Oss",   href: "/om-oss"    },
-  { label: "Kontakt",  href: "/kontakt"   },
-];
+import { getLocaleFromPath, t } from "@/lib/i18n";
 
 export default function Nav() {
   const scrollY = useMotionValue(0);
@@ -28,6 +14,42 @@ export default function Nav() {
   const [dropOpen,   setDropOpen]   = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+
+  const pathname = usePathname();
+  const locale   = getLocaleFromPath(pathname);
+  const nav      = t[locale].nav;
+  const isEn     = locale === "en";
+
+  const BOOKING_URL = isEn ? "/en/book" : "/boka";
+  const HOME_URL    = isEn ? "/en" : "/";
+
+  const SERVICES = isEn
+    ? [
+        { name: "LaunchMap™",      desc: nav.launchmap_desc, href: "/en/services/launchmap" },
+        { name: "Review Machine",  desc: nav.reviews_desc,   href: "/en/services/reviews"   },
+        { name: "Complete Package",desc: nav.complete_desc,  href: "/en/services/complete"  },
+      ]
+    : [
+        { name: "LaunchMap™",      desc: nav.launchmap_desc, href: "/tjanster/launchmap" },
+        { name: "Omdömesmaskinen", desc: nav.reviews_desc,   href: "/tjanster/omdomes"   },
+        { name: "Komplett Paket",  desc: nav.complete_desc,  href: "/tjanster/komplett"  },
+      ];
+
+  const NAV_LINKS = isEn
+    ? [
+        { label: nav.process, href: "/en/#process"  },
+        { label: nav.results, href: "/en/#results"  },
+        { label: nav.blog,    href: "/en/blog"      },
+        { label: nav.about,   href: "/en/about"     },
+        { label: nav.contact, href: "/en/contact"   },
+      ]
+    : [
+        { label: nav.process, href: "/#process"  },
+        { label: nav.results, href: "/#results"  },
+        { label: nav.blog,    href: "/blogg"     },
+        { label: nav.about,   href: "/om-oss"    },
+        { label: nav.contact, href: "/kontakt"   },
+      ];
 
   const bgOpacity     = useTransform(scrollY, [0, 72], [0, 0.96]);
   const borderOpacity = useTransform(scrollY, [0, 72], [0, 0.08]);
@@ -57,7 +79,7 @@ export default function Nav() {
 
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 h-[72px] flex items-center justify-between gap-6">
 
-          <a href="/" className="shrink-0" aria-label="LeadOne startsida">
+          <a href={HOME_URL} className="shrink-0" aria-label="LeadOne">
             <Image src="/assets/logo.webp" alt="LeadOne" height={52} width={52} className="object-contain" priority />
           </a>
 
@@ -73,7 +95,7 @@ export default function Nav() {
                 aria-expanded={dropOpen}
                 aria-haspopup="true"
               >
-                Tjänster
+                {nav.services}
                 <CaretDown
                   size={10}
                   weight="bold"
@@ -140,14 +162,14 @@ export default function Nav() {
             </a>
             <a href={BOOKING_URL}
               className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-full bg-accent text-[#08080A] text-[13px] font-semibold hover:bg-[#D4B87A] transition-colors duration-200 shrink-0 whitespace-nowrap">
-              Boka Gratis Analys
+              {nav.cta}
               <ArrowRight size={13} weight="bold" aria-hidden="true" />
             </a>
             {/* Mobile hamburger */}
             <button
               className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full text-zinc-400 hover:text-[#F4F4F5] transition-colors duration-200"
               onClick={() => setMobileOpen(v => !v)}
-              aria-label={mobileOpen ? "Stäng meny" : "Öppna meny"}
+              aria-label={mobileOpen ? (isEn ? "Close menu" : "Stäng meny") : (isEn ? "Open menu" : "Öppna meny")}
               aria-expanded={mobileOpen}
             >
               {mobileOpen ? <X size={20} weight="bold" /> : <List size={20} weight="bold" />}
@@ -178,7 +200,7 @@ export default function Nav() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              aria-label="Mobilnavigation"
+              aria-label={isEn ? "Mobile navigation" : "Mobilnavigation"}
             >
               {/* Tjänster accordion */}
               <div className="border-b" style={{ borderColor: "var(--border)" }}>
@@ -187,7 +209,7 @@ export default function Nav() {
                   onClick={() => setMobileServicesOpen(v => !v)}
                   aria-expanded={mobileServicesOpen}
                 >
-                  Tjänster
+                  {nav.services}
                   <CaretDown
                     size={14}
                     weight="bold"
@@ -242,7 +264,7 @@ export default function Nav() {
                   className="flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-accent text-[#08080A] text-[15px] font-semibold hover:bg-[#D4B87A] transition-colors duration-200"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Boka Gratis Analys
+                  {nav.cta}
                   <ArrowRight size={14} weight="bold" aria-hidden="true" />
                 </a>
                 <a href="tel:0764796630"
