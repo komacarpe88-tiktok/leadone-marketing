@@ -1,10 +1,12 @@
-import Image from "next/image";
+﻿import Image from "next/image";
+import { phone } from "@/lib/contact";
 import { Phone, EnvelopeSimple } from "@phosphor-icons/react/dist/ssr";
 import { t, type Locale } from "@/lib/i18n";
 
 export default function FooterSection({ locale = "sv" }: { locale?: Locale }) {
   const year = new Date().getFullYear();
   const copy = t[locale].footer;
+  const tel  = phone(locale);
 
   return (
     <footer className="pt-16 pb-8 border-t" style={{ borderColor: "var(--border)" }}>
@@ -22,9 +24,9 @@ export default function FooterSection({ locale = "sv" }: { locale?: Locale }) {
               {copy.tagline}
             </p>
             <div className="flex flex-col gap-2 mt-2">
-              <a href="tel:0764796630" className="flex items-center gap-2 text-[13px] text-zinc-500 hover:text-zinc-300 transition-colors duration-200">
+              <a href={tel.href} className="flex items-center gap-2 text-[13px] text-zinc-500 hover:text-zinc-300 transition-colors duration-200">
                 <Phone size={13} aria-hidden="true" />
-                076-479 66 30
+                {tel.display}
               </a>
               <a href="mailto:info@leadone.online" className="flex items-center gap-2 text-[13px] text-zinc-500 hover:text-zinc-300 transition-colors duration-200">
                 <EnvelopeSimple size={13} aria-hidden="true" />
@@ -41,6 +43,16 @@ export default function FooterSection({ locale = "sv" }: { locale?: Locale }) {
                 ["LaunchMap™", locale === "en" ? "/en/services/launchmap" : "/tjanster/launchmap"],
                 [locale === "en" ? "Review Machine" : "Omdömesmaskinen", locale === "en" ? "/en/services/reviews" : "/tjanster/omdomes"],
                 [locale === "en" ? "Complete Package" : "Komplett Paket", locale === "en" ? "/en/services/complete" : "/tjanster/komplett"],
+                ...(locale === "sv" ? [
+                  ["SEO Helsingborg", "/seo-helsingborg/"],
+                  ["SEO Stockholm",   "/seo-stockholm/"],
+                  ["SEO Göteborg",    "/seo-goteborg/"],
+                  ["SEO Malmö",       "/seo-malmo/"],
+                  ["SEO Uppsala",     "/seo-uppsala/"],
+                  ["SEO Linköping",   "/seo-linkoping/"],
+                  ["SEO Örebro",      "/seo-orebro/"],
+                  ["SEO Jönköping",   "/seo-jonkoping/"],
+                ] : []),
               ] as [string, string][]).map(([l, h]) => (
                 <li key={l}><a href={h} className="text-[13px] text-zinc-500 hover:text-zinc-300 transition-colors duration-200">{l}</a></li>
               ))}
@@ -53,7 +65,7 @@ export default function FooterSection({ locale = "sv" }: { locale?: Locale }) {
             <ul className="flex flex-col gap-2.5">
               {([
                 [copy.about, copy.about_href],
-                [copy.results, locale === "en" ? "/en/#results" : "/#results"],
+                [copy.results, locale === "en" ? "/en/results" : "/resultat"],
                 [copy.contact, copy.contact_href],
               ] as [string, string][]).map(([l, h]) => (
                 <li key={l}><a href={h} className="text-[13px] text-zinc-500 hover:text-zinc-300 transition-colors duration-200">{l}</a></li>
@@ -82,7 +94,7 @@ export default function FooterSection({ locale = "sv" }: { locale?: Locale }) {
           <p className="text-[12px] text-zinc-700">
             © {year} LeadOne Marketing. {copy.copyright}
           </p>
-          <p className="text-[12px] text-zinc-700">{copy.location}</p>
+          <p className="text-[12px] text-zinc-500 text-right">LeadOne Marketing OÜ · Reg.nr 17207314 · Padriku tee 12/3-4, 11912 Tallinn, Estland</p>
         </div>
       </div>
     </footer>

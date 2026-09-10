@@ -3,10 +3,22 @@ export type Locale = "sv" | "en";
 export const locales: Locale[] = ["sv", "en"];
 
 export function getLocaleFromPath(pathname: string): Locale {
-  return pathname.startsWith("/en") ? "en" : "sv";
+  const p = pathname.endsWith("/") && pathname !== "/" ? pathname.slice(0, -1) : pathname;
+  return p.startsWith("/en") ? "en" : "sv";
 }
 
-export function switchLocale(pathname: string, locale: Locale): string {
+// Swedish routes that actually exist as pages. Used to avoid sending the
+// language toggle to a de-prefixed URL that has no Swedish page behind it.
+const svPaths = new Set<string>([
+  "/", "/blogg", "/boka", "/bestall", "/resultat", "/om-oss", "/kontakt",
+  "/tjanster/launchmap", "/tjanster/omdomes", "/tjanster/komplett",
+  "/seo-helsingborg", "/seo-goteborg", "/seo-malmo", "/seo-jonkoping",
+  "/integritetspolicy", "/anvandarvillkor", "/cookie-policy", "/pub-avtal",
+]);
+
+export function switchLocale(rawPathname: string, locale: Locale): string {
+  // Strip trailing slash so map lookups work regardless of trailingSlash config
+  const pathname = rawPathname.endsWith("/") && rawPathname !== "/" ? rawPathname.slice(0, -1) : rawPathname;
   const isSv = !pathname.startsWith("/en");
   if (locale === "en") {
     if (isSv) {
@@ -20,12 +32,16 @@ export function switchLocale(pathname: string, locale: Locale): string {
         "/tjanster/launchmap": "/en/services/launchmap",
         "/tjanster/omdomes": "/en/services/reviews",
         "/tjanster/komplett": "/en/services/complete",
+        "/resultat": "/en/results",
         "/integritetspolicy": "/en/privacy-policy",
         "/anvandarvillkor": "/en/terms",
         "/cookie-policy": "/en/cookie-policy",
         "/pub-avtal": "/en/dpa",
+        "/bestall": "/en/order",
       };
-      return map[pathname] ?? `/en${pathname}`;
+      // Pages with no English counterpart (e.g. the SEO city pages) fall back to
+      // the English home page rather than a /en-prefixed URL that does not exist.
+      return map[pathname] ?? "/en";
     }
     return pathname;
   } else {
@@ -38,14 +54,21 @@ export function switchLocale(pathname: string, locale: Locale): string {
         "/en/about": "/om-oss",
         "/en/contact": "/kontakt",
         "/en/services/launchmap": "/tjanster/launchmap",
-        "/en/services/reviews": "/tjanster/omdomes",
-        "/en/services/complete": "/tjanster/komplett",
+        "/en/services/reviews":   "/tjanster/omdomes",
+        "/en/services/complete":  "/tjanster/komplett",
+        "/en/results": "/resultat",
         "/en/privacy-policy": "/integritetspolicy",
         "/en/terms": "/anvandarvillkor",
         "/en/cookie-policy": "/cookie-policy",
         "/en/dpa": "/pub-avtal",
+        "/en/order": "/bestall",
       };
-      return map[pathname] ?? (pathname.replace(/^\/en/, "") || "/");
+      // Prefer the explicit mapping; only then fall back to the de-prefixed
+      // path, and only when that Swedish page actually exists.
+      const mapped = map[pathname];
+      if (mapped) return mapped;
+      const stripped = pathname.replace(/^\/en/, "") || "/";
+      return svPaths.has(stripped) ? stripped : "/";
     }
     return pathname;
   }
@@ -78,7 +101,7 @@ export const t = {
       company: "Företag",
       legal: "Juridiskt",
       copyright: "Lokal synlighet för svenska företag.",
-      location: "Helsingborg, Sverige",
+      location: "LeadOne Marketing OÜ · Reg.nr 17207314 · Padriku tee 12/3-4, 11912 Tallinn, Estland",
       about: "Om Oss",
       results: "Resultat",
       contact: "Kontakt",
@@ -145,7 +168,7 @@ export const t = {
       company: "Company",
       legal: "Legal",
       copyright: "Local visibility for Swedish businesses.",
-      location: "Helsingborg, Sweden",
+      location: "",
       about: "About",
       results: "Results",
       contact: "Contact",

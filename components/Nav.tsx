@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useMotionValue, useTransform, motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
@@ -7,18 +7,22 @@ import Image from "next/image";
 import { ArrowRight, Phone, CaretDown, List, X } from "@phosphor-icons/react";
 import LanguageToggle from "@/components/LanguageToggle";
 import { getLocaleFromPath, t } from "@/lib/i18n";
+import { phone } from "@/lib/contact";
 
 export default function Nav() {
   const scrollY = useMotionValue(0);
   const reduce  = useReducedMotion();
-  const [dropOpen,   setDropOpen]   = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [dropOpen,        setDropOpen]        = useState(false);
+  const [marketsOpen,     setMarketsOpen]     = useState(false);
+  const [mobileOpen,      setMobileOpen]      = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileMarketsOpen,  setMobileMarketsOpen]  = useState(false);
 
   const pathname = usePathname();
   const locale   = getLocaleFromPath(pathname);
   const nav      = t[locale].nav;
   const isEn     = locale === "en";
+  const tel      = phone(locale);
 
   const BOOKING_URL = isEn ? "/en/book" : "/boka";
   const HOME_URL    = isEn ? "/en" : "/";
@@ -35,17 +39,20 @@ export default function Nav() {
         { name: "Komplett Paket",  desc: nav.complete_desc,  href: "/tjanster/komplett"  },
       ];
 
+  const ORDER_URL  = isEn ? "/en/order"  : "/bestall";
+  const ORDER_LABEL = isEn ? "Order now" : "Beställ nu";
+
   const NAV_LINKS = isEn
     ? [
         { label: nav.process, href: "/en/#process"  },
-        { label: nav.results, href: "/en/#results"  },
+        { label: nav.results, href: "/en/results"   },
         { label: nav.blog,    href: "/en/blog"      },
         { label: nav.about,   href: "/en/about"     },
         { label: nav.contact, href: "/en/contact"   },
       ]
     : [
         { label: nav.process, href: "/#process"  },
-        { label: nav.results, href: "/#results"  },
+        { label: nav.results, href: "/resultat"  },
         { label: nav.blog,    href: "/blogg"     },
         { label: nav.about,   href: "/om-oss"    },
         { label: nav.contact, href: "/kontakt"   },
@@ -139,11 +146,95 @@ export default function Nav() {
                           <span className="text-[11px] text-zinc-600">{s.desc}</span>
                         </a>
                       ))}
+                      <div className="my-1 mx-2 h-px" style={{ background: "rgba(201,168,76,0.12)" }} />
+                      <a
+                        href={ORDER_URL}
+                        className="flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors duration-150 group"
+                        style={{ background: "rgba(201,168,76,0.07)" }}
+                        onMouseEnter={e => (e.currentTarget.style.background = "rgba(201,168,76,0.13)")}
+                        onMouseLeave={e => (e.currentTarget.style.background = "rgba(201,168,76,0.07)")}
+                      >
+                        <span className="text-[13px] font-semibold" style={{ color: "var(--accent)" }}>
+                          {ORDER_LABEL}
+                        </span>
+                        <ArrowRight size={12} weight="bold" style={{ color: "var(--accent)" }} aria-hidden="true" />
+                      </a>
                     </div>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
+
+            {/* Marknader — sv only */}
+            {!isEn && (
+              <div
+                className="relative"
+                onMouseEnter={() => setMarketsOpen(true)}
+                onMouseLeave={() => setMarketsOpen(false)}
+              >
+                <button
+                  className="flex items-center gap-1 text-[14px] text-zinc-400 hover:text-[#F4F4F5] transition-colors duration-200 whitespace-nowrap"
+                  aria-expanded={marketsOpen}
+                  aria-haspopup="true"
+                >
+                  Marknader
+                  <CaretDown
+                    size={10}
+                    weight="bold"
+                    className="transition-transform duration-200"
+                    style={{ transform: marketsOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+                    aria-hidden="true"
+                  />
+                </button>
+                <AnimatePresence>
+                  {marketsOpen && (
+                    <motion.div
+                      className="absolute top-full left-1/2 pt-3 z-50"
+                      style={{ translateX: "-50%" }}
+                      initial={reduce ? false : { opacity: 0, y: -6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <div
+                        className="rounded-xl p-1.5 flex flex-col gap-0.5 min-w-[200px]"
+                        style={{
+                          background:     "rgba(14,14,17,0.98)",
+                          border:         "1px solid rgba(201,168,76,0.18)",
+                          backdropFilter: "blur(20px)",
+                          boxShadow:      "0 20px 60px rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        {[
+                          { label: "SEO Helsingborg", href: "/seo-helsingborg/" },
+                          { label: "SEO Stockholm",  href: "/seo-stockholm/"  },
+                          { label: "SEO Göteborg",    href: "/seo-goteborg/"    },
+                          { label: "SEO Malmö",       href: "/seo-malmo/"       },
+                          { label: "SEO Uppsala",    href: "/seo-uppsala/"    },
+                          { label: "SEO Linköping",  href: "/seo-linkoping/"  },
+                          { label: "SEO Örebro",     href: "/seo-orebro/"     },
+                          { label: "SEO Jönköping",   href: "/seo-jonkoping/"   },
+                        ].map(({ label, href }) => (
+                          <a
+                            key={href}
+                            href={href}
+                            className="flex flex-col px-3 py-2.5 rounded-lg transition-colors duration-150 group"
+                            style={{ background: "transparent" }}
+                            onMouseEnter={e => (e.currentTarget.style.background = "rgba(201,168,76,0.06)")}
+                            onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
+                          >
+                            <span className="text-[13px] font-medium text-zinc-200 group-hover:text-[#F4F4F5] transition-colors duration-150">
+                              {label}
+                            </span>
+                            <span className="text-[11px] text-zinc-600">Lokal SEO & Google Maps</span>
+                          </a>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            )}
 
             {NAV_LINKS.map((item) => (
               <a key={item.label} href={item.href}
@@ -155,10 +246,10 @@ export default function Nav() {
 
           <div className="flex items-center gap-3 ml-auto lg:ml-0">
             <LanguageToggle />
-            <a href="tel:0764796630"
+            <a href={tel.href}
               className="hidden lg:flex items-center gap-1.5 text-[13px] text-zinc-500 hover:text-zinc-300 transition-colors duration-200 whitespace-nowrap">
               <Phone size={13} aria-hidden="true" />
-              076-479 66 30
+              {tel.display}
             </a>
             <a href={BOOKING_URL}
               className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-full bg-accent text-[#08080A] text-[13px] font-semibold hover:bg-[#D4B87A] transition-colors duration-200 shrink-0 whitespace-nowrap">
@@ -240,11 +331,75 @@ export default function Nav() {
                             <span className="text-[12px] text-zinc-600 mt-0.5">{s.desc}</span>
                           </a>
                         ))}
+                        <a
+                          href={ORDER_URL}
+                          className="flex items-center justify-between px-3 py-3 rounded-xl mt-1"
+                          style={{ background: "rgba(201,168,76,0.10)", border: "1px solid rgba(201,168,76,0.2)" }}
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          <span className="text-[15px] font-semibold" style={{ color: "var(--accent)" }}>{ORDER_LABEL}</span>
+                          <ArrowRight size={14} weight="bold" style={{ color: "var(--accent)" }} aria-hidden="true" />
+                        </a>
                       </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
+
+              {/* Marknader accordion — sv only */}
+              {!isEn && (
+                <div className="border-b" style={{ borderColor: "var(--border)" }}>
+                  <button
+                    className="w-full flex items-center justify-between py-4 text-[18px] font-medium text-[#F4F4F5]"
+                    onClick={() => setMobileMarketsOpen(v => !v)}
+                    aria-expanded={mobileMarketsOpen}
+                  >
+                    Marknader
+                    <CaretDown
+                      size={14}
+                      weight="bold"
+                      className="transition-transform duration-200 text-zinc-500"
+                      style={{ transform: mobileMarketsOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+                      aria-hidden="true"
+                    />
+                  </button>
+                  <AnimatePresence>
+                    {mobileMarketsOpen && (
+                      <motion.div
+                        className="overflow-hidden"
+                        initial={{ height: 0 }}
+                        animate={{ height: "auto" }}
+                        exit={{ height: 0 }}
+                        transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                      >
+                        <div className="pb-3 flex flex-col gap-1">
+                          {[
+                            { label: "SEO Helsingborg", href: "/seo-helsingborg/" },
+                            { label: "SEO Stockholm",  href: "/seo-stockholm/"  },
+                            { label: "SEO Göteborg",    href: "/seo-goteborg/"    },
+                            { label: "SEO Malmö",       href: "/seo-malmo/"       },
+                            { label: "SEO Uppsala",    href: "/seo-uppsala/"    },
+                            { label: "SEO Linköping",  href: "/seo-linkoping/"  },
+                            { label: "SEO Örebro",     href: "/seo-orebro/"     },
+                            { label: "SEO Jönköping",   href: "/seo-jonkoping/"   },
+                          ].map(({ label, href }) => (
+                            <a
+                              key={href}
+                              href={href}
+                              className="flex flex-col px-3 py-3 rounded-xl"
+                              style={{ background: "rgba(201,168,76,0.05)" }}
+                              onClick={() => setMobileOpen(false)}
+                            >
+                              <span className="text-[15px] font-medium text-zinc-200">{label}</span>
+                              <span className="text-[12px] text-zinc-600 mt-0.5">Lokal SEO & Google Maps</span>
+                            </a>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              )}
 
               {NAV_LINKS.map((item) => (
                 <a
@@ -267,10 +422,10 @@ export default function Nav() {
                   {nav.cta}
                   <ArrowRight size={14} weight="bold" aria-hidden="true" />
                 </a>
-                <a href="tel:0764796630"
+                <a href={tel.href}
                   className="flex items-center justify-center gap-2 py-3 text-[14px] text-zinc-500 hover:text-zinc-300 transition-colors duration-200">
                   <Phone size={14} aria-hidden="true" />
-                  076-479 66 30
+                  {tel.display}
                 </a>
               </div>
             </motion.nav>
