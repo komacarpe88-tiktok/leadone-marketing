@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import FooterSection from "@/components/FooterSection";
 
 export const metadata: Metadata = {
   title: "Terms of Service | LeadOne Marketing",
   description: "LeadOne Marketing OÜ's terms of service — rules and guidelines for use of our services and website.",
-  alternates: { canonical: "https://www.leadone.online/en/terms" },
+  alternates: { canonical: "https://leadone.online/en/terms" },
 };
 
 export default function TermsEn() {
@@ -39,7 +39,7 @@ export default function TermsEn() {
             </div>
             <div>
               <h2 className="text-[17px] font-semibold text-[#F4F4F5] mb-3">Contact</h2>
-              <p>Questions about these terms? Contact us at info@leadone.online or call 076-479 66 30.</p>
+              <p>Questions about these terms? Contact us at info@leadone.online or call +1 681-641-1867.</p>
             </div>
           </div>
         </section>

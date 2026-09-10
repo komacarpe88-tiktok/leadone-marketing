@@ -10,14 +10,14 @@ export const metadata: Metadata = {
     "Guider, tips och strategier för lokal SEO, Google Maps-optimering och recensionshantering. Skrivet för svenska småföretag.",
   keywords:
     "lokal SEO blogg, Google Maps tips, Google Business Profile guide, recensioner SEO, lokal sökning Sverige",
-  alternates: { canonical: "https://www.leadone.online/blogg" },
+  alternates: { canonical: "https://leadone.online/blogg" },
   openGraph: {
     title: "Blogg — Lokal SEO & Google Maps | LeadOne Marketing",
     description:
       "Guider och strategier för lokal SEO, Google Maps-optimering och recensionshantering.",
     locale: "sv_SE",
     type: "website",
-    url: "https://www.leadone.online/blogg",
+    url: "https://leadone.online/blogg",
   },
 };
 

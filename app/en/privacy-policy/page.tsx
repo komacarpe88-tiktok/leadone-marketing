@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import FooterSection from "@/components/FooterSection";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | LeadOne Marketing",
   description: "LeadOne Marketing OÜ's privacy policy — how we collect, use and protect your personal data.",
-  alternates: { canonical: "https://www.leadone.online/en/privacy-policy" },
+  alternates: { canonical: "https://leadone.online/en/privacy-policy" },
 };
 
 export default function PrivacyPolicyEn() {
@@ -19,7 +19,7 @@ export default function PrivacyPolicyEn() {
           <div className="flex flex-col gap-8 text-[15px] text-zinc-400 leading-relaxed">
             <div>
               <h2 className="text-[17px] font-semibold text-[#F4F4F5] mb-3">Data Controller</h2>
-              <p>LeadOne Marketing OÜ, registered in Estonia (EU). Email: info@leadone.online. Phone: 076-479 66 30.</p>
+              <p>LeadOne Marketing OÜ, registered in Estonia (EU). Email: info@leadone.online. Phone: +1 681-641-1867.</p>
             </div>
             <div>
               <h2 className="text-[17px] font-semibold text-[#F4F4F5] mb-3">What data do we collect?</h2>
@@ -71,7 +71,7 @@ export default function PrivacyPolicyEn() {
             </div>
             <div>
               <h2 className="text-[17px] font-semibold text-[#F4F4F5] mb-3">Contact</h2>
-              <p>Questions about our privacy policy? Contact us at info@leadone.online or call 076-479 66 30.</p>
+              <p>Questions about our privacy policy? Contact us at info@leadone.online or call +1 681-641-1867.</p>
               <p className="mt-2">For clients wishing to enter into a data processing agreement, see our <a href="/en/dpa" className="underline" style={{ color: "var(--accent)" }}>DPA page</a>.</p>
             </div>
           </div>

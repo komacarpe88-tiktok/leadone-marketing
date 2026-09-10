@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import FooterSection from "@/components/FooterSection";
 
@@ -42,7 +42,7 @@ export default function AnvandarvillkorPage() {
             </div>
             <div>
               <h2 className="text-[17px] font-semibold text-[#F4F4F5] mb-3">Kontakt</h2>
-              <p>Frågor om användarvillkoren? Kontakta oss på info@leadone.online eller ring 076-479 66 30.</p>
+              <p>Frågor om användarvillkoren? Kontakta oss på info@leadone.online eller ring +46 763 91 21 81.</p>
             </div>
           </div>
         </section>

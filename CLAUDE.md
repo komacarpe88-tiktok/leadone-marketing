@@ -76,7 +76,8 @@ public/assets/
 - **Calendar iframe**: `https://api.leadconnectorhq.com/widget/booking/tLul2UjJ4lCOYMicz8eX`
 - **Calendar link**: `https://api.leadconnectorhq.com/widget/bookings/discovery-call-recensionssystem`
 - **Chat widget ID**: `69401fe0cd1517fa28a99c85` (loaded in layout.tsx via next/script afterInteractive)
-- **Phone**: `076-479 66 30` / `tel:0764796630`
+- **Phone (SV)**: `+46 763 91 21 81` / `tel:+46763912181` (SMS also uses this number)
+- **Phone (EN)**: `+1 681-641-1867` / `tel:+16816411867`
 - **Email**: `info@leadone.online`
 
 ## Scroll video animation (ScrollVideoSection)

@@ -9,15 +9,15 @@ export const metadata: Metadata = {
   description:
     "Guides, tips and strategies for local SEO, Google Maps optimisation and review management. Written for Swedish businesses.",
   alternates: {
-    canonical: "https://www.leadone.online/en/blog",
-    languages: { "sv": "https://www.leadone.online/blogg" },
+    canonical: "https://leadone.online/en/blog",
+    languages: { "sv": "https://leadone.online/blogg" },
   },
   openGraph: {
     title: "Blog — Local SEO & Google Maps | LeadOne Marketing",
     description: "Guides and strategies for local SEO, Google Maps optimisation and review management.",
     locale: "en_GB",
     type: "website",
-    url: "https://www.leadone.online/en/blog",
+    url: "https://leadone.online/en/blog",
   },
 };
 

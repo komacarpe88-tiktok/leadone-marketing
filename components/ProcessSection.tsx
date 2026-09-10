@@ -3,32 +3,75 @@
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
+import type { Locale } from "@/lib/i18n";
 
-const steps = [
-  {
-    number: "01",
-    verb: "Analys",
-    body: "Vi kartlägger dina nuvarande rankningar, konkurrenternas position och exakt vad som håller dig tillbaka. Du lämnar första samtalet med full klarhet.",
-    image: "/assets/aerial_view.png",
-    imageAlt: "Flygfoto över stad — kartläggning av lokal marknad",
-  },
-  {
-    number: "02",
-    verb: "Bygg",
-    body: "Vi åtgärdar tekniska problem, bygger lokala citeringar, förtjänar relevanta länkar och skapar innehåll som rankar för sökningar dina kunder gör varje dag.",
-    image: "/assets/perspective_view.png",
-    imageAlt: "Perspektivvy — bygger lokal synlighet",
-  },
-  {
-    number: "03",
-    verb: "Ranka",
-    body: "Ditt företag klättrar i resultaten. Vi spårar varje positionsförändring och rapporterar verkliga siffror: samtal, vägbeskrivningar och webbplatsbesök.",
-    image: "/assets/top_down.png",
-    imageAlt: "Toppvy — når förstasidan på Google",
-  },
-];
+const steps = {
+  sv: [
+    {
+      number: "01",
+      verb: "Analys",
+      body: "Vi kartlägger dina nuvarande rankningar, konkurrenternas position och exakt vad som håller dig tillbaka. Du lämnar första samtalet med full klarhet.",
+      image: "/assets/aerial_view.png",
+      imageAlt: "Flygfoto över stad — kartläggning av lokal marknad",
+    },
+    {
+      number: "02",
+      verb: "Bygg",
+      body: "Vi åtgärdar tekniska problem, bygger lokala citeringar, förtjänar relevanta länkar och skapar innehåll som rankar för sökningar dina kunder gör varje dag.",
+      image: "/assets/perspective_view.png",
+      imageAlt: "Perspektivvy — bygger lokal synlighet",
+    },
+    {
+      number: "03",
+      verb: "Ranka",
+      body: "Ditt företag klättrar i resultaten. Vi spårar varje positionsförändring och rapporterar verkliga siffror: samtal, vägbeskrivningar och webbplatsbesök.",
+      image: "/assets/top_down.png",
+      imageAlt: "Toppvy — når förstasidan på Google",
+    },
+  ],
+  en: [
+    {
+      number: "01",
+      verb: "Analyse",
+      body: "We map your current rankings, competitors' positions, and exactly what is holding you back. You leave the first call with complete clarity.",
+      image: "/assets/aerial_view.png",
+      imageAlt: "Aerial view of city — mapping the local market",
+    },
+    {
+      number: "02",
+      verb: "Build",
+      body: "We fix technical issues, build local citations, earn relevant links, and create content that ranks for the searches your customers make every day.",
+      image: "/assets/perspective_view.png",
+      imageAlt: "Perspective view — building local visibility",
+    },
+    {
+      number: "03",
+      verb: "Rank",
+      body: "Your business climbs the results. We track every position change and report real numbers: calls, directions, and website visits.",
+      image: "/assets/top_down.png",
+      imageAlt: "Top-down view — reaching page one on Google",
+    },
+  ],
+};
 
-function StepCard({ step, index, reduce }: { step: typeof steps[0]; index: number; reduce: boolean | null }) {
+const copy = {
+  sv: {
+    eyebrow: "Så arbetar vi",
+    heading: "Tre steg till förstasidan",
+    cta: "Starta Med Steg 1 — Boka Analys",
+    ctaHref: "/boka",
+  },
+  en: {
+    eyebrow: "How we work",
+    heading: "Three steps to page one",
+    cta: "Start With Step 1 — Book Analysis",
+    ctaHref: "/en/book",
+  },
+};
+
+type Step = typeof steps.sv[0];
+
+function StepCard({ step, index, reduce }: { step: Step; index: number; reduce: boolean | null }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -36,7 +79,6 @@ function StepCard({ step, index, reduce }: { step: typeof steps[0]; index: numbe
     offset: ["start end", "end start"],
   });
 
-  // Parallax: image moves slower than the card
   const imageY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
@@ -49,7 +91,6 @@ function StepCard({ step, index, reduce }: { step: typeof steps[0]; index: numbe
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.8, delay: 0.05 * index, ease: [0.16, 1, 0.3, 1] }}
     >
-      {/* Parallax background image */}
       <motion.div
         className="absolute inset-0 scale-110"
         style={{ y: reduce ? 0 : imageY }}
@@ -63,7 +104,6 @@ function StepCard({ step, index, reduce }: { step: typeof steps[0]; index: numbe
         />
       </motion.div>
 
-      {/* Gradient overlay — stronger on left for text legibility */}
       <div
         className="absolute inset-0"
         style={{
@@ -79,14 +119,12 @@ function StepCard({ step, index, reduce }: { step: typeof steps[0]; index: numbe
         }}
       />
 
-      {/* Gold accent line on left edge */}
       <div
         className="absolute left-0 top-8 bottom-8 w-[2px] rounded-full"
         style={{ background: "linear-gradient(to bottom, transparent, var(--accent), transparent)" }}
         aria-hidden="true"
       />
 
-      {/* Content */}
       <div className="absolute inset-0 flex flex-col justify-center px-10 lg:px-16 max-w-[600px]">
         <motion.span
           className="font-mono text-[11px] uppercase tracking-[0.25em] mb-4 block"
@@ -121,7 +159,6 @@ function StepCard({ step, index, reduce }: { step: typeof steps[0]; index: numbe
         </motion.p>
       </div>
 
-      {/* Subtle gold shimmer on hover */}
       <motion.div
         className="absolute inset-0 opacity-0 pointer-events-none"
         whileHover={{ opacity: 1 }}
@@ -136,8 +173,10 @@ function StepCard({ step, index, reduce }: { step: typeof steps[0]; index: numbe
   );
 }
 
-export default function ProcessSection() {
+export default function ProcessSection({ locale = "sv" }: { locale?: Locale }) {
   const reduce = useReducedMotion();
+  const c = copy[locale];
+  const stepsData = steps[locale];
 
   return (
     <section id="process" className="py-24 lg:py-32">
@@ -150,21 +189,21 @@ export default function ProcessSection() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
           <p className="text-[11px] uppercase tracking-[0.2em] font-mono mb-4" style={{ color: "var(--accent)" }}>
-            Så arbetar vi
+            {c.eyebrow}
           </p>
           <h2 className="text-[2rem] md:text-[2.8rem] font-bold tracking-[-0.025em] text-[#F4F4F5] leading-tight">
-            Tre steg till förstasidan
+            {c.heading}
           </h2>
         </motion.div>
 
         <div className="flex flex-col gap-5">
-          {steps.map((step, i) => (
+          {stepsData.map((step, i) => (
             <StepCard key={step.verb} step={step} index={i} reduce={reduce} />
           ))}
         </div>
         <div className="mt-12 flex justify-center">
-          <a href="/boka" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-accent text-[#08080A] font-semibold text-[15px] hover:bg-[#D4B87A] transition-colors duration-200">
-            Starta Med Steg 1 — Boka Analys
+          <a href={c.ctaHref} className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-accent text-[#08080A] font-semibold text-[15px] hover:bg-[#D4B87A] transition-colors duration-200">
+            {c.cta}
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </a>
         </div>

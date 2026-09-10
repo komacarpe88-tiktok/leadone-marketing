@@ -5,13 +5,13 @@ export const metadata: Metadata = {
   title: "LeadOne Marketing | Lokal SEO & Google Maps-optimering",
   description: "Vi hjälper svenska småföretag synas i topp 3 på Google Maps. Lokal SEO, GBP-optimering och recensionssystem. Boka gratis analys.",
   keywords: "lokal SEO, Google Maps optimering, Google Business Profile, lokalt sök, recensionssystem, lokal marknadsföring, Helsingborg, Sverige",
-  alternates: { canonical: "https://www.leadone.online" },
+  alternates: { canonical: "https://leadone.online/" },
   openGraph: {
     title: "LeadOne Marketing | Lokal SEO & Google Maps-optimering",
     description: "Vi hjälper svenska småföretag synas i topp 3 på Google Maps. Mer synlighet, fler samtal, fler kunder.",
     locale: "sv_SE",
     type: "website",
-    url: "https://www.leadone.online",
+    url: "https://leadone.online",
   },
 };
 import ScrollProgress    from "@/components/ScrollProgress";
@@ -25,6 +25,7 @@ import ProcessSection    from "@/components/ProcessSection";
 import PricingSection    from "@/components/PricingSection";
 import ResultsSection    from "@/components/ResultsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import ReviewWidget      from "@/components/ReviewWidget";
 import FAQSection        from "@/components/FAQSection";
 import CtaSection        from "@/components/CtaSection";
 import FooterSection     from "@/components/FooterSection";
@@ -39,6 +40,7 @@ export default function Home() {
       <StatementSection />
       <ProblemSection />
       <TestimonialsSection />
+      <ReviewWidget />
       <TrustedBySection />
       <FounderSection />
       <ServicesSection />

@@ -7,7 +7,7 @@ import { ArrowRight, ChatCircle, ArrowsClockwise, MegaphoneSimple } from "@phosp
 export const metadata: Metadata = {
   title: "Review Machine — Automated Review Management | LeadOne",
   description: "Automated review management — Request, Response, Repurpose. Automatic SMS with direct link to Google review, automated review responses and publishing on website and social media.",
-  alternates: { canonical: "https://www.leadone.online/en/services/reviews" },
+  alternates: { canonical: "https://leadone.online/en/services/reviews" },
 };
 
 const BOOKING_URL = "/en/book";

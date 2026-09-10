@@ -3,33 +3,67 @@
 import { useState } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "motion/react";
 import { Plus, Minus } from "@phosphor-icons/react";
+import type { Locale } from "@/lib/i18n";
 
-const faqs = [
-  {
-    q: "Hur lång tid tar det innan jag ser resultat?",
-    a: "LaunchMap™ levereras på 30 dagar. Rankingförbättringar syns typiskt inom 60–90 dagar. Mediantid till förstasidan är 6 månader.",
+const copy = {
+  sv: {
+    eyebrow: "Vanliga frågor",
+    heading: "Frågor vi får varje dag",
+    faqs: [
+      {
+        q: "Hur lång tid tar det innan jag ser resultat?",
+        a: "LaunchMap™ levereras på 30 dagar. Rankingförbättringar syns typiskt inom 60–90 dagar. Mediantid till förstasidan är 6 månader.",
+      },
+      {
+        q: "Behöver jag binda upp mig långsiktigt?",
+        a: "Nej. Omdömesmaskinen och Komplett Paket är månadsbaserade utan bindningstid. Avsluta när du vill.",
+      },
+      {
+        q: "Fungerar det för alla branscher?",
+        a: "Vi arbetar med hantverkare, restauranger, tandläkare, städföretag, fysioterapeuter och alla tjänsteföretag med lokal kundkrets.",
+      },
+      {
+        q: "Vad skiljer er från andra SEO-byråer?",
+        a: "Vi jobbar enbart med lokal SEO för svenska företag. Ingen generell digital marknadsföring. Bara det vi är bäst på.",
+      },
+      {
+        q: "Vad händer med mina recensioner om jag avslutar?",
+        a: "De recensioner du redan fått är dina för alltid. Vi äger ingenting — allt ligger på ditt Google-konto.",
+      },
+    ],
   },
-  {
-    q: "Behöver jag binda upp mig långsiktigt?",
-    a: "Nej. Omdömesmaskinen och Komplett Paket är månadsbaserade utan bindningstid. Avsluta när du vill.",
+  en: {
+    eyebrow: "FAQ",
+    heading: "Questions we get every day",
+    faqs: [
+      {
+        q: "How long does it take before I see results?",
+        a: "LaunchMap™ is delivered within 30 days. Ranking improvements typically appear within 60–90 days. Median time to page one is 6 months.",
+      },
+      {
+        q: "Do I need to commit long-term?",
+        a: "No. Review Machine and the Complete Package are month-to-month with no lock-in. Cancel whenever you like.",
+      },
+      {
+        q: "Does it work for all industries?",
+        a: "We work with tradespeople, restaurants, dentists, cleaning companies, physiotherapists, and any service business with a local customer base.",
+      },
+      {
+        q: "What sets you apart from other SEO agencies?",
+        a: "We work exclusively on local SEO for Swedish businesses. No general digital marketing. Just what we do best.",
+      },
+      {
+        q: "What happens to my reviews if I cancel?",
+        a: "Every review you've received is yours to keep. We own nothing — everything lives on your Google account.",
+      },
+    ],
   },
-  {
-    q: "Fungerar det för alla branscher?",
-    a: "Vi arbetar med hantverkare, restauranger, tandläkare, städföretag, fysioterapeuter och alla tjänsteföretag med lokal kundkrets.",
-  },
-  {
-    q: "Vad skiljer er från andra SEO-byråer?",
-    a: "Vi jobbar enbart med lokal SEO för svenska företag. Ingen generell digital marknadsföring. Bara det vi är bäst på.",
-  },
-  {
-    q: "Vad händer med mina recensioner om jag avslutar?",
-    a: "De recensioner du redan fått är dina för alltid. Vi äger ingenting — allt ligger på ditt Google-konto.",
-  },
-];
+};
 
-export default function FAQSection() {
+export default function FAQSection({ locale = "sv" }: { locale?: Locale }) {
   const [open, setOpen] = useState<number | null>(null);
   const reduce = useReducedMotion();
+  const c = copy[locale];
 
   return (
     <section id="faq" className="py-24 lg:py-32 border-b" style={{ borderColor: "var(--border)" }}>
@@ -37,15 +71,15 @@ export default function FAQSection() {
 
         <div className="mb-14">
           <p className="text-[11px] uppercase tracking-[0.2em] font-mono mb-4" style={{ color: "var(--accent)" }}>
-            Vanliga frågor
+            {c.eyebrow}
           </p>
           <h2 className="text-[2rem] md:text-[2.8rem] font-bold tracking-[-0.025em] text-[#F4F4F5] leading-tight">
-            Frågor vi får varje dag
+            {c.heading}
           </h2>
         </div>
 
         <div className="flex flex-col">
-          {faqs.map((faq, i) => {
+          {c.faqs.map((faq, i) => {
             const isOpen = open === i;
             return (
               <div key={i} className="border-t" style={{ borderColor: "var(--border)" }}>

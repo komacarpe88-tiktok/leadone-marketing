@@ -7,7 +7,7 @@ import { ArrowRight, Check } from "@phosphor-icons/react/dist/ssr";
 export const metadata: Metadata = {
   title: "Complete Package — LaunchMap™ + Review Machine | LeadOne",
   description: "LaunchMap™ + Review Machine — everything in one. No start-up cost, no commitment. 3,499 SEK/month.",
-  alternates: { canonical: "https://www.leadone.online/en/services/complete" },
+  alternates: { canonical: "https://leadone.online/en/services/complete" },
 };
 
 const BOOKING_URL = "/en/book";

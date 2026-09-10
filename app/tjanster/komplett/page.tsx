@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Nav from "@/components/Nav";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -6,9 +6,17 @@ import FooterSection from "@/components/FooterSection";
 import { ArrowRight, Phone, Check, Star, MapPin, MagnifyingGlass, Link, FileText, ChartBar, DeviceMobile, Robot, Globe, Megaphone, Bell } from "@phosphor-icons/react/dist/ssr";
 
 export const metadata: Metadata = {
-  title: "Komplett Paket — Synlighet + Recensioner I Ett | LeadOne",
-  description: "LaunchMap™ bygger din synlighet på Google. Omdömesmaskinen fyller profilen med 5-stjärniga recensioner. 3.499 kr/mån, ingen startkostnad.",
-  alternates: { canonical: "https://www.leadone.online/tjanster/komplett" },
+  title: "Komplett Paket — Lokal SEO + Google-recensioner | LeadOne",
+  description: "Allt du behöver för lokal synlighet i ett paket. Google Business Profile-optimering, kataloglistningar och automatiska recensioner. Lokal SEO-byrå i Helsingborg. 3.499 kr/mån.",
+  keywords: "lokal SEO paket, Google Maps optimering, Google Business Profile, recensionssystem, lokal SEO byrå, Helsingborg, Sverige",
+  alternates: { canonical: "https://leadone.online/tjanster/komplett" },
+  openGraph: {
+    title: "Komplett Paket — Lokal SEO + Google-recensioner | LeadOne",
+    description: "Google Business Profile-optimering, kataloglistningar och automatiska recensioner i ett paket. Lokal SEO för svenska småföretag.",
+    locale: "sv_SE",
+    type: "website",
+    url: "https://leadone.online/tjanster/komplett",
+  },
 };
 
 const BOOKING_URL = "/boka";
@@ -89,10 +97,10 @@ export default function KomplettPage() {
                     Boka Gratis Genomgång
                     <ArrowRight size={15} weight="bold" aria-hidden="true" />
                   </a>
-                  <a href="tel:0764796630"
+                  <a href="tel:+46763912181"
                     className="flex items-center gap-2 px-7 py-4 rounded-full border border-white/10 text-zinc-300 font-medium text-[15px] hover:border-white/20 hover:text-white transition-all duration-200">
                     <Phone size={14} aria-hidden="true" />
-                    076-479 66 30
+                    +46 763 91 21 81
                   </a>
                 </div>
                 <div className="flex items-center gap-5 mt-8">
@@ -328,7 +336,7 @@ export default function KomplettPage() {
               <ArrowRight size={16} weight="bold" aria-hidden="true" />
             </a>
             <p className="mt-4 text-[13px] text-zinc-600">
-              Eller ring direkt: <a href="tel:0764796630" className="hover:text-zinc-400 transition-colors">076-479 66 30</a>
+              Eller ring direkt: <a href="tel:+46763912181" className="hover:text-zinc-400 transition-colors">+46 763 91 21 81</a>
             </p>
           </div>
         </section>

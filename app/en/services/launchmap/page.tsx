@@ -9,7 +9,7 @@ import { Check, ArrowRight, MapPin, MagnifyingGlass, Link, FileText, ChartBar, S
 export const metadata: Metadata = {
   title: "LaunchMap™ — Dominate Google Maps in 30 Days | LeadOne",
   description: "We optimise your Google Business Profile, list you on 50+ directories and give you a heatmap showing where you rank. One-time price 5,999 SEK.",
-  alternates: { canonical: "https://www.leadone.online/en/services/launchmap" },
+  alternates: { canonical: "https://leadone.online/en/services/launchmap" },
 };
 
 const BOOKING_URL = "/en/book";

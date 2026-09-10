@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Script from "next/script";
 import Image from "next/image";
 import Nav from "@/components/Nav";
@@ -7,9 +7,17 @@ import FooterSection from "@/components/FooterSection";
 import { Check, ArrowRight, Phone, MapPin, MagnifyingGlass, Link, FileText, ChartBar, Star } from "@phosphor-icons/react/dist/ssr";
 
 export const metadata: Metadata = {
-  title: "LaunchMap™ — Dominera Google Maps På 30 Dagar | LeadOne",
-  description: "Vi optimerar din Google Business Profile, listar dig på 50+ kataloger och ger dig en heatmap som visar var du rankar. Engångspris 5.999 kr.",
-  alternates: { canonical: "https://www.leadone.online/tjanster/launchmap" },
+  title: "LaunchMap™ — Google Business Profile-optimering på 30 dagar | LeadOne",
+  description: "Vi optimerar din Google Business Profile, listar dig på 50+ kataloger och visar var du rankar med heatmap. Lokal SEO-tjänst för svenska företag. Engångspris 5.999 kr.",
+  keywords: "Google Business Profile optimering, Google Maps ranking, lokal SEO tjänst, kataloglistningar, heatmap ranking, Local Pack topp 3, Helsingborg",
+  alternates: { canonical: "https://leadone.online/tjanster/launchmap" },
+  openGraph: {
+    title: "LaunchMap™ — Google Business Profile-optimering på 30 dagar",
+    description: "Optimerad GBP, 50+ kataloglistningar och heatmap-rankingkarta. Lokal SEO för svenska småföretag. 5.999 kr engångspris.",
+    locale: "sv_SE",
+    type: "website",
+    url: "https://leadone.online/tjanster/launchmap",
+  },
 };
 
 const BOOKING_URL = "/boka";
@@ -99,10 +107,10 @@ export default function LaunchMapPage() {
                     Boka Gratis Genomgång
                     <ArrowRight size={15} weight="bold" aria-hidden="true" />
                   </a>
-                  <a href="tel:0764796630"
+                  <a href="tel:+46763912181"
                     className="flex items-center gap-2 px-7 py-4 rounded-full border border-white/10 text-zinc-300 font-medium text-[15px] hover:border-white/20 hover:text-white transition-all duration-200">
                     <Phone size={14} aria-hidden="true" />
-                    076-479 66 30
+                    +46 763 91 21 81
                   </a>
                 </div>
 
@@ -378,7 +386,7 @@ export default function LaunchMapPage() {
             </a>
             <p className="mt-4 text-[13px] text-zinc-600">
               Eller ring direkt:{" "}
-              <a href="tel:0764796630" className="hover:text-zinc-400 transition-colors">076-479 66 30</a>
+              <a href="tel:+46763912181" className="hover:text-zinc-400 transition-colors">+46 763 91 21 81</a>
             </p>
           </div>
         </section>

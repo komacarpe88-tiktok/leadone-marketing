@@ -3,60 +3,65 @@
 import { motion, useReducedMotion, useInView, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
+import type { Locale } from "@/lib/i18n";
 
-const stats = [
-  { value: "3x",    label: "Genomsnittlig ökning av Google Maps-synlighet", note: "Bland aktiva kunder, de första 6 månaderna" },
-  { value: "43+",   label: "Företag rankar just nu",                        note: "Inom konkurrensutsatta lokala sökkategorier" },
-  { value: "6 mån", label: "Mediantid till förstasidan",                    note: "På primära lokala sökord" },
-];
+const copy = {
+  sv: {
+    eyebrow: "Bevisade resultat",
+    heading1: "Siffror från verkligt arbete,",
+    heading2: "inte fiktiva fallstudier.",
+    cta: "Få Samma Resultat — Boka Gratis Analys",
+    ctaHref: "/boka",
+    stats: [
+      { value: "3x",    label: "Genomsnittlig ökning av Google Maps-synlighet", note: "Bland aktiva kunder, de första 6 månaderna" },
+      { value: "43+",   label: "Företag rankar just nu",                        note: "Inom konkurrensutsatta lokala sökkategorier" },
+      { value: "6 mån", label: "Mediantid till förstasidan",                    note: "På primära lokala sökord" },
+    ],
+  },
+  en: {
+    eyebrow: "Proven results",
+    heading1: "Numbers from real work,",
+    heading2: "not fictional case studies.",
+    cta: "Get the Same Results — Book Free Analysis",
+    ctaHref: "/en/book",
+    stats: [
+      { value: "3x",    label: "Average increase in Google Maps visibility", note: "Among active clients, first 6 months" },
+      { value: "43+",   label: "Businesses ranking right now",               note: "In competitive local search categories" },
+      { value: "6 mo",  label: "Median time to page one",                    note: "For primary local keywords" },
+    ],
+  },
+};
 
 function AnimatedStatValue({ value, inView }: { value: string; inView: boolean }) {
   const [displayValue, setDisplayValue] = useState(value);
-  
+
   useEffect(() => {
     if (!inView) return;
-    
-    // Check if value contains a number
     const match = value.match(/(\d+)/);
-    if (!match) {
-      setDisplayValue(value);
-      return;
-    }
-    
+    if (!match) { setDisplayValue(value); return; }
     const targetNumber = parseInt(match[1]);
     const prefix = value.substring(0, match.index);
     const suffix = value.substring((match.index || 0) + match[1].length);
-    
     let current = 0;
-    const increment = targetNumber / 40; // 40 frames for smoother animation
+    const increment = targetNumber / 40;
     const timer = setInterval(() => {
       current += increment;
-      if (current >= targetNumber) {
-        setDisplayValue(prefix + targetNumber + suffix);
-        clearInterval(timer);
-      } else {
-        setDisplayValue(prefix + Math.floor(current) + suffix);
-      }
+      if (current >= targetNumber) { setDisplayValue(prefix + targetNumber + suffix); clearInterval(timer); }
+      else { setDisplayValue(prefix + Math.floor(current) + suffix); }
     }, 25);
-    
     return () => clearInterval(timer);
   }, [inView, value]);
-  
+
   return <>{displayValue}</>;
 }
 
-export default function ResultsSection() {
+export default function ResultsSection({ locale = "sv" }: { locale?: Locale }) {
   const reduce = useReducedMotion();
+  const c = copy[locale];
   const sectionRef = useRef(null);
   const inView = useInView(sectionRef, { once: true, amount: 0.3 });
-  
-  // Parallax effect for background image
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
 
-  // Parallax disabled on mobile — too heavy on low-end devices
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
   const [isDesktop, setIsDesktop] = useState(false);
   useEffect(() => { setIsDesktop(window.innerWidth >= 768); }, []);
 
@@ -68,7 +73,7 @@ export default function ResultsSection() {
       style={{ background: "var(--surface)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
 
       <div className="absolute inset-0 z-0">
-        <motion.div 
+        <motion.div
           style={{ y: reduce || !isDesktop ? 0 : y, opacity: reduce ? 0.2 : opacity }}
           className="w-full h-full"
         >
@@ -78,7 +83,7 @@ export default function ResultsSection() {
       </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-10">
-        <motion.div 
+        <motion.div
           className="mb-16"
           initial={reduce ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -86,18 +91,18 @@ export default function ResultsSection() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
           <p className="text-[11px] uppercase tracking-[0.2em] font-mono mb-4" style={{ color: "var(--accent)" }}>
-            Bevisade resultat
+            {c.eyebrow}
           </p>
           <h2 className="text-[2rem] md:text-[2.8rem] font-bold tracking-[-0.025em] text-[#F4F4F5] leading-tight">
-            Siffror från verkligt arbete,
+            {c.heading1}
             <br />
-            inte fiktiva fallstudier.
+            {c.heading2}
           </h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr] gap-px"
           style={{ border: "1px solid var(--border)", borderRadius: "16px", overflow: "hidden" }}>
-          {stats.map((stat, i) => (
+          {c.stats.map((stat, i) => (
             <motion.div key={stat.value}
               className="p-8 lg:p-10 flex flex-col justify-between"
               style={{ background: i === 0 ? "#0F0F12" : "var(--surface-elevated)", borderRight: i < 2 ? "1px solid var(--border)" : undefined }}
@@ -106,8 +111,8 @@ export default function ResultsSection() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.55, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
             >
-              <motion.span 
-                className="font-mono text-[3.6rem] lg:text-[4.4rem] font-bold leading-none tracking-[-0.04em] mb-4 block" 
+              <motion.span
+                className="font-mono text-[3.6rem] lg:text-[4.4rem] font-bold leading-none tracking-[-0.04em] mb-4 block"
                 style={{ color: "var(--accent)" }}
                 initial={reduce ? false : { scale: 0.85, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
@@ -124,8 +129,8 @@ export default function ResultsSection() {
           ))}
         </div>
         <div className="mt-14 flex justify-center">
-          <a href="/boka" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-accent text-[#08080A] font-semibold text-[15px] hover:bg-[#D4B87A] transition-colors duration-200">
-            Få Samma Resultat — Boka Gratis Analys
+          <a href={c.ctaHref} className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-accent text-[#08080A] font-semibold text-[15px] hover:bg-[#D4B87A] transition-colors duration-200">
+            {c.cta}
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </a>
         </div>

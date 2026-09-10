@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import FooterSection from "@/components/FooterSection";
 
 export const metadata: Metadata = {
   title: "Cookie Policy | LeadOne Marketing",
   description: "LeadOne Marketing's cookie policy — information about how we use cookies on our website.",
-  alternates: { canonical: "https://www.leadone.online/en/cookie-policy" },
+  alternates: { canonical: "https://leadone.online/en/cookie-policy" },
 };
 
 export default function CookiePolicyEn() {
@@ -35,7 +35,7 @@ export default function CookiePolicyEn() {
             </div>
             <div>
               <h2 className="text-[17px] font-semibold text-[#F4F4F5] mb-3">Contact</h2>
-              <p>Questions about our cookie policy? Contact us at info@leadone.online or call 076-479 66 30.</p>
+              <p>Questions about our cookie policy? Contact us at info@leadone.online or call +1 681-641-1867.</p>
             </div>
           </div>
         </section>

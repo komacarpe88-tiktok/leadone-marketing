@@ -5,7 +5,7 @@ import FooterSection from "@/components/FooterSection";
 export const metadata: Metadata = {
   title: "Data Processing Agreement (DPA) | LeadOne Marketing",
   description: "LeadOne Marketing OÜ's standard agreement for processing personal data within the Review Machine service — in accordance with GDPR Article 28.",
-  alternates: { canonical: "https://www.leadone.online/en/dpa" },
+  alternates: { canonical: "https://leadone.online/en/dpa" },
 };
 
 export default function DpaEn() {

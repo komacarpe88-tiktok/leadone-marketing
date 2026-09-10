@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Nav from "@/components/Nav";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -9,9 +9,17 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 
 export const metadata: Metadata = {
-  title: "Omdömesmaskinen — Recensioner Som Jobbar Dygnet Runt | LeadOne",
-  description: "Samla in nya recensioner automatiskt. Svara direkt. Sprid dina bästa omdömen på hemsida och sociala medier. 1.499 kr/månad.",
-  alternates: { canonical: "https://www.leadone.online/tjanster/omdomes" },
+  title: "Omdömesmaskinen — Automatiska Google-recensioner | LeadOne",
+  description: "Samla in fler Google-recensioner automatiskt med SMS-förfrågningar efter varje kund. Svara, sprid och bygg förtroende. Lokal SEO-verktyg för svenska företag. 1.499 kr/månad.",
+  keywords: "Google recensioner, fler recensioner, automatiska recensioner, recensionssystem, Google Business Profile, lokal SEO",
+  alternates: { canonical: "https://leadone.online/tjanster/omdomes" },
+  openGraph: {
+    title: "Omdömesmaskinen — Automatiska Google-recensioner | LeadOne",
+    description: "Samla in fler Google-recensioner automatiskt. SMS-förfrågningar, automatiska svar och spridning på sociala medier.",
+    locale: "sv_SE",
+    type: "website",
+    url: "https://leadone.online/tjanster/omdomes",
+  },
 };
 
 const BOOKING_URL = "/boka";
@@ -122,10 +130,10 @@ export default function OmdomesPage() {
                     Boka Gratis Genomgång
                     <ArrowRight size={15} weight="bold" aria-hidden="true" />
                   </a>
-                  <a href="tel:0764796630"
+                  <a href="tel:+46763912181"
                     className="flex items-center gap-2 px-7 py-4 rounded-full border border-white/10 text-zinc-300 font-medium text-[15px] hover:border-white/20 hover:text-white transition-all duration-200">
                     <Phone size={14} aria-hidden="true" />
-                    076-479 66 30
+                    +46 763 91 21 81
                   </a>
                 </div>
 
@@ -450,7 +458,7 @@ export default function OmdomesPage() {
             </a>
             <p className="mt-4 text-[13px] text-zinc-600">
               Eller ring direkt:{" "}
-              <a href="tel:0764796630" className="hover:text-zinc-400 transition-colors">076-479 66 30</a>
+              <a href="tel:+46763912181" className="hover:text-zinc-400 transition-colors">+46 763 91 21 81</a>
             </p>
           </div>
         </section>

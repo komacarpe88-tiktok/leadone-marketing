@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import FooterSection from "@/components/FooterSection";
 
@@ -23,7 +23,7 @@ export default function IntegritetspolicyPage() {
 
             <div>
               <h2 className="text-[17px] font-semibold text-[#F4F4F5] mb-3">Personuppgiftsansvarig</h2>
-              <p>LeadOne Marketing OÜ, registrerat i Estland (EU). E-post: info@leadone.online. Telefon: 076-479 66 30.</p>
+              <p>LeadOne Marketing OÜ, registrerat i Estland (EU). E-post: info@leadone.online. Telefon: +46 763 91 21 81.</p>
             </div>
 
             <div>
@@ -93,7 +93,7 @@ export default function IntegritetspolicyPage() {
 
             <div>
               <h2 className="text-[17px] font-semibold text-[#F4F4F5] mb-3">Kontakt och PUB-avtal</h2>
-              <p>Frågor om vår integritetspolicy eller hantering av personuppgifter? Hör av dig till info@leadone.online eller ring 076-479 66 30.</p>
+              <p>Frågor om vår integritetspolicy eller hantering av personuppgifter? Hör av dig till info@leadone.online eller ring +46 763 91 21 81.</p>
               <p className="mt-2">För uppdragsgivare som önskar teckna personuppgiftsbiträdesavtal, se vår <a href="/pub-avtal" className="underline" style={{ color: "var(--accent)" }}>PUB-avtalssida</a>.</p>
             </div>
 

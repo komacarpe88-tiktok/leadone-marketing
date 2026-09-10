@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Script from "next/script";
 import Image from "next/image";
@@ -7,6 +7,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import FooterSection from "@/components/FooterSection";
 import { Phone, EnvelopeSimple, Clock, MapPin } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "motion/react";
+
 
 const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/tLul2UjJ4lCOYMicz8eX";
 
@@ -88,7 +89,7 @@ export default function KontaktPage() {
                 {/* Contact methods */}
                 <div className="flex flex-col gap-3">
                   <motion.a
-                    href="tel:0764796630"
+                    href="tel:+46763912181"
                     className="flex items-center gap-4 rounded-2xl p-5 cursor-pointer group"
                     style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
                     initial={reduce ? false : { opacity: 0, x: -20 }}
@@ -106,7 +107,7 @@ export default function KontaktPage() {
                     <div>
                       <p className="text-[13px] text-zinc-500 mb-0.5">Telefon</p>
                       <p className="text-[16px] font-semibold text-[#F4F4F5] group-hover:text-accent transition-colors duration-200">
-                        076-479 66 30
+                        +46 763 91 21 81
                       </p>
                     </div>
                   </motion.a>

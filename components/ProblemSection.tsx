@@ -1,27 +1,55 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
+import type { Locale } from "@/lib/i18n";
 
-const before = [
-  "Din konkurrent har 147 recensioner — du har 3",
-  "Du syns inte när kunder söker på din tjänst i din stad",
-  "Dina nöjda kunder lämnar aldrig recensioner",
-];
+const copy = {
+  sv: {
+    eyebrow: "Du är inte ensam",
+    quote: "Jag vet att jag borde synas bättre på Google, men jag har varken tid eller kunskap att fixa det.",
+    beforeLabel: "Innan LeadOne",
+    beforeTitle: "Du är osynlig.",
+    afterLabel: "Med LeadOne",
+    afterTitle: "Du dominerar.",
+    before: [
+      "Din konkurrent har 147 recensioner — du har 3",
+      "Du syns inte när kunder söker på din tjänst i din stad",
+      "Dina nöjda kunder lämnar aldrig recensioner",
+    ],
+    after: [
+      "Topp 3 på Google Maps för dina viktigaste sökord",
+      "100+ nya 5-stjärniga recensioner på 3 månader",
+      "Leads kommer in från Google varje vecka",
+    ],
+  },
+  en: {
+    eyebrow: "You are not alone",
+    quote: "I know I should be more visible on Google, but I have neither the time nor the knowledge to fix it.",
+    beforeLabel: "Before LeadOne",
+    beforeTitle: "You are invisible.",
+    afterLabel: "With LeadOne",
+    afterTitle: "You dominate.",
+    before: [
+      "Your competitor has 147 reviews — you have 3",
+      "You don't show up when customers search for your service in your city",
+      "Your happy customers never leave reviews",
+    ],
+    after: [
+      "Top 3 on Google Maps for your most important keywords",
+      "100+ new 5-star reviews in 3 months",
+      "Leads coming in from Google every week",
+    ],
+  },
+};
 
-const after = [
-  "Topp 3 på Google Maps för dina viktigaste sökord",
-  "100+ nya 5-stjärniga recensioner på 3 månader",
-  "Leads kommer in från Google varje vecka",
-];
-
-export default function ProblemSection() {
+export default function ProblemSection({ locale = "sv" }: { locale?: Locale }) {
   const reduce = useReducedMotion();
+  const c = copy[locale];
 
   return (
     <section className="py-24 lg:py-32 border-b overflow-hidden" style={{ borderColor: "var(--border)" }}>
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
 
-        {/* Headline */}
         <motion.div
           className="mb-16 lg:mb-20 text-center"
           initial={reduce ? false : { opacity: 0, y: 20 }}
@@ -30,7 +58,7 @@ export default function ProblemSection() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
           <p className="text-[11px] uppercase tracking-[0.2em] font-mono mb-6" style={{ color: "var(--accent)" }}>
-            Du är inte ensam
+            {c.eyebrow}
           </p>
           <div
             aria-hidden="true"
@@ -42,7 +70,7 @@ export default function ProblemSection() {
               lineHeight: 0.8,
               marginBottom: "0.3rem",
             }}
-          >"</div>
+          >&ldquo;</div>
           <p style={{
             fontFamily: "var(--font-cormorant)",
             fontStyle: "italic",
@@ -54,15 +82,13 @@ export default function ProblemSection() {
             maxWidth: "32ch",
             margin: "0 auto",
           }}>
-            Jag vet att jag borde synas bättre på Google,
-            men jag har varken tid eller kunskap att fixa det.
+            {c.quote}
           </p>
         </motion.div>
 
-        {/* Two-column dramatic cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
 
-          {/* FÖRE */}
+          {/* BEFORE */}
           <motion.div
             className="relative p-10 lg:p-14 flex flex-col gap-10"
             style={{ background: "rgba(18,6,6,0.95)" }}
@@ -74,7 +100,7 @@ export default function ProblemSection() {
             <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 20% 50%, rgba(200,40,40,0.12) 0%, transparent 65%)" }} aria-hidden="true" />
 
             <div className="relative">
-              <p className="text-[10px] uppercase tracking-[0.25em] font-mono mb-4" style={{ color: "rgba(220,80,80,0.7)" }}>Innan LeadOne</p>
+              <p className="text-[10px] uppercase tracking-[0.25em] font-mono mb-4" style={{ color: "rgba(220,80,80,0.7)" }}>{c.beforeLabel}</p>
               <h3 style={{
                 fontFamily: "var(--font-cormorant)",
                 fontSize: "clamp(2.4rem, 4vw, 3.6rem)",
@@ -84,12 +110,12 @@ export default function ProblemSection() {
                 color: "rgba(220,80,80,0.9)",
                 letterSpacing: "-0.02em",
               }}>
-                Du är osynlig.
+                {c.beforeTitle}
               </h3>
             </div>
 
             <ul className="relative flex flex-col gap-7">
-              {before.map((item, i) => (
+              {c.before.map((item, i) => (
                 <motion.li
                   key={item}
                   className="flex items-start gap-5"
@@ -108,14 +134,12 @@ export default function ProblemSection() {
               ))}
             </ul>
 
-            {/* Bottom accent line */}
             <div className="absolute bottom-0 left-0 right-0 h-[1px]" style={{ background: "linear-gradient(to right, rgba(200,40,40,0.3), transparent)" }} aria-hidden="true" />
           </motion.div>
 
-          {/* Divider */}
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[1px]" style={{ background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.08), transparent)" }} aria-hidden="true" />
 
-          {/* EFTER */}
+          {/* AFTER */}
           <motion.div
             className="relative p-10 lg:p-14 flex flex-col gap-10"
             style={{ background: "rgba(6,12,6,0.95)" }}
@@ -127,7 +151,7 @@ export default function ProblemSection() {
             <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.12) 0%, transparent 65%)" }} aria-hidden="true" />
 
             <div className="relative">
-              <p className="text-[10px] uppercase tracking-[0.25em] font-mono mb-4" style={{ color: "rgba(201,168,76,0.7)" }}>Med LeadOne</p>
+              <p className="text-[10px] uppercase tracking-[0.25em] font-mono mb-4" style={{ color: "rgba(201,168,76,0.7)" }}>{c.afterLabel}</p>
               <h3 style={{
                 fontFamily: "var(--font-cormorant)",
                 fontSize: "clamp(2.4rem, 4vw, 3.6rem)",
@@ -137,12 +161,12 @@ export default function ProblemSection() {
                 color: "var(--accent)",
                 letterSpacing: "-0.02em",
               }}>
-                Du dominerar.
+                {c.afterTitle}
               </h3>
             </div>
 
             <ul className="relative flex flex-col gap-7">
-              {after.map((item, i) => (
+              {c.after.map((item, i) => (
                 <motion.li
                   key={item}
                   className="flex items-start gap-5"

@@ -21,15 +21,15 @@ export const metadata: Metadata = {
     "Sweden's local SEO agency. We get you into the top 3 on Google Maps — more visibility, more calls, more customers.",
   keywords: "local SEO, Google Maps optimisation, Google Business Profile, Local Pack, review system, SEO agency Sweden",
   alternates: {
-    canonical: "https://www.leadone.online/en",
-    languages: { "sv": "https://www.leadone.online/" },
+    canonical: "https://leadone.online/en",
+    languages: { "sv": "https://leadone.online/" },
   },
   openGraph: {
     title: "LeadOne Marketing | Local SEO & Google Maps Optimisation",
     description: "Local SEO for Swedish businesses. Rank in the Local Pack, get more reviews, grow revenue.",
     locale: "en_GB",
     type: "website",
-    url: "https://www.leadone.online/en",
+    url: "https://leadone.online/en",
   },
 };
 
@@ -40,17 +40,17 @@ export default function EnglishHomePage() {
       <Nav />
       <h1 className="sr-only">Local SEO & Google Maps optimisation for Swedish businesses — LeadOne Marketing</h1>
       <HeroStatic locale="en" />
-      <StatementSection />
-      <ProblemSection />
-      <TestimonialsSection />
+      <StatementSection locale="en" />
+      <ProblemSection locale="en" />
+      <TestimonialsSection locale="en" />
       <TrustedBySection />
-      <FounderSection />
-      <ServicesSection />
-      <ProcessSection />
-      <PricingSection />
-      <ResultsSection />
-      <FAQSection />
-      <CtaSection />
+      <FounderSection locale="en" />
+      <ServicesSection locale="en" />
+      <ProcessSection locale="en" />
+      <PricingSection locale="en" />
+      <ResultsSection locale="en" />
+      <FAQSection locale="en" />
+      <CtaSection locale="en" />
       <FooterSection locale="en" />
     </main>
   );

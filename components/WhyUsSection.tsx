@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion, useReducedMotion } from "motion/react";
 import { MapPin, Lightning, Phone } from "@phosphor-icons/react";
@@ -17,7 +17,7 @@ const points = [
   {
     icon: Phone,
     title: "Support På Svenska",
-    body: "Ring oss på 076-479 66 30. Vi svarar. På svenska. Inom 2 timmar vardagar.",
+    body: "Ring oss på +46 763 91 21 81. Vi svarar. På svenska. Inom 2 timmar vardagar.",
   },
 ];
 

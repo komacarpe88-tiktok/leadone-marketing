@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import FooterSection from "@/components/FooterSection";
 import { Phone, EnvelopeSimple, MapPin } from "@phosphor-icons/react/dist/ssr";
@@ -6,7 +6,7 @@ import { Phone, EnvelopeSimple, MapPin } from "@phosphor-icons/react/dist/ssr";
 export const metadata: Metadata = {
   title: "Contact | LeadOne Marketing",
   description: "Get in touch with LeadOne Marketing. Book a free analysis call or contact us directly.",
-  alternates: { canonical: "https://www.leadone.online/en/contact" },
+  alternates: { canonical: "https://leadone.online/en/contact" },
 };
 
 export default function ContactPageEn() {
@@ -19,13 +19,13 @@ export default function ContactPageEn() {
           <h1 className="text-[2.2rem] md:text-[2.8rem] font-bold tracking-[-0.025em] text-[#F4F4F5] mb-8 leading-tight">Get in touch</h1>
 
           <div className="flex flex-col gap-6 mb-12">
-            <a href="tel:0764796630" className="flex items-center gap-4 rounded-2xl p-5 transition-colors duration-200 group" style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
+            <a href="tel:+16816411867" className="flex items-center gap-4 rounded-2xl p-5 transition-colors duration-200 group" style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
               <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ background: "rgba(201,168,76,0.1)" }}>
                 <Phone size={18} style={{ color: "var(--accent)" }} aria-hidden="true" />
               </div>
               <div>
                 <p className="text-[11px] text-zinc-500 uppercase tracking-widest font-mono mb-0.5">Phone</p>
-                <p className="text-[15px] text-zinc-300 group-hover:text-white transition-colors">076-479 66 30</p>
+                <p className="text-[15px] text-zinc-300 group-hover:text-white transition-colors">+1 681-641-1867</p>
               </div>
             </a>
 

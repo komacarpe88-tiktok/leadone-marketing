@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Nav from "@/components/Nav";
@@ -6,6 +6,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import FooterSection from "@/components/FooterSection";
 import { ArrowRight, Phone } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "motion/react";
+
 
 const BOOKING_URL = "/boka";
 
@@ -89,11 +90,11 @@ export default function OmOssPage() {
                     <ArrowRight size={15} weight="bold" aria-hidden="true" />
                   </a>
                   <a
-                    href="tel:0764796630"
+                    href="tel:+46763912181"
                     className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/10 text-zinc-300 font-medium text-[15px] hover:border-white/20 hover:text-white transition-all duration-200"
                   >
                     <Phone size={15} aria-hidden="true" />
-                    076-479 66 30
+                    +46 763 91 21 81
                   </a>
                 </div>
               </motion.div>
@@ -398,11 +399,11 @@ export default function OmOssPage() {
                 />
               </a>
               <a
-                href="tel:0764796630"
+                href="tel:+46763912181"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/10 text-zinc-300 font-medium text-[16px] hover:border-white/20 hover:text-white transition-all duration-200"
               >
                 <Phone size={15} aria-hidden="true" />
-                076-479 66 30
+                +46 763 91 21 81
               </a>
             </div>
           </motion.div>
