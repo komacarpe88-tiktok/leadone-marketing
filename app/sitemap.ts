@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/posts";
 import { getAllPostsEn } from "@/lib/posts-en";
 
-const BASE = "https://www.leadone.online";
+const BASE = "https://leadone.online";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts();
@@ -12,6 +12,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: BASE,                         lastModified: new Date(), changeFrequency: "weekly",  priority: 1.0 },
     { url: `${BASE}/blogg`,              lastModified: new Date(), changeFrequency: "daily",   priority: 0.9 },
     { url: `${BASE}/boka`,               lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/bestall/`,           lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/resultat/`,          lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/seo-helsingborg/`,   lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/seo-stockholm/`,     lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/seo-goteborg/`,      lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/seo-malmo/`,         lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/seo-uppsala/`,       lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/seo-linkoping/`,     lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/seo-orebro/`,        lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/seo-jonkoping/`,     lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/tjanster/launchmap`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/tjanster/omdomes`,   lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/tjanster/komplett`,  lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
@@ -27,6 +37,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/en`,                          lastModified: new Date(), changeFrequency: "weekly",  priority: 1.0 },
     { url: `${BASE}/en/blog`,                     lastModified: new Date(), changeFrequency: "daily",   priority: 0.9 },
     { url: `${BASE}/en/book`,                     lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/en/order/`,                   lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/en/results/`,                 lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/en/services/launchmap`,       lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/en/services/reviews`,         lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/en/services/complete`,        lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },

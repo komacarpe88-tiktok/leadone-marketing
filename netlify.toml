@@ -1,2 +1,88 @@
 [build]
   publish = "out"
+
+# Old go.leadone.online subdomain (terms page)
+[[redirects]]
+  from = "https://go.leadone.online/*"
+  to   = "https://leadone.online/anvandarvillkor"
+  status = 301
+  force  = true
+
+# Paths without trailing slash → with trailing slash (Next.js trailingSlash: true)
+[[redirects]]
+  from = "/pub-avtal"
+  to   = "/pub-avtal/"
+  status = 301
+
+[[redirects]]
+  from = "/cookie-policy"
+  to   = "/cookie-policy/"
+  status = 301
+
+[[redirects]]
+  from = "/en/blog/how-to-rank-on-google-maps-2026"
+  to   = "/en/blog/how-to-rank-on-google-maps-2026/"
+  status = 301
+
+[[redirects]]
+  from = "/en/blog/how-to-get-more-google-reviews"
+  to   = "/en/blog/how-to-get-more-google-reviews/"
+  status = 301
+
+[[redirects]]
+  from = "/en/services/reviews"
+  to   = "/en/services/reviews/"
+  status = 301
+
+# /order → Swedish order page (external links / typed URLs)
+[[redirects]]
+  from = "/order"
+  to   = "/bestall/"
+  status = 301
+
+[[redirects]]
+  from = "/order/"
+  to   = "/bestall/"
+  status = 301
+
+[[redirects]]
+  from = "/bestall"
+  to   = "/bestall/"
+  status = 301
+
+[[redirects]]
+  from = "/en/order"
+  to   = "/en/order/"
+  status = 301
+
+[[redirects]]
+  from = "/resultat"
+  to   = "/resultat/"
+  status = 301
+
+[[redirects]]
+  from = "/en/results"
+  to   = "/en/results/"
+  status = 301
+
+# No services *index* page exists in either language, only the three child
+# pages. Send the listing URLs to the home page section instead of a 404.
+[[redirects]]
+  from = "/tjanster"
+  to   = "/#services"
+  status = 301
+
+[[redirects]]
+  from = "/tjanster/"
+  to   = "/#services"
+  status = 301
+
+[[redirects]]
+  from = "/en/services"
+  to   = "/en/#services"
+  status = 301
+
+[[redirects]]
+  from = "/en/services/"
+  to   = "/en/#services"
+  status = 301

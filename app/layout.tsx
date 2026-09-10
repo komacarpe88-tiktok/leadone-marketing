@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Outfit, JetBrains_Mono, Cormorant_Garamond } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { authorPersonLd } from "@/lib/author";
+import { phones } from "@/lib/contact";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -26,6 +28,9 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
+  // Canonical host is the non-www apex domain — www 301s here, so every
+  // resolved metadata URL must use this form.
+  metadataBase: new URL("https://leadone.online"),
   title: "LeadOne Marketing | Lokal SEO för svenska företag",
   description:
     "Sveriges lokala SEO-byrå. Vi hjälper dig synas på Google Maps och i lokal sökning — mer synlighet, fler samtal, fler kunder.",
@@ -50,175 +55,147 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLdOrganization = {
+const jsonLdGraph = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://www.leadone.online/#organization",
-  "name": "LeadOne Marketing",
-  "alternateName": "LeadOne",
-  "url": "https://www.leadone.online",
-  "logo": "https://www.leadone.online/assets/logo.png",
-  "image": "https://www.leadone.online/assets/logo.png",
-  "description": "Lokal SEO och Google Maps-optimering för svenska småföretag. Vi hjälper lokala företag synas i topp 3 på Google Maps.",
-  "telephone": "+46764796630",
-  "email": "info@leadone.online",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Helsingborg",
-    "addressCountry": "SE",
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 56.0465,
-    "longitude": 12.6945,
-  },
-  "areaServed": { "@type": "Country", "name": "Sweden" },
-  "priceRange": "$$",
-  "currenciesAccepted": "SEK",
-  "founder": { "@type": "Person", "name": "Douglas", "jobTitle": "Grundare" },
-  "sameAs": ["https://twitter.com/leadonese"],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "reviewCount": "4",
-    "bestRating": "5",
-    "worstRating": "1",
-  },
-  "review": [
+  "@graph": [
     {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "Mikael Lindqvist" },
-      "reviewBody": "LeadOne förändrade hur vi syns på Google. Inom fem månader gick vi från osynliga till tre nya kunder som kom in varje dag tack vare Maps.",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-    },
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "Sofia Bergström" },
-      "reviewBody": "De förstod vår lokala marknad omedelbart. Vi syns nu på första plats för alla viktiga sökningar. Telefonen ringer mer än någonsin.",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-    },
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "Anders Holm" },
-      "reviewBody": "LeadOne är det första team som rapporterade faktiska siffror vi kunde verifiera i Google Search Console. En enorm skillnad.",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-    },
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "Karin Vestergaard" },
-      "reviewBody": "Efter sex månader rankar vi bland de tre bästa för alla sökord som är viktiga för vår verksamhet. Patientförfrågningar har mer än fördubblats.",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-    },
-  ],
-};
-
-const jsonLdWebSite = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "LeadOne Marketing",
-  "url": "https://www.leadone.online",
-  "publisher": { "@id": "https://www.leadone.online/#organization" },
-  "inLanguage": "sv-SE",
-};
-
-const jsonLdWebPage = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "url": "https://www.leadone.online",
-  "name": "LeadOne Marketing | Lokal SEO & Google Maps-optimering",
-  "description": "Vi hjälper svenska småföretag synas i topp 3 på Google Maps. Lokal SEO, GBP-optimering och recensionssystem.",
-  "about": { "@id": "https://www.leadone.online/#organization" },
-  "inLanguage": "sv-SE",
-};
-
-const jsonLdService = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Lokal SEO & Google Maps-optimering",
-  "provider": { "@id": "https://www.leadone.online/#organization" },
-  "serviceType": "Local SEO",
-  "areaServed": { "@type": "Country", "name": "Sweden" },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "LeadOne Tjänster",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "LaunchMap™",
-          "description": "Komplett Google Business Profile-optimering på 30 dagar. Inkluderar kategorioptimering, sökordsanalys, 50+ kataloglistningar och heatmap-rankingkarta.",
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "@id": "https://leadone.online/#organization",
+      "name": "LeadOne Marketing",
+      "alternateName": "LeadOne",
+      "url": "https://leadone.online/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://leadone.online/assets/logo.png",
+        "width": 512,
+        "height": 512,
+      },
+      "image": "https://leadone.online/assets/logo.png",
+      "description": "LeadOne Marketing helps Swedish local businesses rank in the top 3 on Google Maps through Google Business Profile optimization, local citation building, and automated review management.",
+      "telephone": "+46763912181",
+      "email": "info@leadone.online",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Helsingborg",
+        "addressRegion": "Skåne",
+        "addressCountry": "SE",
+      },
+      "areaServed": { "@type": "Country", "name": "Sweden" },
+      "currenciesAccepted": "SEK",
+      // The entity's own number stays Swedish (it is a Helsingborg company).
+      // The English-language line is declared as an additional contact point
+      // rather than by swapping `telephone` per locale, which would
+      // misrepresent the same legal entity to Google.
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": phones.sv.e164,
+          "contactType": "customer service",
+          "availableLanguage": ["sv", "Swedish"],
+          "areaServed": "SE",
         },
+        {
+          "@type": "ContactPoint",
+          "telephone": phones.en.e164,
+          "contactType": "sales",
+          "availableLanguage": ["en", "English"],
+        },
+      ],
+      "founder": authorPersonLd(),
+      "sameAs": [
+        "https://share.google/SMOX8ekMOHAjr96Kh",
+        "https://www.facebook.com/profile.php?id=61574166014384",
+        "https://www.instagram.com/leadone_marketing/",
+        "https://se.linkedin.com/in/leadone-marketing-6ab9ba373",
+        "https://x.com/Leadonemarket",
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "LeadOne Marketing — Tjänster",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@id": "https://leadone.online/#service-launchmap" } },
+          { "@type": "Offer", "itemOffered": { "@id": "https://leadone.online/#service-omdomes" } },
+          { "@type": "Offer", "itemOffered": { "@id": "https://leadone.online/#service-komplett" } },
+        ],
+      },
+    },
+    {
+      "@type": "Service",
+      "@id": "https://leadone.online/#service-launchmap",
+      "name": "LaunchMap™",
+      "description": "Complete Google Business Profile optimization delivered within 30 days. Includes category optimization, keyword analysis, 50+ directory listings, and a geo-grid ranking map.",
+      "url": "https://leadone.online/tjanster/launchmap",
+      "provider": { "@id": "https://leadone.online/#organization" },
+      "areaServed": { "@type": "Country", "name": "Sweden" },
+      "offers": {
+        "@type": "Offer",
         "price": "5999",
         "priceCurrency": "SEK",
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Omdömesmaskinen",
-          "description": "Automatiserad recensionshantering — Request, Response, Repurpose. Automatiska SMS med direktlänk till Google-recension, automatiskt besvarade recensioner och publicering på hemsida och sociala medier.",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "5999",
+          "priceCurrency": "SEK",
+          "unitText": "one-time",
         },
+      },
+    },
+    {
+      "@type": "Service",
+      "@id": "https://leadone.online/#service-omdomes",
+      "name": "Omdömesmaskinen",
+      "description": "Automated review management — Request, Response, Repurpose. Automated SMS review requests, automated review responses, and publishing to website and social media.",
+      "url": "https://leadone.online/tjanster/omdomes",
+      "provider": { "@id": "https://leadone.online/#organization" },
+      "areaServed": { "@type": "Country", "name": "Sweden" },
+      "offers": {
+        "@type": "Offer",
         "price": "1499",
         "priceCurrency": "SEK",
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Komplett Paket",
-          "description": "LaunchMap™ + Omdömesmaskinen — allt i ett. Ingen startkostnad, ingen bindningstid.",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "1499",
+          "priceCurrency": "SEK",
+          "unitText": "month",
         },
+      },
+    },
+    {
+      "@type": "Service",
+      "@id": "https://leadone.online/#service-komplett",
+      "name": "Komplett Paket",
+      "description": "LaunchMap™ combined with Omdömesmaskinen — full local SEO and review management in one package. No setup fee, no fixed-term contract.",
+      "url": "https://leadone.online/tjanster/komplett",
+      "provider": { "@id": "https://leadone.online/#organization" },
+      "areaServed": { "@type": "Country", "name": "Sweden" },
+      "offers": {
+        "@type": "Offer",
         "price": "3499",
         "priceCurrency": "SEK",
-      },
-    ],
-  },
-};
-
-const jsonLdFAQ = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Hur lång tid tar det innan jag ser resultat?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "De flesta kunder ser tydliga förbättringar i Google Maps-synlighet inom 30–90 dagar. Mediantiden till förstasidan för primära lokala sökord är 6 månader.",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "3499",
+          "priceCurrency": "SEK",
+          "unitText": "month",
+        },
       },
     },
     {
-      "@type": "Question",
-      "name": "Behöver jag binda upp mig långsiktigt?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Nej. Ingen bindningstid. Du kan avsluta när du vill. LaunchMap™ är en engångsbetalning och Omdömesmaskinen samt Komplett Paket är månadsabonnemang utan bindning.",
-      },
+      "@type": "WebSite",
+      "@id": "https://leadone.online/#website",
+      "name": "LeadOne Marketing",
+      "url": "https://leadone.online/",
+      "publisher": { "@id": "https://leadone.online/#organization" },
+      "inLanguage": "sv-SE",
     },
     {
-      "@type": "Question",
-      "name": "Fungerar det för alla branscher?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ja. Vi arbetar med alla lokala företag som har en fysisk plats eller betjänar ett lokalt område — från elektriker och tandläkare till restauranger och byggföretag.",
-      },
-    },
-    {
-      "@type": "Question",
-      "name": "Vad skiljer er från andra SEO-byråer?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Vi fokuserar uteslutande på lokal SEO och Google Maps-synlighet. Inga krångliga kontrakt — bara system som fungerar och rapportering med verkliga siffror du kan verifiera själv i Google Search Console.",
-      },
-    },
-    {
-      "@type": "Question",
-      "name": "Vad händer med mina recensioner om jag avslutar?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Alla recensioner som genererats under tiden stannar kvar på din Google Business Profile. De tillhör ditt företag, inte oss.",
-      },
+      "@type": "WebPage",
+      "@id": "https://leadone.online/#webpage",
+      "url": "https://leadone.online/",
+      "name": "LeadOne Marketing | Lokal SEO & Google Maps-optimering",
+      "description": "Vi hjälper svenska småföretag synas i topp 3 på Google Maps. Lokal SEO, GBP-optimering och recensionssystem.",
+      "isPartOf": { "@id": "https://leadone.online/#website" },
+      "about": { "@id": "https://leadone.online/#organization" },
+      "inLanguage": "sv-SE",
     },
   ],
 };
@@ -231,14 +208,22 @@ export default function RootLayout({
   return (
     <html lang="sv" className={`${outfit.variable} ${mono.variable} ${cormorant.variable}`}>
       <head>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebPage) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdService) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFAQ) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph) }} />
       </head>
       <body className="bg-[#08080A] text-[#F4F4F5] antialiased font-sans">
         {children}
+        {/* Google Analytics 4 + Google Ads */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-T6709ZLTCC"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-T6709ZLTCC');
+          gtag('config', 'AW-17824404848');
+        `}</Script>
         {/* LeadConnector chat widget */}
         <Script
           src="https://beta.leadconnectorhq.com/loader.js"
