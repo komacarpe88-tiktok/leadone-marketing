@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Script from "next/script";
 import Image from "next/image";
@@ -6,9 +6,9 @@ import { Check, Phone, Star } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "motion/react";
 import ScrollProgress from "@/components/ScrollProgress";
 import FooterSection from "@/components/FooterSection";
-import BookingNav from "@/components/BookingNav";
+import Nav from "@/components/Nav";
 
-const PHONE = "076-479 66 30";
+const PHONE = "+46 763 91 21 81";
 
 const callPoints = [
   "Exakt var du rankar idag — och var dina konkurrenter befinner sig",
@@ -23,7 +23,7 @@ export default function BokaPage() {
   return (
     <>
       <ScrollProgress />
-      <BookingNav />
+      <Nav />
 
       <main className="min-h-screen bg-[#08080A] pt-[72px]">
         {/* ── Hero area ───────────────────────────────────────────── */}
@@ -172,7 +172,7 @@ export default function BokaPage() {
 
                 {/* Phone fallback */}
                 <motion.a
-                  href="tel:0764796630"
+                  href="tel:+46763912181"
                   className="flex items-center gap-2 text-[14px] text-zinc-500 hover:text-zinc-300 transition-colors duration-200"
                   initial={reduce ? false : { opacity: 0 }}
                   animate={{ opacity: 1 }}

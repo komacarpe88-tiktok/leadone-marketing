@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Script from "next/script";
 import Image from "next/image";
@@ -6,9 +6,9 @@ import { Check, Phone, Star } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "motion/react";
 import ScrollProgress from "@/components/ScrollProgress";
 import FooterSection from "@/components/FooterSection";
-import BookingNav from "@/components/BookingNav";
+import Nav from "@/components/Nav";
 
-const PHONE = "076-479 66 30";
+const PHONE = "+1 681-641-1867";
 
 const callPoints = [
   "Exactly where you rank today — and where your competitors are",
@@ -23,7 +23,7 @@ export default function EnglishBookPage() {
   return (
     <>
       <ScrollProgress />
-      <BookingNav />
+      <Nav />
       <main className="min-h-screen bg-[#08080A] pt-[72px]" lang="en">
         <section className="relative py-20 lg:py-24 overflow-hidden border-b" style={{ borderColor: "var(--border)" }}>
           <div className="absolute inset-0 z-0">
@@ -109,7 +109,7 @@ export default function EnglishBookPage() {
                 </motion.div>
 
                 <motion.a
-                  href="tel:0764796630"
+                  href="tel:+16816411867"
                   className="flex items-center gap-2 text-[14px] text-zinc-500 hover:text-zinc-300 transition-colors duration-200"
                   initial={reduce ? false : { opacity: 0 }}
                   animate={{ opacity: 1 }}
