@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { author, authorPersonLd } from "@/lib/author";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Nav from "@/components/Nav";
@@ -21,17 +22,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: post.description,
     keywords: post.tags.join(", "),
     alternates: {
-      canonical: `https://www.leadone.online/en/blog/${post.slug}`,
+      canonical: `https://leadone.online/en/blog/${post.slug}`,
     },
     openGraph: {
       title: post.title,
       description: post.description,
       locale: "en_GB",
       type: "article",
-      url: `https://www.leadone.online/en/blog/${post.slug}`,
+      url: `https://leadone.online/en/blog/${post.slug}`,
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt ?? post.publishedAt,
-      authors: ["LeadOne Marketing"],
+      authors: [author.fullName],
       tags: post.tags,
     },
   };
@@ -51,24 +52,20 @@ export default function EnglishBlogPostPage({ params }: Props) {
     "description": post.description,
     "datePublished": post.publishedAt,
     "dateModified": post.updatedAt ?? post.publishedAt,
-    "author": {
-      "@type": "Organization",
-      "name": "LeadOne Marketing",
-      "@id": "https://www.leadone.online/#organization",
-    },
-    "publisher": { "@id": "https://www.leadone.online/#organization" },
-    "url": `https://www.leadone.online/en/blog/${post.slug}`,
+    "author": authorPersonLd("en"),
+    "publisher": { "@id": "https://leadone.online/#organization" },
+    "url": `https://leadone.online/en/blog/${post.slug}`,
     "inLanguage": "en-GB",
-    "mainEntityOfPage": `https://www.leadone.online/en/blog/${post.slug}`,
+    "mainEntityOfPage": `https://leadone.online/en/blog/${post.slug}`,
   };
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.leadone.online/en" },
-      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.leadone.online/en/blog" },
-      { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://www.leadone.online/en/blog/${post.slug}` },
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://leadone.online/en" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://leadone.online/en/blog" },
+      { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://leadone.online/en/blog/${post.slug}` },
     ],
   };
 
@@ -97,7 +94,13 @@ export default function EnglishBlogPostPage({ params }: Props) {
             <h1 className="text-[2rem] md:text-[2.6rem] font-bold tracking-[-0.025em] text-[#F4F4F5] leading-[1.1]">{post.title}</h1>
             <p className="mt-4 text-[17px] text-zinc-400 leading-relaxed">{post.description}</p>
             <div className="flex items-center gap-4 mt-6 text-[12px] text-zinc-500 font-mono">
-              <span>LeadOne Marketing</span>
+              <span>
+                By{" "}
+                <a href="/en/about/" className="hover:text-zinc-300 transition-colors duration-200">
+                  {author.fullName}
+                </a>
+                , {author.jobTitleEn}
+              </span>
               <span>·</span>
               <time dateTime={post.publishedAt}>
                 {new Date(post.publishedAt).toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" })}

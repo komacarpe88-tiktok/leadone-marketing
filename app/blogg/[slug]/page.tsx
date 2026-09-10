@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { author, authorPersonLd } from "@/lib/author";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Nav from "@/components/Nav";
@@ -20,16 +21,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${post.title} | LeadOne Marketing`,
     description: post.description,
     keywords: post.tags.join(", "),
-    alternates: { canonical: `https://www.leadone.online/blogg/${post.slug}` },
+    alternates: { canonical: `https://leadone.online/blogg/${post.slug}` },
     openGraph: {
       title: post.title,
       description: post.description,
       locale: "sv_SE",
       type: "article",
-      url: `https://www.leadone.online/blogg/${post.slug}`,
+      url: `https://leadone.online/blogg/${post.slug}`,
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt ?? post.publishedAt,
-      authors: ["LeadOne Marketing"],
+      authors: [author.fullName],
       tags: post.tags,
     },
   };
@@ -49,26 +50,22 @@ export default function BloggPostPage({ params }: Props) {
     "description": post.description,
     "datePublished": post.publishedAt,
     "dateModified": post.updatedAt ?? post.publishedAt,
-    "author": {
-      "@type": "Organization",
-      "name": "LeadOne Marketing",
-      "@id": "https://www.leadone.online/#organization",
-    },
+    "author": authorPersonLd(),
     "publisher": {
-      "@id": "https://www.leadone.online/#organization",
+      "@id": "https://leadone.online/#organization",
     },
-    "url": `https://www.leadone.online/blogg/${post.slug}`,
+    "url": `https://leadone.online/blogg/${post.slug}`,
     "inLanguage": "sv-SE",
-    "mainEntityOfPage": `https://www.leadone.online/blogg/${post.slug}`,
+    "mainEntityOfPage": `https://leadone.online/blogg/${post.slug}`,
   };
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Hem", "item": "https://www.leadone.online" },
-      { "@type": "ListItem", "position": 2, "name": "Blogg", "item": "https://www.leadone.online/blogg" },
-      { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://www.leadone.online/blogg/${post.slug}` },
+      { "@type": "ListItem", "position": 1, "name": "Hem", "item": "https://leadone.online" },
+      { "@type": "ListItem", "position": 2, "name": "Blogg", "item": "https://leadone.online/blogg" },
+      { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://leadone.online/blogg/${post.slug}` },
     ],
   };
 
@@ -113,7 +110,13 @@ export default function BloggPostPage({ params }: Props) {
 
             {/* Meta */}
             <div className="flex items-center gap-4 mt-6 text-[12px] text-zinc-500 font-mono">
-              <span>LeadOne Marketing</span>
+              <span>
+                Av{" "}
+                <a href="/om-oss/" className="hover:text-zinc-300 transition-colors duration-200">
+                  {author.fullName}
+                </a>
+                , {author.jobTitle}
+              </span>
               <span>·</span>
               <time dateTime={post.publishedAt}>
                 {new Date(post.publishedAt).toLocaleDateString("sv-SE", {
