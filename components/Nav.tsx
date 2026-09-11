@@ -206,6 +206,7 @@ export default function Nav() {
                         }}
                       >
                         {[
+                          { label: "Marknadsföring Helsingborg", href: "/marknadsforing-helsingborg/" },
                           { label: "SEO Helsingborg", href: "/seo-helsingborg/" },
                           { label: "SEO Stockholm",  href: "/seo-stockholm/"  },
                           { label: "SEO Göteborg",    href: "/seo-goteborg/"    },
@@ -374,6 +375,7 @@ export default function Nav() {
                       >
                         <div className="pb-3 flex flex-col gap-1">
                           {[
+                            { label: "Marknadsföring Helsingborg", href: "/marknadsforing-helsingborg/" },
                             { label: "SEO Helsingborg", href: "/seo-helsingborg/" },
                             { label: "SEO Stockholm",  href: "/seo-stockholm/"  },
                             { label: "SEO Göteborg",    href: "/seo-goteborg/"    },

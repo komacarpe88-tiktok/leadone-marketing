@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/boka`,               lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/bestall/`,           lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/resultat/`,          lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/marknadsforing-helsingborg/`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/seo-helsingborg/`,   lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/seo-stockholm/`,     lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/seo-goteborg/`,      lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },

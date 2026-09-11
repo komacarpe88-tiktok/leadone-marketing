@@ -44,6 +44,7 @@ export default function FooterSection({ locale = "sv" }: { locale?: Locale }) {
                 [locale === "en" ? "Review Machine" : "Omdömesmaskinen", locale === "en" ? "/en/services/reviews" : "/tjanster/omdomes"],
                 [locale === "en" ? "Complete Package" : "Komplett Paket", locale === "en" ? "/en/services/complete" : "/tjanster/komplett"],
                 ...(locale === "sv" ? [
+                  ["Marknadsföring Helsingborg", "/marknadsforing-helsingborg/"],
                   ["SEO Helsingborg", "/seo-helsingborg/"],
                   ["SEO Stockholm",   "/seo-stockholm/"],
                   ["SEO Göteborg",    "/seo-goteborg/"],
