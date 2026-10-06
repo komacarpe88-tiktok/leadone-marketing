@@ -4,9 +4,10 @@ import ScrollProgress from "@/components/ScrollProgress";
 import FooterSection from "@/components/FooterSection";
 import ReviewWidget from "@/components/ReviewWidget";
 import { getAllCaseStudies } from "@/lib/case-studies";
+import FeatureTabs from "./FeatureTabs";
 import {
-  ArrowRight, Phone, Check, Star, MapPin, MagnifyingGlass,
-  ChartBar, ShieldCheck, Robot,
+  ArrowRight, Phone, Check, Star, MapPin,
+  ShieldCheck, Robot,
 } from "@phosphor-icons/react/dist/ssr";
 
 export const metadata: Metadata = {
@@ -169,12 +170,16 @@ export default function MapPilotEnPage() {
                   <span className="text-[12px] font-semibold" style={{ color: "var(--accent)" }}>Best Value</span>
                 </div>
 
-                <h1 className="text-[2.8rem] md:text-[3.6rem] lg:text-[4.2rem] font-bold leading-[1.08] tracking-[-0.03em] text-[#F4F4F5] mb-6">
+                <h1 className="text-[2.8rem] md:text-[3.6rem] lg:text-[4.2rem] font-bold leading-[1.08] tracking-[-0.03em] text-[#F4F4F5] mb-5">
                   MapPilot™ — Google Maps on <em className="not-italic text-accent">autopilot</em>
                 </h1>
 
-                <p className="text-[17px] text-zinc-400 leading-relaxed mb-10 max-w-[46ch]">
-                  We take care of your Google Business Profile every week – posts, photos, reviews and categories – with an AI-driven system that benchmarks you against the businesses ranking highest in your area. You run your business. MapPilot™ makes sure Google finds it.
+                <p className="text-[18px] font-medium text-zinc-200 mb-5 max-w-[46ch]">
+                  For local businesses that want to rank in Google Maps every week — without spending their own time on it.
+                </p>
+
+                <p className="text-[16px] text-zinc-400 leading-relaxed mb-10 max-w-[46ch]">
+                  We manage your Google Business Profile on an ongoing basis – posts, photos, reviews and categories – with an AI-driven system that benchmarks you against the businesses ranking highest in your area.
                 </p>
 
                 <div className="mb-8 pb-8 border-b" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
@@ -228,47 +233,25 @@ export default function MapPilotEnPage() {
           </div>
         </section>
 
-        {/* ── 2. Before / after ────────────────────────────────────────── */}
+        {/* ── 2. How it works ──────────────────────────────────────────── */}
         <section className="py-24 lg:py-32 border-t" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="mb-14 text-center">
-              <h2 className="text-[2rem] md:text-[2.6rem] font-bold tracking-[-0.025em] text-[#F4F4F5]">
-                Your Google profile is either <em className="not-italic text-accent">working</em> – or it isn't
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="rounded-2xl p-8" style={{ background: "#0A0A0D", border: "1px solid var(--border)" }}>
-                <p className="text-[12px] font-mono uppercase tracking-[0.15em] mb-4 text-zinc-500">Without MapPilot™</p>
-                <p className="text-[15px] text-zinc-400 leading-relaxed">
-                  The profile was set up ages ago and hasn't been touched since. No new posts, few photos, unanswered reviews. Active competitors take the spots on the map – and the calls.
-                </p>
-              </div>
-              <div className="rounded-2xl p-8" style={{ background: "var(--surface-elevated)", border: "1px solid rgba(201,168,76,0.3)" }}>
-                <p className="text-[12px] font-mono uppercase tracking-[0.15em] mb-4" style={{ color: "var(--accent)" }}>With MapPilot™</p>
-                <p className="text-[15px] text-zinc-300 leading-relaxed">
-                  Your profile is updated every week, reviews are answered, new customers are asked for a review, and your report shows how your visibility is changing. You don't spend a minute on it yourself.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── 3. How it works ──────────────────────────────────────────── */}
-        <section className="py-24 lg:py-32 border-t" style={{ borderColor: "var(--border)" }}>
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="mb-16 text-center">
               <p className="text-[11px] uppercase tracking-[0.2em] font-mono mb-4" style={{ color: "var(--accent)" }}>How It Works</p>
-              <h2 className="text-[2rem] md:text-[2.6rem] font-bold tracking-[-0.025em] text-[#F4F4F5]">
-                Four steps from invisible to <em className="not-italic text-accent">chosen</em>
+              <h2 className="text-[2rem] md:text-[2.6rem] font-bold tracking-[-0.025em] text-[#F4F4F5] mb-5">
+                From invisible to <em className="not-italic text-accent">chosen</em>
               </h2>
+              <p className="text-[15px] text-zinc-400 max-w-[48ch] mx-auto leading-relaxed">
+                An unmanaged Google profile loses ground in the map every month. MapPilot™ reverses that in four steps.
+              </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden"
               style={{ border: "1px solid var(--border)" }}>
               {[
-                { n: "01", title: "Analysis", desc: "We measure where you rank across a grid covering your whole area and compare your profile with the businesses in the top three for your most important keywords." },
-                { n: "02", title: "Core optimization", desc: "All of LaunchMap™ is included: categories, services, description, keywords and 50+ directory listings, set up based on what actually ranks in your industry and city." },
-                { n: "03", title: "Ongoing work", desc: "Every week, posts, photos and Q&As are published, reviews are answered and new reviews are collected through Omdömesmaskinen. The system learns from what works." },
-                { n: "04", title: "Follow-up", desc: "You get a weekly summary of what's been done and a monthly ranking report showing how your visibility is developing." },
+                { n: "01", title: "Analysis", desc: "We measure where you rank across a grid covering your whole area and compare your profile with the businesses in the top three." },
+                { n: "02", title: "Core optimization", desc: "All of LaunchMap™ is included: categories, services, description and keywords set up based on what actually ranks in your industry." },
+                { n: "03", title: "Ongoing work", desc: "Every week, posts and photos are published, reviews are answered and new ones are collected. The system learns from what works." },
+                { n: "04", title: "Follow-up", desc: "You get a weekly summary and a monthly ranking report showing how your visibility is developing." },
               ].map((step, i) => (
                 <div key={step.n} className="p-7 lg:p-8 flex flex-col gap-4"
                   style={{ background: i % 2 === 1 ? "var(--surface-elevated)" : "var(--surface)" }}>
@@ -284,112 +267,19 @@ export default function MapPilotEnPage() {
           </div>
         </section>
 
-        {/* ── 4. Everything included ───────────────────────────────────── */}
-        <section className="py-24 lg:py-32 border-t" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
+        {/* ── 3. Everything included (tabs, one group at a time) ───────── */}
+        <section className="py-24 lg:py-32 border-t" style={{ borderColor: "var(--border)" }}>
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="mb-16 text-center">
+            <div className="mb-14 text-center">
               <h2 className="text-[2rem] md:text-[2.6rem] font-bold tracking-[-0.025em] text-[#F4F4F5]">
                 Everything that affects your spot on the <em className="not-italic text-accent">map</em>
               </h2>
             </div>
-
-            <div className="flex flex-col gap-14">
-              {/* Group: Your Google profile */}
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ background: "var(--accent-dim)" }}>
-                    <MapPin size={16} weight="fill" style={{ color: "var(--accent)" }} aria-hidden="true" />
-                  </div>
-                  <h3 className="font-bold text-[18px] text-[#F4F4F5] tracking-tight">Your Google profile</h3>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {[
-                    { title: "Complete core optimization", desc: "Description, services, service descriptions, attributes and social links written and set up around your keywords." },
-                    { title: "Category and competitor analysis", desc: "We look at which categories the top-ranking businesses in your area use and adjust your profile accordingly." },
-                    { title: "Weekly posts and offers", desc: "Keyword-focused posts and offers about your services, the season and your location, so your profile always stays active." },
-                    { title: "Photos and video", desc: "Photos are geotagged, given the right metadata and uploaded at a steady pace. Short videos are created and published to your profile and YouTube." },
-                    { title: "Q&A", desc: "Common customer questions are answered directly in your profile, so Google and customers get the right information." },
-                  ].map((f) => (
-                    <div key={f.title} className="rounded-2xl p-6" style={{ background: "#0A0A0D", border: "1px solid var(--border)" }}>
-                      <h4 className="font-semibold text-[15px] text-[#F4F4F5] mb-1.5">{f.title}</h4>
-                      <p className="text-[13px] text-zinc-500 leading-relaxed">{f.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Group: Reviews */}
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ background: "var(--accent-dim)" }}>
-                    <Star size={16} weight="fill" style={{ color: "var(--accent)" }} aria-hidden="true" />
-                  </div>
-                  <h3 className="font-bold text-[18px] text-[#F4F4F5] tracking-tight">Reviews (Omdömesmaskinen included)</h3>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {[
-                    { title: "More reviews, automatically", desc: "Your customers get a request by text or email with a direct link to Google, plus a reminder if they haven't responded. You also get a QR code for your premises." },
-                    { title: "Replies to every review", desc: "Every review gets a reply, with the right tone and relevant keywords." },
-                    { title: "Alerts for bad reviews", desc: "Negative reviews are flagged immediately, so you can act before they do damage." },
-                    { title: "Reviews become posts", desc: "Your best five-star reviews are turned into graphics and published on Google, social media and your website." },
-                  ].map((f) => (
-                    <div key={f.title} className="rounded-2xl p-6" style={{ background: "#0A0A0D", border: "1px solid var(--border)" }}>
-                      <h4 className="font-semibold text-[15px] text-[#F4F4F5] mb-1.5">{f.title}</h4>
-                      <p className="text-[13px] text-zinc-500 leading-relaxed">{f.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Group: Visibility beyond the map */}
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ background: "var(--accent-dim)" }}>
-                    <MagnifyingGlass size={16} weight="fill" style={{ color: "var(--accent)" }} aria-hidden="true" />
-                  </div>
-                  <h3 className="font-bold text-[18px] text-[#F4F4F5] tracking-tight">Visibility beyond the map</h3>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {[
-                    { title: "50+ directory listings", desc: "Your business information is kept up to date in the directories Google and AI tools cross-check, such as Apple Maps, Bing, ChatGPT and Perplexity." },
-                    { title: "Social channels", desc: "Posts are also published to Facebook, Instagram and LinkedIn, so you're active everywhere without extra work." },
-                    { title: "Your website in sync with your profile", desc: "Schema markup, an FAQ section and feeds of your latest posts, reviews and photos that can be added to your website, so Google sees the same picture everywhere." },
-                  ].map((f) => (
-                    <div key={f.title} className="rounded-2xl p-6" style={{ background: "#0A0A0D", border: "1px solid var(--border)" }}>
-                      <h4 className="font-semibold text-[15px] text-[#F4F4F5] mb-1.5">{f.title}</h4>
-                      <p className="text-[13px] text-zinc-500 leading-relaxed">{f.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Group: Follow-up */}
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ background: "var(--accent-dim)" }}>
-                    <ChartBar size={16} weight="fill" style={{ color: "var(--accent)" }} aria-hidden="true" />
-                  </div>
-                  <h3 className="font-bold text-[18px] text-[#F4F4F5] tracking-tight">Follow-up</h3>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {[
-                    { title: "Monthly heatmap reports", desc: "Rankings across your whole area for up to ten keywords, with before-and-after comparison." },
-                    { title: "AI visibility", desc: "We measure how you show up when people ask ChatGPT, Gemini, Perplexity, Claude and other AI tools." },
-                    { title: "Weekly summary", desc: "Every week you get a short summary of what's been done and what's planned next." },
-                    { title: "Profile monitoring", desc: "You're alerted if anything changes on your profile, such as opening hours, phone number or address." },
-                  ].map((f) => (
-                    <div key={f.title} className="rounded-2xl p-6" style={{ background: "#0A0A0D", border: "1px solid var(--border)" }}>
-                      <h4 className="font-semibold text-[15px] text-[#F4F4F5] mb-1.5">{f.title}</h4>
-                      <p className="text-[13px] text-zinc-500 leading-relaxed">{f.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <FeatureTabs />
           </div>
         </section>
 
-        {/* ── 5. Ranking report ────────────────────────────────────────── */}
+        {/* ── 4. Ranking report ────────────────────────────────────────── */}
         <section className="py-24 lg:py-32 border-t" style={{ borderColor: "var(--border)" }}>
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-16 items-center">
@@ -412,7 +302,7 @@ export default function MapPilotEnPage() {
           </div>
         </section>
 
-        {/* ── 6. AI search ──────────────────────────────────────────────── */}
+        {/* ── 5. AI search ──────────────────────────────────────────────── */}
         <section className="py-24 lg:py-28 border-t" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
           <div className="max-w-[760px] mx-auto px-6 lg:px-10 text-center">
             <div className="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-6" style={{ background: "var(--accent-dim)" }}>
@@ -427,7 +317,7 @@ export default function MapPilotEnPage() {
           </div>
         </section>
 
-        {/* ── 7. You vs. us ─────────────────────────────────────────────── */}
+        {/* ── 6. You vs. us ─────────────────────────────────────────────── */}
         <section className="py-24 lg:py-32 border-t" style={{ borderColor: "var(--border)" }}>
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="mb-14 text-center">
@@ -462,7 +352,7 @@ export default function MapPilotEnPage() {
           </div>
         </section>
 
-        {/* ── 8. Real results ───────────────────────────────────────────── */}
+        {/* ── 7. Real results ───────────────────────────────────────────── */}
         {cases.length > 0 && (
           <section className="py-24 lg:py-32 border-t" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
@@ -504,7 +394,7 @@ export default function MapPilotEnPage() {
 
         <ReviewWidget />
 
-        {/* ── 9. Safe and compliant ─────────────────────────────────────── */}
+        {/* ── 8. Safe and compliant ─────────────────────────────────────── */}
         <section className="py-20 border-t" style={{ borderColor: "var(--border)" }}>
           <div className="max-w-[1000px] mx-auto px-6 lg:px-10">
             <div className="rounded-2xl p-8 lg:p-10 flex flex-col md:flex-row gap-6 items-start"
@@ -522,7 +412,7 @@ export default function MapPilotEnPage() {
           </div>
         </section>
 
-        {/* ── 10. Pricing ───────────────────────────────────────────────── */}
+        {/* ── 9. Pricing ───────────────────────────────────────────────── */}
         <section className="py-24 lg:py-28 border-t" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
           <div className="max-w-[700px] mx-auto px-6 lg:px-10 text-center">
             <div className="rounded-2xl p-8 lg:p-12" style={{ border: "1px solid rgba(201,168,76,0.35)", background: "#0A0A0D" }}>
@@ -563,7 +453,7 @@ export default function MapPilotEnPage() {
           </div>
         </section>
 
-        {/* ── 11. FAQ ───────────────────────────────────────────────────── */}
+        {/* ── 10. FAQ ───────────────────────────────────────────────────── */}
         <section className="py-24 lg:py-32 border-t" style={{ borderColor: "var(--border)" }}>
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="mb-14">
@@ -576,7 +466,7 @@ export default function MapPilotEnPage() {
           </div>
         </section>
 
-        {/* ── 12. Final CTA ─────────────────────────────────────────────── */}
+        {/* ── 11. Final CTA ─────────────────────────────────────────────── */}
         <section className="py-24 lg:py-32 border-t text-center" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <p className="text-[11px] uppercase tracking-[0.2em] font-mono mb-4" style={{ color: "var(--accent)" }}>Next Step</p>
