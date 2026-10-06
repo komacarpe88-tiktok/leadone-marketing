@@ -30,7 +30,7 @@ const faqs = [
   },
   {
     q: "Vad kostar lokal SEO i Helsingborg?",
-    a: "LeadOne erbjuder LaunchMap™ som en engångsoptimering från 5 999 kr, och Komplett Paket som ett löpande abonnemang från 3 499 kr/mån — utan bindningstid.",
+    a: "LeadOne erbjuder LaunchMap™ som en engångsoptimering från 5 999 kr, och MapPilot™ som ett löpande abonnemang från 3 999 kr/mån — utan bindningstid.",
   },
   {
     q: "Behöver mitt företag ha fysisk adress i Helsingborg?",
@@ -258,8 +258,8 @@ export default function SeoHelsingborgPage() {
                 <p className="text-[14px] text-zinc-400 leading-relaxed">
                   Google verifierar din plats och trovärdighet genom att se hur konsekvent ditt företagsnamn, adress och telefonnummer (NAP) finns listade i lokala kataloger. Vi bygger och rensar citeringar specifikt för Helsingborgsmarknaden.
                 </p>
-                <a href="/tjanster/komplett" className="text-[13px] font-mono mt-auto" style={{ color: "var(--accent)" }}>
-                  Komplett Paket →
+                <a href="/tjanster/mappilot" className="text-[13px] font-mono mt-auto" style={{ color: "var(--accent)" }}>
+                  MapPilot™ →
                 </a>
               </div>
 

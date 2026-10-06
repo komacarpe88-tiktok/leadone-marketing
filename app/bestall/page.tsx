@@ -79,7 +79,7 @@ export default function BestallPage() {
                     className="text-[11px] uppercase tracking-[0.22em] font-mono mb-4"
                     style={{ color: "var(--accent)" }}
                   >
-                    Komplett Paket · 3 499 kr/mån
+                    MapPilot™ · 3 999 kr/mån
                   </p>
                   <h1 className="text-[2.2rem] md:text-[2.8rem] font-bold tracking-[-0.025em] text-[#F4F4F5] leading-[1.1]">
                     Mer samtal.
@@ -230,7 +230,7 @@ export default function BestallPage() {
                   />
                   <div>
                     <p className="text-[13px] font-semibold text-[#F4F4F5]">
-                      Beställ Komplett Paket
+                      Beställ MapPilot™
                     </p>
                     <p className="text-[11px] text-zinc-500">
                       Fyll i formuläret — vi kontaktar dig inom 24 h

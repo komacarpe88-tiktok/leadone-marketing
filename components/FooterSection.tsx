@@ -42,7 +42,7 @@ export default function FooterSection({ locale = "sv" }: { locale?: Locale }) {
               {([
                 ["LaunchMap™", locale === "en" ? "/en/services/launchmap" : "/tjanster/launchmap"],
                 [locale === "en" ? "Review Machine" : "Omdömesmaskinen", locale === "en" ? "/en/services/reviews" : "/tjanster/omdomes"],
-                [locale === "en" ? "Complete Package" : "Komplett Paket", locale === "en" ? "/en/services/complete" : "/tjanster/komplett"],
+                ["MapPilot™", locale === "en" ? "/en/services/mappilot" : "/tjanster/mappilot"],
                 ...(locale === "sv" ? [
                   ["Marknadsföring Helsingborg", "/marknadsforing-helsingborg/"],
                   ["SEO Helsingborg", "/seo-helsingborg/"],

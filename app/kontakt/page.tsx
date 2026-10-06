@@ -201,7 +201,7 @@ export default function KontaktPage() {
                     {[
                       { name: "LaunchMap™", desc: "5.999 kr — engångsbetalning", href: "/tjanster/launchmap" },
                       { name: "Omdömesmaskinen", desc: "1.499 kr/mån", href: "/tjanster/omdomes" },
-                      { name: "Komplett Paket", desc: "3.499 kr/mån — bäst värde", href: "/tjanster/komplett" },
+                      { name: "MapPilot™", desc: "3.999 kr/mån — bäst värde", href: "/tjanster/mappilot" },
                     ].map((s, i) => (
                       <motion.a
                         key={s.name}

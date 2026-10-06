@@ -44,7 +44,7 @@ const faqs = [
   { q: "Vad är de 50+ sajterna ni listar mig på?",              a: "Google, Bing, Apple Maps, Gula Sidorna, Reco, Trustpilot, Hitta.se, Eniro, ChatGPT plugins, Perplexity, Claude och 40+ till." },
   { q: "Vad är en heatmap-rankingkarta?",                       a: "En visuell karta uppdelad i rutnät som visar din ranking på varje geografisk punkt i ditt område — du ser exakt var du syns och var du inte gör det." },
   { q: "Behöver jag en hemsida?",                               a: "Nej, men vi rekommenderar det. Utan hemsida är kopplingen svagare — vi kan fortfarande optimera din GBP fullt ut." },
-  { q: "Är detta en engångskostnad eller löpande?",             a: "Engångskostnad på 5.999 kr. Inga dolda avgifter, ingen bindningstid. Vill du ha löpande underhåll erbjuder vi Komplett Paket." },
+  { q: "Är detta en engångskostnad eller löpande?",             a: "Engångskostnad på 5.999 kr. Inga dolda avgifter, ingen bindningstid. Vill du ha löpande underhåll erbjuder vi MapPilot™." },
 ];
 
 export default function LaunchMapPage() {

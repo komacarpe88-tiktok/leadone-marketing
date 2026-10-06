@@ -31,12 +31,12 @@ export default function Nav() {
     ? [
         { name: "LaunchMap™",      desc: nav.launchmap_desc, href: "/en/services/launchmap" },
         { name: "Review Machine",  desc: nav.reviews_desc,   href: "/en/services/reviews"   },
-        { name: "Complete Package",desc: nav.complete_desc,  href: "/en/services/complete"  },
+        { name: "MapPilot™",       desc: nav.mappilot_desc,  href: "/en/services/mappilot"  },
       ]
     : [
         { name: "LaunchMap™",      desc: nav.launchmap_desc, href: "/tjanster/launchmap" },
         { name: "Omdömesmaskinen", desc: nav.reviews_desc,   href: "/tjanster/omdomes"   },
-        { name: "Komplett Paket",  desc: nav.complete_desc,  href: "/tjanster/komplett"  },
+        { name: "MapPilot™",       desc: nav.mappilot_desc,  href: "/tjanster/mappilot"  },
       ];
 
   const ORDER_URL  = isEn ? "/en/order"  : "/bestall";

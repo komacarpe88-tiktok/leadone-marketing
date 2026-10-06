@@ -11,7 +11,7 @@ export function getLocaleFromPath(pathname: string): Locale {
 // language toggle to a de-prefixed URL that has no Swedish page behind it.
 const svPaths = new Set<string>([
   "/", "/blogg", "/boka", "/bestall", "/resultat", "/om-oss", "/kontakt",
-  "/tjanster/launchmap", "/tjanster/omdomes", "/tjanster/komplett",
+  "/tjanster/launchmap", "/tjanster/omdomes", "/tjanster/mappilot",
   "/seo-helsingborg", "/seo-goteborg", "/seo-malmo", "/seo-jonkoping",
   "/integritetspolicy", "/anvandarvillkor", "/cookie-policy", "/pub-avtal",
 ]);
@@ -31,7 +31,7 @@ export function switchLocale(rawPathname: string, locale: Locale): string {
         "/kontakt": "/en/contact",
         "/tjanster/launchmap": "/en/services/launchmap",
         "/tjanster/omdomes": "/en/services/reviews",
-        "/tjanster/komplett": "/en/services/complete",
+        "/tjanster/mappilot": "/en/services/mappilot",
         "/resultat": "/en/results",
         "/integritetspolicy": "/en/privacy-policy",
         "/anvandarvillkor": "/en/terms",
@@ -55,7 +55,7 @@ export function switchLocale(rawPathname: string, locale: Locale): string {
         "/en/contact": "/kontakt",
         "/en/services/launchmap": "/tjanster/launchmap",
         "/en/services/reviews":   "/tjanster/omdomes",
-        "/en/services/complete":  "/tjanster/komplett",
+        "/en/services/mappilot":  "/tjanster/mappilot",
         "/en/results": "/resultat",
         "/en/privacy-policy": "/integritetspolicy",
         "/en/terms": "/anvandarvillkor",
@@ -86,7 +86,7 @@ export const t = {
       cta: "Boka Gratis Analys",
       launchmap_desc: "GBP-optimering på 30 dagar",
       reviews_desc: "Request · Response · Repurpose",
-      complete_desc: "Allt i ett — bäst värde",
+      mappilot_desc: "Google Maps på autopilot",
     },
     hero: {
       eyebrow: "Lokal SEO & Google Maps-optimering",
@@ -153,7 +153,7 @@ export const t = {
       cta: "Book Free Analysis",
       launchmap_desc: "GBP optimisation in 30 days",
       reviews_desc: "Request · Response · Repurpose",
-      complete_desc: "All-in-one — best value",
+      mappilot_desc: "Google Maps on autopilot",
     },
     hero: {
       eyebrow: "Local SEO & Google Maps Optimisation",

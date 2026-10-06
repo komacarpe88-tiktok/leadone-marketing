@@ -78,7 +78,7 @@ export default function EnOrderPage() {
                     className="text-[11px] uppercase tracking-[0.22em] font-mono mb-4"
                     style={{ color: "var(--accent)" }}
                   >
-                    Complete Package · 3,499 SEK/mo
+                    MapPilot™ · 3,999 SEK/mo
                   </p>
                   <h1 className="text-[2.2rem] md:text-[2.8rem] font-bold tracking-[-0.025em] text-[#F4F4F5] leading-[1.1]">
                     More calls.
@@ -229,7 +229,7 @@ export default function EnOrderPage() {
                   />
                   <div>
                     <p className="text-[13px] font-semibold text-[#F4F4F5]">
-                      Order Complete Package
+                      Order MapPilot™
                     </p>
                     <p className="text-[11px] text-zinc-500">
                       Fill in the form — we&apos;ll reach out within 24 h

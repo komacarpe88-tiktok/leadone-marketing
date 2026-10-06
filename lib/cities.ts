@@ -397,7 +397,7 @@ export const cities: City[] = [
       },
       {
         q: "Vad kostar lokal SEO i Örebro?",
-        a: "Samma paket som i övriga landet: LaunchMap™ som engångsoptimering från 5 999 kr och Komplett Paket som löpande abonnemang från 3 499 kr/mån utan bindningstid. Eftersom konkurrensen är lägre räcker ofta en mindre insats för att nå topplaceringar här.",
+        a: "Samma paket som i övriga landet: LaunchMap™ som engångsoptimering från 5 999 kr och MapPilot™ som löpande abonnemang från 3 999 kr/mån utan bindningstid. Eftersom konkurrensen är lägre räcker ofta en mindre insats för att nå topplaceringar här.",
       },
     ],
     whyItMatters:

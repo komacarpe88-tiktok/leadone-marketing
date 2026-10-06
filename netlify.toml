@@ -86,3 +86,24 @@
   from = "/en/services/"
   to   = "/en/#services"
   status = 301
+
+# Komplett Paket / Complete Package replaced by MapPilot™
+[[redirects]]
+  from = "/tjanster/komplett"
+  to   = "/tjanster/mappilot/"
+  status = 301
+
+[[redirects]]
+  from = "/tjanster/komplett/"
+  to   = "/tjanster/mappilot/"
+  status = 301
+
+[[redirects]]
+  from = "/en/services/complete"
+  to   = "/en/services/mappilot/"
+  status = 301
+
+[[redirects]]
+  from = "/en/services/complete/"
+  to   = "/en/services/mappilot/"
+  status = 301

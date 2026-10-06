@@ -16,7 +16,7 @@ const copy = {
       },
       {
         q: "Behöver jag binda upp mig långsiktigt?",
-        a: "Nej. Omdömesmaskinen och Komplett Paket är månadsbaserade utan bindningstid. Avsluta när du vill.",
+        a: "Nej. Omdömesmaskinen och MapPilot™ är månadsbaserade utan bindningstid. Avsluta när du vill.",
       },
       {
         q: "Fungerar det för alla branscher?",
@@ -42,7 +42,7 @@ const copy = {
       },
       {
         q: "Do I need to commit long-term?",
-        a: "No. Review Machine and the Complete Package are month-to-month with no lock-in. Cancel whenever you like.",
+        a: "No. Review Machine and MapPilot™ are month-to-month with no lock-in. Cancel whenever you like.",
       },
       {
         q: "Does it work for all industries?",

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Beställ lokal SEO | LeadOne Marketing",
   description:
-    "Beställ LaunchMap™ eller Komplett Paket från LeadOne. Lokal SEO och Google Maps-optimering för svenska företag — utan bindningstid.",
+    "Beställ LaunchMap™ eller MapPilot™ från LeadOne. Lokal SEO och Google Maps-optimering för svenska företag — utan bindningstid.",
   keywords: "beställ SEO, lokal SEO paket, LaunchMap, Google Maps optimering",
   alternates: { canonical: "https://leadone.online/bestall/" },
   openGraph: {

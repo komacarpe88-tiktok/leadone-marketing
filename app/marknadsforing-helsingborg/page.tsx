@@ -38,7 +38,7 @@ const faqs = [
   },
   {
     q: "Vad kostar digital marknadsföring hos LeadOne?",
-    a: "LaunchMap™ är en engångsoptimering från 5 999 kr. Komplett Paket är ett löpande abonnemang från 3 499 kr/mån utan bindningstid. Inga dolda kostnader utöver det.",
+    a: "LaunchMap™ är en engångsoptimering från 5 999 kr. MapPilot™ är ett löpande abonnemang från 3 999 kr/mån utan bindningstid. Inga dolda kostnader utöver det.",
   },
   {
     q: "Kan ni rekommendera någon för webb, sociala medier eller annonsering?",
@@ -233,8 +233,8 @@ export default function MarknadsforingHelsingborgPage() {
                 <p className="text-[14px] text-zinc-400 leading-relaxed">
                   Google verifierar din plats och trovärdighet genom hur konsekvent ditt företagsnamn, adress och telefonnummer finns listade i lokala kataloger. Vi bygger och rensar citeringar specifikt för Helsingborg.
                 </p>
-                <a href="/tjanster/komplett" className="text-[13px] font-mono mt-auto" style={{ color: "var(--accent)" }}>
-                  Komplett Paket →
+                <a href="/tjanster/mappilot" className="text-[13px] font-mono mt-auto" style={{ color: "var(--accent)" }}>
+                  MapPilot™ →
                 </a>
               </div>
 

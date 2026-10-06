@@ -24,7 +24,7 @@ function sharedFaqs(city: City) {
     },
     {
       q: `Vad kostar lokal SEO i ${city.name}?`,
-      a: "LeadOne erbjuder LaunchMap™ som en engångsoptimering från 5 999 kr, och Komplett Paket som ett löpande abonnemang från 3 499 kr/mån — utan bindningstid.",
+      a: "LeadOne erbjuder LaunchMap™ som en engångsoptimering från 5 999 kr, och MapPilot™ som ett löpande abonnemang från 3 999 kr/mån — utan bindningstid.",
     },
     {
       q: `Behöver mitt företag ha fysisk adress i ${city.name}?`,
