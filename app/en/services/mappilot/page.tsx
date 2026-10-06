@@ -4,20 +4,21 @@ import ScrollProgress from "@/components/ScrollProgress";
 import FooterSection from "@/components/FooterSection";
 import ReviewWidget from "@/components/ReviewWidget";
 import { getAllCaseStudies } from "@/lib/case-studies";
-import FeatureTabs from "./FeatureTabs";
-import {
-  ArrowRight, Phone, Check, Star, MapPin,
-  ShieldCheck, Robot,
-} from "@phosphor-icons/react/dist/ssr";
+import ActivityFeed from "./ActivityFeed";
+import TrendChart from "./TrendChart";
+import RankingHeatmap from "./RankingHeatmap";
+import StickyMobileBar from "./StickyMobileBar";
+import Faq from "./Faq";
+import { ArrowRight, Phone, Check } from "@phosphor-icons/react/dist/ssr";
 
 export const metadata: Metadata = {
   title: "MapPilot™ — Google Maps Optimization on Autopilot | LeadOne",
-  description: "We manage your Google Business Profile every week – posts, photos, reviews and ranking reports – so you rank at the top of Google Maps. 3,999 SEK/month, no lock-in.",
+  description: "MapPilot™ works on your Google profile every single week – new posts, photos, reviews and replies – so you keep climbing on Google Maps. 3,999 SEK/month, no lock-in.",
   keywords: "Google Maps optimization, Google Business Profile management, ongoing local SEO, AI visibility, heatmap ranking, review management, Helsingborg",
   alternates: { canonical: "https://leadone.online/en/services/mappilot/" },
   openGraph: {
     title: "MapPilot™ — Google Maps Optimization on Autopilot",
-    description: "We manage your Google Business Profile every week – posts, photos, reviews and ranking reports – so you rank at the top of Google Maps.",
+    description: "MapPilot™ works on your Google profile every single week – new posts, photos, reviews and replies – so you keep climbing on Google Maps.",
     locale: "en_GB",
     type: "website",
     url: "https://leadone.online/en/services/mappilot/",
@@ -25,19 +26,14 @@ export const metadata: Metadata = {
 };
 
 const BOOKING_URL = "/en/book";
-const PRICE = "3,999 SEK";
+const PRICE = "3,999 SEK/month";
 
 const faqs = [
-  { q: "Am I tied to a contract?", a: "No. MapPilot™ is month-to-month with no lock-in. Cancel whenever you like – your profile and your reviews are always yours." },
-  { q: "How quickly will I see results?", a: "Core optimization happens in the first month and reviews start coming in right away. Rankings often start moving within a few weeks, but expect around three months for stable improvements. You'll see the progress in your report." },
-  { q: "Do I need to know anything about SEO?", a: "No. We handle the analysis, setup and ongoing work. All you need to do is give us access to your profile." },
-  { q: "Do you take over my Google profile?", a: "No, the profile is and stays yours. You add us as a manager and can remove our access whenever you want." },
-  { q: "Can I approve posts before they're published?", a: "Yes. You can choose to approve content yourself before it goes out, or let it publish automatically." },
-  { q: "Does it work with my booking or POS system?", a: "In many cases, yes. Review requests can be connected to your existing system, so every new customer automatically gets a request after their visit. We'll go through what works for your system during the analysis." },
-  { q: "What happens if I get a bad review?", a: "It's flagged immediately and you're notified. We reply calmly and professionally, and you can always choose to reply yourself instead." },
-  { q: "How is MapPilot™ different from LaunchMap™ and Omdömesmaskinen?", a: "LaunchMap™ is a one-time optimization and Omdömesmaskinen handles your reviews. MapPilot™ includes both, plus the weekly ongoing work that keeps you at the top." },
-  { q: "Do I need a new website?", a: "Not to get started. But your website affects how Google and AI tools understand your business, so the analysis also shows whether your website is holding you back." },
-  { q: "Does it work for my industry?", a: "It works for local service businesses whose customers search on Google – for example car detailing, workshops, beauty and trades. The free analysis shows whether there's room for you to climb." },
+  { q: "Do I need to do anything?", a: "No. You give us access to your Google profile and we handle the rest. If you'd like to approve posts before they go live, you can." },
+  { q: "How quickly will I see results?", a: "Rankings often start moving within a few weeks. Expect around three months for stable improvements. You follow the progress in your monthly report." },
+  { q: "Am I locked in?", a: "No. MapPilot™ is month-to-month with no lock-in and no setup fee. Cancel anytime." },
+  { q: "Do you take over my Google profile?", a: "No. The profile is and stays yours. You add us as a manager and can remove access whenever you like." },
+  { q: "How is this different from LaunchMap™ and Omdömesmaskinen?", a: "LaunchMap™ is a one-time optimization and Omdömesmaskinen handles reviews. MapPilot™ includes both, plus the weekly work that keeps you at the top." },
 ];
 
 const jsonLd = {
@@ -75,65 +71,6 @@ const jsonLd = {
   ],
 };
 
-/* ── Illustrative geo-grid visual (SVG/CSS, no real business data) ───────── */
-// Rank-tier colors mirror the real case-study heatmap (components/GeoGridCarousel.tsx)
-// so a ranking map reads the same way everywhere on the site: green = strong,
-// yellow/orange = mid, red = weak. This is the one deliberate exception to the
-// site's gold-only accent rule, scoped to ranking-grid visuals specifically.
-function rankCellStyle(rank: number): { bg: string; text: string } {
-  if (rank <= 2)  return { bg: "#166534", text: "#4ade80" };
-  if (rank <= 3)  return { bg: "#14532d", text: "#86efac" };
-  if (rank <= 5)  return { bg: "#713f12", text: "#fde68a" };
-  if (rank <= 10) return { bg: "#7c2d12", text: "#fdba74" };
-  return            { bg: "#450a0a", text: "#f87171" };
-}
-
-function GeoGridVisual() {
-  // 5×4 grid; rank fades outward from a "top 3" core, purely for show.
-  const rows = 4, cols = 5;
-  const cells = Array.from({ length: rows * cols }, (_, i) => {
-    const r = Math.floor(i / cols), c = i % cols;
-    const dist = Math.hypot(r - 1.3, c - 2);
-    if (dist < 1) return { rank: 1, label: "1" };
-    if (dist < 1.6) return { rank: 2, label: "2" };
-    if (dist < 2.2) return { rank: 3, label: "3" };
-    if (dist < 2.9) return { rank: 7, label: "7" };
-    return { rank: 15, label: "12+" };
-  });
-
-  return (
-    <div
-      role="img"
-      aria-label="Illustration of a ranking grid — green represents the top 3, yellow mid-range positions and red weak visibility in Google Maps"
-      style={{ display: "grid", gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: "6px" }}
-    >
-      {cells.map((cell, i) => {
-        const s = rankCellStyle(cell.rank);
-        return (
-          <div
-            key={i}
-            aria-hidden="true"
-            style={{
-              aspectRatio: "1",
-              borderRadius: "10px",
-              background: s.bg,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontFamily: "var(--font-mono)",
-              fontWeight: 700,
-              fontSize: "11px",
-              color: s.text,
-            }}
-          >
-            {cell.label}
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
 export default function MapPilotEnPage() {
   const cases = getAllCaseStudies().filter(
     (cs) => cs.slug === "angelique-hud-kropp" || cs.slug === "hjeronymus-salongen"
@@ -144,226 +81,132 @@ export default function MapPilotEnPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <ScrollProgress />
       <Nav />
+      <StickyMobileBar
+        heroId="mp-hero"
+        finalCtaId="mp-final-cta"
+        bookingUrl={BOOKING_URL}
+        price={PRICE}
+        cta="Get started"
+      />
       <main className="bg-[#08080A] pt-[72px]" lang="en">
 
         {/* ── 1. Hero ──────────────────────────────────────────────────── */}
-        <section className="relative min-h-[100dvh] flex items-center overflow-hidden">
+        <section id="mp-hero" className="relative overflow-hidden">
           <div className="absolute inset-0 z-0" aria-hidden="true">
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 80% 45%, rgba(201,168,76,0.11) 0%, transparent 55%)" }} />
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 15% 20%, rgba(201,168,76,0.04) 0%, transparent 40%)" }} />
+            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 80% 45%, rgba(201,168,76,0.1) 0%, transparent 55%)" }} />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #08080A 0%, transparent 18%)" }} />
           </div>
 
-          <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-10 w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-16 lg:gap-20 items-center py-24 lg:py-32">
+          <div className="relative z-10 max-w-[1300px] mx-auto px-6 lg:px-10 py-20 lg:py-28">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-14 lg:gap-16 items-center">
 
               <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-6 h-px" style={{ background: "var(--accent)", opacity: 0.6 }} />
-                  <p className="text-[11px] uppercase tracking-[0.22em] font-mono" style={{ color: "var(--accent)" }}>
-                    LaunchMap™ + Omdömesmaskinen + ongoing management
-                  </p>
-                </div>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-5"
-                  style={{ background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.3)" }}>
-                  <Star size={11} weight="fill" style={{ color: "var(--accent)" }} aria-hidden="true" />
-                  <span className="text-[12px] font-semibold" style={{ color: "var(--accent)" }}>Best Value</span>
-                </div>
-
-                <h1 className="text-[2.8rem] md:text-[3.6rem] lg:text-[4.2rem] font-bold leading-[1.08] tracking-[-0.03em] text-[#F4F4F5] mb-5">
-                  MapPilot™ — Google Maps on <em className="not-italic text-accent">autopilot</em>
+                <p className="text-[11px] uppercase tracking-[0.22em] font-mono mb-5" style={{ color: "var(--accent)" }}>
+                  Done-for-you local SEO
+                </p>
+                <h1 className="text-[2.6rem] md:text-[3.4rem] lg:text-[3.8rem] font-bold leading-[1.1] tracking-[-0.03em] text-[#F4F4F5] mb-5">
+                  Your Google ranking on <em className="not-italic text-accent">autopilot</em>.
                 </h1>
-
-                <p className="text-[18px] font-medium text-zinc-200 mb-5 max-w-[46ch]">
-                  For local businesses that want to rank in Google Maps every week — without spending their own time on it.
+                <p className="text-[17px] text-zinc-400 leading-relaxed mb-7 max-w-[46ch]">
+                  MapPilot™ works on your Google profile every single week – new posts, photos, reviews and replies – so you keep climbing on Google Maps while you run your business.
                 </p>
 
-                <p className="text-[16px] text-zinc-400 leading-relaxed mb-10 max-w-[46ch]">
-                  We manage your Google Business Profile on an ongoing basis – posts, photos, reviews and categories – with an AI-driven system that benchmarks you against the businesses ranking highest in your area.
+                <ul className="flex flex-wrap gap-x-6 gap-y-2 mb-8">
+                  {["Fully done for you", "Runs automatically every week", "Monthly ranking report"].map((t) => (
+                    <li key={t} className="flex items-center gap-2 text-[14px] text-zinc-300">
+                      <Check size={14} weight="bold" style={{ color: "var(--accent)" }} aria-hidden="true" />
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+
+                <a href={BOOKING_URL}
+                  className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-accent text-[#08080A] font-semibold text-[15px] hover:bg-[#D4B87A] active:scale-[0.98] transition-all duration-200">
+                  See where you rank – free
+                  <ArrowRight size={15} weight="bold" aria-hidden="true" />
+                </a>
+                <p className="mt-4 text-[13px] text-zinc-600">
+                  {PRICE.replace("/month", "")}/month · No setup fee · Cancel anytime
                 </p>
-
-                <div className="mb-8 pb-8 border-b" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
-                  <div className="flex items-baseline gap-3 mb-1">
-                    <span className="font-mono text-[3.2rem] font-bold tracking-[-0.04em] leading-none" style={{ color: "var(--accent)" }}>
-                      {PRICE}
-                    </span>
-                    <span className="text-[15px] text-zinc-500">per month</span>
-                  </div>
-                  <p className="text-[12px] text-zinc-600">No setup fee · No lock-in · Cancel anytime</p>
-                </div>
-
-                <div className="flex flex-wrap gap-3">
-                  <a href={BOOKING_URL}
-                    className="flex items-center gap-2 px-7 py-4 rounded-full bg-accent text-[#08080A] font-semibold text-[15px] hover:bg-[#D4B87A] active:scale-[0.98] transition-all duration-200">
-                    Book a Free Analysis
-                    <ArrowRight size={15} weight="bold" aria-hidden="true" />
-                  </a>
-                  <a href="tel:+46763912181"
-                    className="flex items-center gap-2 px-7 py-4 rounded-full border border-white/10 text-zinc-300 font-medium text-[15px] hover:border-white/20 hover:text-white transition-all duration-200">
-                    <Phone size={14} aria-hidden="true" />
-                    +46 763 91 21 81
-                  </a>
-                </div>
               </div>
 
-              {/* ── Right: illustrative geo-grid heatmap ── */}
-              <div className="relative hidden lg:flex items-center justify-center">
-                <div className="absolute inset-0 rounded-3xl pointer-events-none" aria-hidden="true"
-                  style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.12) 0%, transparent 65%)" }} />
-                <div className="relative w-full rounded-2xl p-8"
-                  style={{
-                    background: "#0A0A0D",
-                    boxShadow: "0 0 0 1px rgba(201,168,76,0.18), 0 40px 80px rgba(0,0,0,0.6), 0 0 60px rgba(201,168,76,0.08)",
-                  }}>
-                  <GeoGridVisual />
-                </div>
-                <div className="absolute -bottom-5 left-6 rounded-xl px-4 py-3 flex items-center gap-3"
-                  style={{ background: "rgba(10,10,13,0.97)", border: "1px solid rgba(201,168,76,0.3)", backdropFilter: "blur(20px)", boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}>
-                  <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style={{ background: "var(--accent-dim)" }}>
-                    <MapPin size={13} weight="fill" style={{ color: "var(--accent)" }} aria-hidden="true" />
-                  </div>
-                  <div>
-                    <p className="text-[12px] font-semibold text-[#F4F4F5] leading-none mb-0.5">Grid measurement</p>
-                    <p className="text-[10.5px] text-zinc-500">Illustration, not real data</p>
-                  </div>
-                </div>
+              <div>
+                <ActivityFeed />
+                <p className="text-center text-[11px] text-zinc-600 mt-4">Example week.</p>
               </div>
 
             </div>
           </div>
         </section>
 
-        {/* ── 2. How it works ──────────────────────────────────────────── */}
-        <section className="py-24 lg:py-32 border-t" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="mb-14 text-center">
-              <p className="text-[11px] uppercase tracking-[0.2em] font-mono mb-4" style={{ color: "var(--accent)" }}>How It Works</p>
-              <h2 className="text-[2rem] md:text-[2.6rem] font-bold tracking-[-0.025em] text-[#F4F4F5] mb-5">
-                From invisible to <em className="not-italic text-accent">chosen</em>
+        {/* ── 2. Why it matters ────────────────────────────────────────── */}
+        <section className="py-20 lg:py-28 border-t" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
+          <div className="max-w-[640px] mx-auto px-6 lg:px-10 text-center">
+            <h2 className="text-[2rem] md:text-[2.4rem] font-bold tracking-[-0.025em] text-[#F4F4F5] mb-5">
+              Google rewards businesses that stay <em className="not-italic text-accent">active</em>.
+            </h2>
+            <p className="text-[15px] text-zinc-400 leading-relaxed mb-10">
+              Your ranking isn't something you fix once. Profiles that get new posts, photos and reviews every week climb. Profiles that sit still slide down, while active competitors take the calls. Everyone knows this. Nobody has time to do it every week. So we do it.
+            </p>
+            <TrendChart />
+          </div>
+        </section>
+
+        {/* ── 3. How it works ──────────────────────────────────────────── */}
+        <section className="py-20 lg:py-28 border-t" style={{ borderColor: "var(--border)" }}>
+          <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
+            <div className="text-center mb-14">
+              <h2 className="text-[2rem] md:text-[2.4rem] font-bold tracking-[-0.025em] text-[#F4F4F5]">
+                Set up once. Then it <em className="not-italic text-accent">runs</em>.
               </h2>
-              <p className="text-[15px] text-zinc-400 max-w-[48ch] mx-auto leading-relaxed">
-                An unmanaged Google profile loses ground in the map every month. MapPilot™ reverses that in four steps.
-              </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden"
-              style={{ border: "1px solid var(--border)" }}>
+
+            <div className="relative grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6">
+              <div
+                className="hidden md:block absolute top-[22px] left-[16.5%] right-[16.5%] h-px"
+                style={{ background: "var(--border)" }}
+                aria-hidden="true"
+              />
               {[
-                { n: "01", title: "Analysis", desc: "We measure where you rank across a grid covering your whole area and compare your profile with the businesses in the top three." },
-                { n: "02", title: "Core optimization", desc: "All of LaunchMap™ is included: categories, services, description and keywords set up based on what actually ranks in your industry." },
-                { n: "03", title: "Ongoing work", desc: "Every week, posts and photos are published, reviews are answered and new ones are collected. The system learns from what works." },
-                { n: "04", title: "Follow-up", desc: "You get a weekly summary and a monthly ranking report showing how your visibility is developing." },
-              ].map((step, i) => (
-                <div key={step.n} className="p-7 lg:p-8 flex flex-col gap-4"
-                  style={{ background: i % 2 === 1 ? "var(--surface-elevated)" : "var(--surface)" }}>
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center font-mono text-[13px] font-bold"
-                    style={{ background: "var(--accent-dim)", color: "var(--accent)", border: "1px solid rgba(201,168,76,0.3)" }}>
+                { n: "01", title: "Free ranking analysis", desc: "15 minutes. We show you where you appear today and what's holding you back." },
+                { n: "02", title: "We set everything up", desc: "Your profile gets optimized, you're listed in 50+ directories and the review system is connected. Done within 30 days." },
+                { n: "03", title: "MapPilot™ works every week", desc: "Posts, photos, reviews and replies, automatically. You get a summary every week and a ranking report every month." },
+              ].map((step) => (
+                <div key={step.n} className="relative flex flex-col items-center text-center md:items-start md:text-left">
+                  <div
+                    className="relative z-10 w-11 h-11 rounded-full flex items-center justify-center font-mono text-[13px] font-bold mb-5"
+                    style={{ background: "#08080A", color: "var(--accent)", border: "1px solid rgba(201,168,76,0.4)" }}
+                  >
                     {step.n}
                   </div>
-                  <h3 className="font-bold text-[17px] text-[#F4F4F5] tracking-tight">{step.title}</h3>
-                  <p className="text-[14px] text-zinc-400 leading-relaxed">{step.desc}</p>
+                  <h3 className="font-bold text-[17px] text-[#F4F4F5] tracking-tight mb-2">{step.title}</h3>
+                  <p className="text-[14px] text-zinc-400 leading-relaxed max-w-[32ch]">{step.desc}</p>
                 </div>
               ))}
             </div>
-          </div>
-        </section>
 
-        {/* ── 3. Everything included (tabs, one group at a time) ───────── */}
-        <section className="py-24 lg:py-32 border-t" style={{ borderColor: "var(--border)" }}>
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="mb-14 text-center">
-              <h2 className="text-[2rem] md:text-[2.6rem] font-bold tracking-[-0.025em] text-[#F4F4F5]">
-                Everything that affects your spot on the <em className="not-italic text-accent">map</em>
-              </h2>
-            </div>
-            <FeatureTabs />
-          </div>
-        </section>
-
-        {/* ── 4. Ranking report ────────────────────────────────────────── */}
-        <section className="py-24 lg:py-32 border-t" style={{ borderColor: "var(--border)" }}>
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-16 items-center">
-              <div>
-                <p className="text-[11px] uppercase tracking-[0.2em] font-mono mb-4" style={{ color: "var(--accent)" }}>Reporting</p>
-                <h2 className="text-[2rem] md:text-[2.6rem] font-bold tracking-[-0.025em] text-[#F4F4F5] mb-6">
-                  See your visibility <em className="not-italic text-accent">street</em> by street
-                </h2>
-                <p className="text-[15px] text-zinc-400 leading-relaxed">
-                  Google Maps shows different results depending on where the customer is standing. That's why we measure your position across a grid of points covering your whole area – not just from your own address. You see straight away where you're in the top three, where you drop off, and how it changes month by month. The report also shows which competitors hold the spots where you don't appear yet – and whether they're moving up or down.
-                </p>
-              </div>
-              <div>
-                <div className="rounded-2xl p-7" style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
-                  <GeoGridVisual />
-                </div>
-                <p className="text-[11px] text-zinc-600 mt-3 text-center">Example image. Your analysis is based on your own keywords and your own area.</p>
-              </div>
+            <div
+              className="mt-14 rounded-2xl p-5 text-center"
+              style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.2)" }}
+            >
+              <p className="text-[14px] font-medium" style={{ color: "var(--accent)" }}>
+                Your part: give us access to your Google profile. That's it.
+              </p>
             </div>
           </div>
         </section>
 
-        {/* ── 5. AI search ──────────────────────────────────────────────── */}
-        <section className="py-24 lg:py-28 border-t" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
-          <div className="max-w-[760px] mx-auto px-6 lg:px-10 text-center">
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-6" style={{ background: "var(--accent-dim)" }}>
-              <Robot size={22} weight="fill" style={{ color: "var(--accent)" }} aria-hidden="true" />
-            </div>
-            <h2 className="text-[2rem] md:text-[2.4rem] font-bold tracking-[-0.025em] text-[#F4F4F5] mb-5">
-              More and more people ask AI for <em className="not-italic text-accent">recommendations</em>
-            </h2>
-            <p className="text-[15px] text-zinc-400 leading-relaxed">
-              When someone asks ChatGPT, Gemini or Google's AI Mode for "the best [service] in [city]", the answers draw on sources like your Google profile, directories and reviews. An active, well-maintained Google presence gives you a better chance of being mentioned. Nobody can guarantee AI recommendations – but an empty profile rarely gets recommended. That's why we also track how you appear in AI tools, so you can see the progress in black and white.
-            </p>
-          </div>
-        </section>
-
-        {/* ── 6. You vs. us ─────────────────────────────────────────────── */}
-        <section className="py-24 lg:py-32 border-t" style={{ borderColor: "var(--border)" }}>
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="mb-14 text-center">
-              <h2 className="text-[2rem] md:text-[2.6rem] font-bold tracking-[-0.025em] text-[#F4F4F5]">
-                You don't need to know <em className="not-italic text-accent">SEO</em>
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-[860px] mx-auto">
-              <div className="rounded-2xl p-7" style={{ background: "var(--surface-elevated)", border: "1px solid rgba(201,168,76,0.25)" }}>
-                <p className="text-[12px] font-mono uppercase tracking-[0.15em] mb-4" style={{ color: "var(--accent)" }}>What we do</p>
-                <ul className="flex flex-col gap-3">
-                  {["Analysis and strategy", "Profile setup", "Weekly content", "Review management", "Reporting and follow-up", "Keeping everything within Google's guidelines"].map((f) => (
-                    <li key={f} className="flex items-start gap-2.5 text-[14px] text-zinc-300">
-                      <Check size={14} weight="bold" className="mt-0.5 shrink-0" style={{ color: "var(--accent)" }} aria-hidden="true" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="rounded-2xl p-7" style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
-                <p className="text-[12px] font-mono uppercase tracking-[0.15em] mb-4 text-zinc-500">What you do</p>
-                <ul className="flex flex-col gap-3">
-                  {["Give us access to your profile", "Send us photos from your work when you can", "Run your business"].map((f) => (
-                    <li key={f} className="flex items-start gap-2.5 text-[14px] text-zinc-400">
-                      <Check size={14} weight="bold" className="mt-0.5 shrink-0 text-zinc-600" aria-hidden="true" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── 7. Real results ───────────────────────────────────────────── */}
+        {/* ── 4. Proof ──────────────────────────────────────────────────── */}
         {cases.length > 0 && (
-          <section className="py-24 lg:py-32 border-t" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-              <div className="mb-12 text-center">
-                <p className="text-[11px] uppercase tracking-[0.2em] font-mono mb-4" style={{ color: "var(--accent)" }}>Real results</p>
-                <h2 className="text-[2rem] md:text-[2.6rem] font-bold tracking-[-0.025em] text-[#F4F4F5]">
-                  Real clients, real <em className="not-italic text-accent">measurements</em>
+          <section className="py-20 lg:py-28 border-t" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
+            <div className="max-w-[1300px] mx-auto px-6 lg:px-10">
+              <div className="text-center mb-12">
+                <h2 className="text-[2rem] md:text-[2.4rem] font-bold tracking-[-0.025em] text-[#F4F4F5]">
+                  Real clients. Real <em className="not-italic text-accent">numbers</em>.
                 </h2>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[860px] mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[860px] mx-auto mb-4">
                 {cases.map((cs) => (
                   <div key={cs.slug} className="rounded-2xl p-6 flex flex-col gap-3"
                     style={{ background: "#0A0A0D", border: "1px solid var(--border)" }}>
@@ -382,7 +225,7 @@ export default function MapPilotEnPage() {
                 ))}
               </div>
 
-              <div className="text-center mt-10">
+              <div className="text-center">
                 <a href="/en/results" className="inline-flex items-center gap-2 text-[14px] font-mono" style={{ color: "var(--accent)" }}>
                   See all case studies
                   <ArrowRight size={13} weight="bold" aria-hidden="true" />
@@ -394,95 +237,106 @@ export default function MapPilotEnPage() {
 
         <ReviewWidget />
 
-        {/* ── 8. Safe and compliant ─────────────────────────────────────── */}
-        <section className="py-20 border-t" style={{ borderColor: "var(--border)" }}>
-          <div className="max-w-[1000px] mx-auto px-6 lg:px-10">
-            <div className="rounded-2xl p-8 lg:p-10 flex flex-col md:flex-row gap-6 items-start"
-              style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
-              <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style={{ background: "var(--accent-dim)" }}>
-                <ShieldCheck size={20} weight="fill" style={{ color: "var(--accent)" }} aria-hidden="true" />
+        {/* ── 5. Monthly report ────────────────────────────────────────── */}
+        <section className="py-20 lg:py-28 border-t" style={{ borderColor: "var(--border)" }}>
+          <div className="max-w-[1300px] mx-auto px-6 lg:px-10">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-14 items-center">
+              <div>
+                <h2 className="text-[2rem] md:text-[2.4rem] font-bold tracking-[-0.025em] text-[#F4F4F5] mb-5">
+                  You see exactly what's <em className="not-italic text-accent">happening</em>.
+                </h2>
+                <p className="text-[15px] text-zinc-400 leading-relaxed">
+                  Every month we measure your position across a grid covering your whole area, street by street. You see where you're in the top three, where you drop off and which competitors take the spots. We also track how you show up when someone asks ChatGPT or Gemini for recommendations.
+                </p>
               </div>
               <div>
-                <h3 className="font-bold text-[17px] text-[#F4F4F5] mb-2">Only methods Google approves</h3>
-                <p className="text-[14px] text-zinc-400 leading-relaxed">
-                  We use white-hat methods only and follow Google's guidelines for Business Profiles. No fake reviews, no made-up addresses, no categories for services you don't offer. That protects your profile from suspension – and delivers results that last.
+                <div className="rounded-2xl p-7" style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
+                  <RankingHeatmap />
+                </div>
+                <p className="text-[11px] text-zinc-600 mt-3 text-center">
+                  Illustration. Your report is based on your own keywords and area.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ── 9. Pricing ───────────────────────────────────────────────── */}
-        <section className="py-24 lg:py-28 border-t" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
-          <div className="max-w-[700px] mx-auto px-6 lg:px-10 text-center">
-            <div className="rounded-2xl p-8 lg:p-12" style={{ border: "1px solid rgba(201,168,76,0.35)", background: "#0A0A0D" }}>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6"
-                style={{ background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.3)" }}>
-                <Star size={11} weight="fill" style={{ color: "var(--accent)" }} aria-hidden="true" />
-                <span className="text-[12px] font-semibold" style={{ color: "var(--accent)" }}>MapPilot™ — Best Value</span>
+        {/* ── 6. Pricing ────────────────────────────────────────────────── */}
+        <section className="py-20 lg:py-28 border-t" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
+          <div className="max-w-[900px] mx-auto px-6 lg:px-10">
+            <div className="rounded-2xl p-8 lg:p-10" style={{ border: "1px solid rgba(201,168,76,0.3)", background: "#0A0A0D" }}>
+              <div className="text-center mb-10">
+                <p className="text-[12px] font-mono uppercase tracking-[0.2em] mb-3" style={{ color: "var(--accent)" }}>MapPilot™</p>
+                <span className="font-mono text-[3rem] font-bold tracking-[-0.03em]" style={{ color: "var(--accent)" }}>{PRICE}</span>
+                <p className="text-[13px] text-zinc-500 mt-2">No setup fee · No lock-in</p>
               </div>
-              <div className="mb-1">
-                <span className="font-mono text-[3.2rem] font-bold tracking-[-0.03em]" style={{ color: "var(--accent)" }}>{PRICE}</span>
-                <span className="text-[14px] text-zinc-500 ml-2">/month</span>
-              </div>
-              <p className="text-[13px] text-zinc-500 mb-6">No setup fee · Cancel anytime</p>
-              <ul className="flex flex-col gap-2.5 mb-8 text-left">
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
                 {[
-                  "Everything in LaunchMap™",
-                  "Everything in Omdömesmaskinen",
-                  "Posts, photos and videos every week",
-                  "Social media publishing",
-                  "Monthly heatmap reports",
-                  "AI visibility report",
-                  "Weekly summary",
-                  "Priority support",
-                ].map((f) => (
-                  <li key={f} className="flex items-center gap-2.5 text-[13px] text-zinc-300">
-                    <Check size={13} weight="bold" style={{ color: "var(--accent)" }} aria-hidden="true" />
-                    {f}
-                  </li>
+                  { h: "Your Google profile", items: ["Complete optimization", "Posts and offers every week", "Photos and video", "Q&A", "Category and competitor analysis"] },
+                  { h: "Reviews", items: ["Automatic requests by text and email", "Replies to every review", "Alerts for bad reviews", "Best reviews turned into posts"] },
+                  { h: "Visibility and reports", items: ["50+ directory listings", "Social media publishing", "Monthly heatmap report", "AI visibility", "Weekly summary", "Profile monitoring"] },
+                ].map((group) => (
+                  <div key={group.h}>
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.1em] mb-4 text-zinc-500">{group.h}</p>
+                    <ul className="flex flex-col gap-2.5">
+                      {group.items.map((item) => (
+                        <li key={item} className="flex items-start gap-2 text-[13px] text-zinc-300 leading-snug">
+                          <Check size={12} weight="bold" className="mt-0.5 shrink-0" style={{ color: "var(--accent)" }} aria-hidden="true" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
-              </ul>
+              </div>
+
               <a href={BOOKING_URL}
                 className="flex items-center justify-center gap-2 w-full py-4 rounded-full bg-accent text-[#08080A] font-semibold text-[15px] hover:bg-[#D4B87A] active:scale-[0.98] transition-all duration-200">
-                Get Started
+                Get started
                 <ArrowRight size={15} weight="bold" aria-hidden="true" />
               </a>
-              <p className="mt-3 text-[12px] text-zinc-600">No commitment. We reply within one business day.</p>
+              <p className="mt-4 text-[12px] text-zinc-600 text-center">
+                Only methods that follow Google's guidelines. Your profile and your reviews are always yours.
+              </p>
             </div>
           </div>
         </section>
 
-        {/* ── 10. FAQ ───────────────────────────────────────────────────── */}
-        <section className="py-24 lg:py-32 border-t" style={{ borderColor: "var(--border)" }}>
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="mb-14">
-              <p className="text-[11px] uppercase tracking-[0.2em] font-mono mb-4" style={{ color: "var(--accent)" }}>FAQ</p>
-              <h2 className="text-[2rem] md:text-[2.6rem] font-bold tracking-[-0.025em] text-[#F4F4F5]">
-                Questions about <em className="not-italic text-accent">MapPilot™</em>
+        {/* ── 7. FAQ ────────────────────────────────────────────────────── */}
+        <section className="py-20 lg:py-28 border-t" style={{ borderColor: "var(--border)" }}>
+          <div className="max-w-[1300px] mx-auto px-6 lg:px-10">
+            <div className="text-center mb-14">
+              <h2 className="text-[2rem] md:text-[2.4rem] font-bold tracking-[-0.025em] text-[#F4F4F5]">
+                Common <em className="not-italic text-accent">questions</em>
               </h2>
             </div>
-            <MapPilotFAQ faqs={faqs} />
+            <Faq faqs={faqs} />
           </div>
         </section>
 
-        {/* ── 11. Final CTA ─────────────────────────────────────────────── */}
-        <section className="py-24 lg:py-32 border-t text-center" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <p className="text-[11px] uppercase tracking-[0.2em] font-mono mb-4" style={{ color: "var(--accent)" }}>Next Step</p>
-            <h2 className="text-[2rem] md:text-[3rem] lg:text-[3.4rem] font-bold tracking-[-0.025em] text-[#F4F4F5] mb-4 leading-tight">
+        {/* ── 8. Final CTA ──────────────────────────────────────────────── */}
+        <section id="mp-final-cta" className="relative py-24 lg:py-32 border-t text-center overflow-hidden" style={{ borderColor: "var(--border)" }}>
+          <div className="absolute inset-0 z-0" aria-hidden="true">
+            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.14) 0%, transparent 60%)" }} />
+          </div>
+          <div className="relative z-10 max-w-[1300px] mx-auto px-6 lg:px-10">
+            <h2 className="text-[2.2rem] md:text-[3.2rem] font-bold tracking-[-0.025em] text-[#F4F4F5] mb-5 leading-tight">
               Where do <em className="not-italic text-accent">you</em> rank today?
             </h2>
-            <p className="text-[16px] text-zinc-400 max-w-[42ch] mx-auto mb-8 leading-relaxed">
-              15 minutes. We'll run a free ranking analysis of your business and show you where you appear, where competitors are taking the spots, and what needs to be done first.
+            <p className="text-[16px] text-zinc-400 max-w-[44ch] mx-auto mb-9 leading-relaxed">
+              15 minutes. Free. We'll show you where you appear, where competitors are taking your customers and what MapPilot™ would do first.
             </p>
             <a href={BOOKING_URL}
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-accent text-[#08080A] font-semibold text-[16px] hover:bg-[#D4B87A] active:scale-[0.98] transition-all duration-200">
-              Book Your Free Analysis
+              Book free analysis
               <ArrowRight size={16} weight="bold" aria-hidden="true" />
             </a>
             <p className="mt-4 text-[13px] text-zinc-600">
-              Or call directly: <a href="tel:+46763912181" className="hover:text-zinc-400 transition-colors">+46 763 91 21 81</a>
+              <a href="tel:+46763912181" className="hover:text-zinc-400 transition-colors inline-flex items-center gap-1.5">
+                <Phone size={12} aria-hidden="true" />
+                +46 763 91 21 81
+              </a>
             </p>
           </div>
         </section>
@@ -490,28 +344,5 @@ export default function MapPilotEnPage() {
         <FooterSection locale="en" />
       </main>
     </>
-  );
-}
-
-/* ── Inline accordion FAQ ─────────────────────────────────────────────────── */
-function MapPilotFAQ({ faqs }: { faqs: { q: string; a: string }[] }) {
-  "use client";
-  return (
-    <div className="flex flex-col max-w-[860px]">
-      {faqs.map((faq, i) => (
-        <details key={i} className="group border-t" style={{ borderColor: "var(--border)" }}>
-          <summary className="flex items-center justify-between gap-6 py-5 cursor-pointer list-none text-[15px] font-medium text-zinc-300 hover:text-[#F4F4F5] transition-colors duration-200">
-            {faq.q}
-            <span className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-zinc-500 group-open:text-accent transition-colors duration-200"
-              style={{ background: "var(--surface-elevated)", border: "1px solid var(--border)" }}>
-              <span className="text-[14px] leading-none group-open:hidden">+</span>
-              <span className="text-[14px] leading-none hidden group-open:block">−</span>
-            </span>
-          </summary>
-          <p className="pb-5 text-[14px] text-zinc-400 leading-relaxed max-w-[65ch]">{faq.a}</p>
-        </details>
-      ))}
-      <div className="border-t" style={{ borderColor: "var(--border)" }} />
-    </div>
   );
 }
