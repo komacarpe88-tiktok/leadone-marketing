@@ -75,46 +75,60 @@ const jsonLd = {
 };
 
 /* ── Illustrative geo-grid visual (SVG/CSS, no real business data) ───────── */
+// Rank-tier colors mirror the real case-study heatmap (components/GeoGridCarousel.tsx)
+// so a ranking map reads the same way everywhere on the site: green = strong,
+// yellow/orange = mid, red = weak. This is the one deliberate exception to the
+// site's gold-only accent rule, scoped to ranking-grid visuals specifically.
+function rankCellStyle(rank: number): { bg: string; text: string } {
+  if (rank <= 2)  return { bg: "#166534", text: "#4ade80" };
+  if (rank <= 3)  return { bg: "#14532d", text: "#86efac" };
+  if (rank <= 5)  return { bg: "#713f12", text: "#fde68a" };
+  if (rank <= 10) return { bg: "#7c2d12", text: "#fdba74" };
+  return            { bg: "#450a0a", text: "#f87171" };
+}
+
 function GeoGridVisual() {
-  // 5×4 grid; gold intensity fades outward from a "top 3" core, purely for show.
+  // 5×4 grid; rank fades outward from a "top 3" core, purely for show.
   const rows = 4, cols = 5;
   const cells = Array.from({ length: rows * cols }, (_, i) => {
     const r = Math.floor(i / cols), c = i % cols;
     const dist = Math.hypot(r - 1.3, c - 2);
-    if (dist < 1) return { rank: "1", strength: 1 };
-    if (dist < 1.6) return { rank: "2", strength: 0.8 };
-    if (dist < 2.2) return { rank: "3", strength: 0.6 };
-    if (dist < 2.9) return { rank: "7", strength: 0.32 };
-    return { rank: "12+", strength: 0.14 };
+    if (dist < 1) return { rank: 1, label: "1" };
+    if (dist < 1.6) return { rank: 2, label: "2" };
+    if (dist < 2.2) return { rank: 3, label: "3" };
+    if (dist < 2.9) return { rank: 7, label: "7" };
+    return { rank: 15, label: "12+" };
   });
 
   return (
     <div
       role="img"
-      aria-label="Illustration av ett rankingrutnät — mörkare guld representerar högre placering i Google Maps"
+      aria-label="Illustration av ett rankingrutnät — grönt representerar topp 3, gult mittenplaceringar och rött svag synlighet i Google Maps"
       style={{ display: "grid", gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: "6px" }}
     >
-      {cells.map((cell, i) => (
-        <div
-          key={i}
-          aria-hidden="true"
-          style={{
-            aspectRatio: "1",
-            borderRadius: "10px",
-            background: `rgba(201,168,76,${cell.strength})`,
-            border: "1px solid rgba(201,168,76,0.25)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontFamily: "var(--font-mono)",
-            fontWeight: 700,
-            fontSize: "11px",
-            color: cell.strength > 0.5 ? "#08080A" : "var(--accent)",
-          }}
-        >
-          {cell.rank}
-        </div>
-      ))}
+      {cells.map((cell, i) => {
+        const s = rankCellStyle(cell.rank);
+        return (
+          <div
+            key={i}
+            aria-hidden="true"
+            style={{
+              aspectRatio: "1",
+              borderRadius: "10px",
+              background: s.bg,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontFamily: "var(--font-mono)",
+              fontWeight: 700,
+              fontSize: "11px",
+              color: s.text,
+            }}
+          >
+            {cell.label}
+          </div>
+        );
+      })}
     </div>
   );
 }
