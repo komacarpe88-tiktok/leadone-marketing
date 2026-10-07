@@ -196,6 +196,33 @@ export default function MapPilotEnPage() {
           </div>
         </section>
 
+        {/* ── 3b. Ongoing competitor comparison ─────────────────────────── */}
+        <section className="py-20 lg:py-28 border-t" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
+          <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
+            <div className="text-center mb-12">
+              <h2 className="text-[2rem] md:text-[2.4rem] font-bold tracking-[-0.025em] text-[#F4F4F5] mb-5">
+                MapPilot™ never stops <em className="not-italic text-accent">comparing</em>.
+              </h2>
+              <p className="text-[15px] text-zinc-400 leading-relaxed max-w-[56ch] mx-auto">
+                Every week, the system looks at which competitors rank above you and exactly what their profiles are doing that yours isn't – more photos, newer reviews, a category you're missing. It's not a one-time analysis. Your profile keeps getting adjusted based on what actually moves you past them.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[
+                { title: "Sees what competitors are doing", desc: "We analyze the profiles ranking above you and identify exactly what sets them apart." },
+                { title: "Suggests the next move", desc: "The system prioritizes what will have the biggest impact right now – not a generic checklist." },
+                { title: "Adjusts every week", desc: "Nothing is set up once and forgotten. Your profile keeps moving forward, in step with the market." },
+              ].map((item) => (
+                <div key={item.title} className="rounded-2xl p-6" style={{ background: "#0A0A0D", border: "1px solid var(--border)" }}>
+                  <h3 className="font-semibold text-[15px] text-[#F4F4F5] mb-2">{item.title}</h3>
+                  <p className="text-[13px] text-zinc-500 leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── 4. Proof ──────────────────────────────────────────────────── */}
         {cases.length > 0 && (
           <section className="py-20 lg:py-28 border-t" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
