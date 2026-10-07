@@ -181,7 +181,7 @@ export const cities: City[] = [
     adjective: "malmöitiska",
     companyNoun: "ett Malmöföretag",
     region: "Skåne",
-    hasLocalCases: false,
+    hasLocalCases: true,
     marketIntro:
       "Malmö är Sveriges tredje största stad med drygt 360 000 invånare, och sökmarknaden präglas av två saker som skiljer den från Stockholm och Göteborg: en mycket ung befolkning och närheten till Köpenhamn. Det ger hög mobilanvändning, stark tillväxt i tjänstesektorn och en ovanligt snabb omsättning av nya företag som konkurrerar om samma söktermer.",
     competition:

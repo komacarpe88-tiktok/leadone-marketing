@@ -6,13 +6,23 @@ import type { Locale } from "@/lib/i18n";
 
 const caseStudyPreviews = [
   {
+    slug: "zvizzer-bilvard",
+    client: "ZviZZer Bilvård",
+    industry: { sv: "Bilvård · Malmö", en: "Car care · Malmö" },
+    before: "8,7",
+    after: "4,3",
+    label: { sv: "snittposition", en: "average rank" },
+    timeframe: { sv: "1 vecka", en: "1 week" },
+    avatar: "ZB",
+  },
+  {
     slug: "angelique-hud-kropp",
     client: "Angelique Hud & Kropp",
     industry: { sv: "Hudvårdsmottagning · Helsingborg", en: "Skin care clinic · Helsingborg" },
     before: "28",
     after: "108",
     label: { sv: "Google-recensioner", en: "Google reviews" },
-    timeframe: "3 mån",
+    timeframe: { sv: "3 mån", en: "3 mo" },
     avatar: "AH",
   },
   {
@@ -22,7 +32,7 @@ const caseStudyPreviews = [
     before: "13",
     after: "80",
     label: { sv: "Google-recensioner", en: "Google reviews" },
-    timeframe: "2,5 mån",
+    timeframe: { sv: "2,5 mån", en: "2.5 mo" },
     avatar: "HS",
   },
 ];
@@ -176,7 +186,7 @@ export default function TestimonialsSection({ locale = "sv" }: { locale?: Locale
                     </svg>
                     <span className="text-[13px] font-bold text-[#F4F4F5] tabular-nums">{cs.after}</span>
                     <span className="text-[11px] text-zinc-500">{cs.label[locale]}</span>
-                    <span className="text-[10px] font-mono ml-auto" style={{ color: "var(--accent)" }}>{cs.timeframe}</span>
+                    <span className="text-[10px] font-mono ml-auto" style={{ color: "var(--accent)" }}>{cs.timeframe[locale]}</span>
                   </div>
                 </div>
 

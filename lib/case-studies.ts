@@ -52,6 +52,28 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "zvizzer-bilvard",
+    client: "ZviZZer Bilvård",
+    industry: "Bilvård",
+    city: "Malmö",
+    tags: ["#Google Maps", "#Bilvård"],
+    status: { label: "Verifierad förbättring", variant: "verified" },
+    teaser: "Genomsnittlig ranking från 8,7 till 4,3 på en vecka",
+    startingPoint:
+      "ZviZZer Bilvård är ett bilvårdscenter i Malmö. Genomsnittlig rankingposition på Google Maps låg på 8,7.",
+    beforeMetric: { label: "Genomsnittlig rankingposition", value: "8,7" },
+    actions: [
+      "Lokal synlighet på Google Maps, mätt som genomsnittlig rankingposition.",
+    ],
+    afterMetric: { label: "Genomsnittlig rankingposition", value: "4,3" },
+    timeframe: "en vecka",
+    statHighlight: {
+      before: "8,7",
+      after: "4,3",
+      label: "Genomsnittlig rankingposition",
+    },
+  },
+  {
     slug: "rs-bilvard",
     client: "RS Bilvård",
     industry: "Bilvård & Detailing",

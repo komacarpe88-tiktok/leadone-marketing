@@ -23,7 +23,23 @@ export const metadata: Metadata = {
   },
 };
 
-const EN: Record<string, { startingPoint: string; beforeMetric: string; afterMetric: string; actions: string[]; statLabel: string; secondaryLabel: string; timeframeLabel: string; before: string; what: string; after: string }> = {
+const EN: Record<string, { startingPoint: string; beforeMetric: string; afterMetric: string; actions: string[]; statLabel: string; secondaryLabel: string; timeframeLabel: string; duration?: string; before: string; what: string; after: string }> = {
+  "zvizzer-bilvard": {
+    startingPoint:
+      "ZviZZer Bilvård is a car-care centre in Malmö. Its average rank position on Google Maps was 8.7.",
+    beforeMetric: "Average rank position",
+    afterMetric: "Average rank position",
+    actions: [
+      "Local visibility on Google Maps, measured as average rank position.",
+    ],
+    statLabel: "Average rank position",
+    secondaryLabel: "",
+    timeframeLabel: "in one week",
+    duration: "one week",
+    before: "Situation",
+    what: "What we did",
+    after: "Results · after",
+  },
   "angelique-hud-kropp": {
     startingPoint:
       "Angelique Hud & Kropp had a strong local reputation but lacked a system for consistently collecting new Google reviews. With 28 reviews and a 4.9★ average, the foundation was solid — but review volume limited their visibility in the Local Pack.",
@@ -334,7 +350,7 @@ export default function ResultsPage() {
                           style={{ background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.18)" }}
                         >
                           <p className="text-[10px] uppercase tracking-[0.2em] font-mono mb-3" style={{ color: "var(--accent)" }}>
-                            {copy.after} {cs.timeframe}
+                            {copy.after} {copy.duration ?? cs.timeframe}
                           </p>
                           <div className="flex items-center gap-3">
                             <span className="text-[14px] font-semibold text-[#F4F4F5] tabular-nums">{cs.afterMetric.value}</span>
