@@ -19,6 +19,10 @@ const BASE = "https://leadone.online";
 function sharedFaqs(city: City) {
   return [
     {
+      q: "Erbjuder ni all digital marknadsföring, eller bara SEO?",
+      a: "Vi är specialister på lokal digital synlighet — Google Maps, Google Business Profile, lokal SEO och recensionshantering. Vi bygger inte hemsidor, sköter inte sociala medier och kör inte annonser åt kunder. Om du behöver LinkedIn-marknadsföring, företagsfilm eller betald annonsering är det inte oss du ska anlita — men fråga gärna, vi tipsar hellre om rätt leverantör än säljer en tjänst vi inte är bäst på.",
+    },
+    {
       q: `Hur lång tid tar det innan ${city.companyNoun} ser resultat?`,
       a: "De flesta kunder ser mätbara förbättringar i Google Maps-synlighet inom 30–90 dagar. Organisk sökning tar längre tid — 3–6 månader är ett realistiskt spann för tydliga positionsförbättringar.",
     },
@@ -43,7 +47,7 @@ export function buildCityFaqs(city: City) {
 
 export function buildCityJsonLd(city: City) {
   const url = `${BASE}/seo-${city.slug}/`;
-  const title = `SEO-byrå ${city.name} | Lokal SEO & Google Maps | LeadOne`;
+  const title = `SEO-byrå ${city.name} | Digital marknadsföring & Google Maps | LeadOne`;
   const faqs = buildCityFaqs(city);
 
   return {
@@ -54,7 +58,7 @@ export function buildCityJsonLd(city: City) {
         "@id": `${url}#webpage`,
         url,
         name: title,
-        description: `LeadOne är en SEO-byrå i ${city.name} som hjälper företag synas i topp 3 på Google Maps och i lokal sökning.`,
+        description: `LeadOne är en SEO-byrå och leverantör av digital marknadsföring i ${city.name} som hjälper företag synas i topp 3 på Google Maps och i lokal sökning.`,
         isPartOf: { "@id": `${BASE}/#website` },
         about: { "@id": `${BASE}/#organization` },
         inLanguage: "sv-SE",
@@ -71,8 +75,8 @@ export function buildCityJsonLd(city: City) {
       {
         "@type": "Service",
         "@id": `${url}#service`,
-        name: `SEO-byrå ${city.name} — lokal SEO`,
-        description: `Lokal SEO och Google Maps-optimering för företag i ${city.name}. Inkluderar GBP-optimering, sökordsanalys, lokala citeringar, on-page SEO och recensionshantering.`,
+        name: `SEO-byrå ${city.name} — digital marknadsföring & lokal SEO`,
+        description: `Digital marknadsföring och lokal SEO för företag i ${city.name}, med fokus på Google Maps-optimering. Inkluderar GBP-optimering, sökordsanalys, lokala citeringar, on-page SEO och recensionshantering.`,
         url,
         provider: { "@id": `${BASE}/#organization` },
         areaServed: {
@@ -121,10 +125,10 @@ export default function CityPage({ city }: { city: City }) {
             </nav>
 
             <p className="text-[11px] uppercase tracking-[0.22em] font-mono mb-5" style={{ color: "var(--accent)" }}>
-              SEO-byrå · {city.name}
+              SEO-byrå · Digital marknadsföring · {city.name}
             </p>
             <h1 className="text-[2.6rem] md:text-[3.4rem] lg:text-[4rem] font-bold tracking-[-0.03em] text-[#F4F4F5] leading-[1.06] max-w-[22ch] mb-6">
-              SEO-byrå i {city.name} som får ditt företag att synas
+              SEO-byrå och digital marknadsföring i {city.name}
             </h1>
             <p className="text-[17px] text-zinc-400 leading-relaxed max-w-[56ch] mb-10">
               Nio av tio kunder väljer ett av de tre första resultaten på Google. Vi är en SEO-byrå som hjälper företag i {city.name} att ta en av de platserna — och hålla den.
@@ -253,6 +257,29 @@ export default function CityPage({ city }: { city: City }) {
                   <p className="text-[14px] text-zinc-400 leading-relaxed">{item.p}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Digital marknadsföring, men smalt fokus ──────────── */}
+        <section className="py-20 lg:py-28 border-b" style={{ borderColor: "var(--border)" }}>
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div
+              className="rounded-2xl p-8 lg:p-10"
+              style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
+            >
+              <p className="text-[11px] uppercase tracking-[0.22em] font-mono mb-5" style={{ color: "var(--accent)" }}>
+                Varför vi inte gör allt
+              </p>
+              <h2 className="text-[1.8rem] md:text-[2.2rem] font-bold tracking-[-0.03em] text-[#F4F4F5] leading-tight max-w-[32ch] mb-5">
+                Digital marknadsföring är brett. Vi är djupa på en del av det.
+              </h2>
+              <p className="text-[15px] text-zinc-400 leading-relaxed max-w-[70ch] mb-4">
+                Sök på "digital marknadsföring {city.name}" och du hittar byråer som erbjuder LinkedIn, webb, film, Google Ads och sociala medier under samma tak. Det är inte vad vi gör. LeadOne är specialister på lokal digital synlighet — Google Maps, Google Business Profile, lokal SEO och recensionshantering — för företag i {city.name}. Vi bygger inte hemsidor, sköter inte sociala medier och kör inte annonser åt kunder.
+              </p>
+              <p className="text-[15px] text-zinc-400 leading-relaxed max-w-[70ch]">
+                Det är ett medvetet val: en byrå som gör en sak riktigt bra ger bättre resultat än en som gör sju saker godtyckligt. Behöver du en bredare digital strategi pratar vi gärna om vad som faktiskt behövs, även om svaret är en annan leverantör för den delen.
+              </p>
             </div>
           </div>
         </section>

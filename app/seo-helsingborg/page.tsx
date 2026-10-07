@@ -5,16 +5,16 @@ import CtaSection from "@/components/CtaSection";
 import { getAllCaseStudies } from "@/lib/case-studies";
 
 export const metadata: Metadata = {
-  title: "SEO-byrå Helsingborg | Lokal SEO & Google Maps | LeadOne",
+  title: "SEO-byrå Helsingborg | Digital marknadsföring & Google Maps | LeadOne",
   description:
-    "LeadOne är en SEO-byrå i Helsingborg som hjälper företag synas i topp 3 på Google Maps och i lokal sökning. Lokal SEO, GBP-optimering, recensioner och citationer. Boka gratis analys.",
+    "LeadOne är en SEO-byrå och leverantör av digital marknadsföring i Helsingborg som hjälper företag synas i topp 3 på Google Maps och i lokal sökning. Lokal SEO, GBP-optimering, recensioner och citationer. Boka gratis analys.",
   alternates: {
     canonical: "https://leadone.online/seo-helsingborg/",
   },
   openGraph: {
-    title: "SEO-byrå Helsingborg | Lokal SEO & Google Maps | LeadOne",
+    title: "SEO-byrå Helsingborg | Digital marknadsföring & Google Maps | LeadOne",
     description:
-      "SEO-byrå i Helsingborg. Vi optimerar din synlighet på Google Maps och i lokala sökresultat — mer trafik, fler samtal, fler kunder.",
+      "SEO-byrå och digital marknadsföring i Helsingborg. Vi optimerar din synlighet på Google Maps och i lokala sökresultat — mer trafik, fler samtal, fler kunder.",
     locale: "sv_SE",
     type: "website",
     url: "https://leadone.online/seo-helsingborg/",
@@ -24,6 +24,10 @@ export const metadata: Metadata = {
 // Single source of truth for the FAQ — rendered visibly below and emitted as
 // FAQPage schema, so the two can never drift apart.
 const faqs = [
+  {
+    q: "Erbjuder ni all digital marknadsföring, eller bara SEO?",
+    a: "Vi är specialister på lokal digital synlighet — Google Maps, Google Business Profile, lokal SEO och recensionshantering. Vi bygger inte hemsidor, sköter inte sociala medier och kör inte annonser åt kunder. Om du behöver LinkedIn-marknadsföring, företagsfilm eller betald annonsering är det inte oss du ska anlita — men fråga gärna, vi tipsar hellre om rätt leverantör än säljer en tjänst vi inte är bäst på.",
+  },
   {
     q: "Hur lång tid tar det innan ett Helsingborgsföretag ser resultat?",
     a: "De flesta kunder ser mätbara förbättringar i Google Maps-synlighet inom 30–90 dagar. Organisk sökning tar längre tid — 3–6 månader är ett realistiskt spann för tydliga positionsförbättringar.",
@@ -74,7 +78,7 @@ const jsonLd = {
       "@type": "WebPage",
       "@id": "https://leadone.online/seo-helsingborg/#webpage",
       "url": "https://leadone.online/seo-helsingborg/",
-      "name": "SEO-byrå Helsingborg | Lokal SEO & Google Maps | LeadOne",
+      "name": "SEO-byrå Helsingborg | Digital marknadsföring & Google Maps | LeadOne",
       "description":
         "LeadOne är en SEO-byrå i Helsingborg som hjälper företag synas i topp 3 på Google Maps och i lokal sökning.",
       "isPartOf": { "@id": "https://leadone.online/#website" },
@@ -103,7 +107,7 @@ const jsonLd = {
     {
       "@type": "Service",
       "@id": "https://leadone.online/seo-helsingborg/#service",
-      "name": "SEO-byrå Helsingborg — lokal SEO",
+      "name": "SEO-byrå Helsingborg — digital marknadsföring & lokal SEO",
       "description":
         "Lokal SEO och Google Maps-optimering för företag i Helsingborg. Inkluderar GBP-optimering, sökordsanalys, lokala citeringar, on-page SEO och recensionshantering.",
       "url": "https://leadone.online/seo-helsingborg/",
@@ -147,10 +151,10 @@ export default function SeoHelsingborgPage() {
             </nav>
 
             <p className="text-[11px] uppercase tracking-[0.22em] font-mono mb-5" style={{ color: "var(--accent)" }}>
-              SEO-byrå · Helsingborg
+              SEO-byrå · Digital marknadsföring · Helsingborg
             </p>
             <h1 className="text-[2.6rem] md:text-[3.4rem] lg:text-[4rem] font-bold tracking-[-0.03em] text-[#F4F4F5] leading-[1.06] max-w-[22ch] mb-6">
-              SEO-byrå i Helsingborg som får ditt företag att synas
+              SEO-byrå och digital marknadsföring i Helsingborg
             </h1>
             <p className="text-[17px] text-zinc-400 leading-relaxed max-w-[56ch] mb-10">
               Nio av tio kunder väljer ett av de tre första resultaten på Google. Vi är en SEO-byrå i Helsingborg som hjälper lokala företag att ta en av de platserna — och hålla den.

@@ -107,3 +107,85 @@
   from = "/en/services/complete/"
   to   = "/en/services/mappilot/"
   status = 301
+
+# marknadsforing-<stad> pages merged into the seo-<stad> pages — "digital
+# marknadsforing" positioning is now part of the SEO pages themselves.
+[[redirects]]
+  from = "/marknadsforing-helsingborg"
+  to   = "/seo-helsingborg/"
+  status = 301
+
+[[redirects]]
+  from = "/marknadsforing-helsingborg/"
+  to   = "/seo-helsingborg/"
+  status = 301
+
+[[redirects]]
+  from = "/marknadsforing-stockholm"
+  to   = "/seo-stockholm/"
+  status = 301
+
+[[redirects]]
+  from = "/marknadsforing-stockholm/"
+  to   = "/seo-stockholm/"
+  status = 301
+
+[[redirects]]
+  from = "/marknadsforing-goteborg"
+  to   = "/seo-goteborg/"
+  status = 301
+
+[[redirects]]
+  from = "/marknadsforing-goteborg/"
+  to   = "/seo-goteborg/"
+  status = 301
+
+[[redirects]]
+  from = "/marknadsforing-malmo"
+  to   = "/seo-malmo/"
+  status = 301
+
+[[redirects]]
+  from = "/marknadsforing-malmo/"
+  to   = "/seo-malmo/"
+  status = 301
+
+[[redirects]]
+  from = "/marknadsforing-uppsala"
+  to   = "/seo-uppsala/"
+  status = 301
+
+[[redirects]]
+  from = "/marknadsforing-uppsala/"
+  to   = "/seo-uppsala/"
+  status = 301
+
+[[redirects]]
+  from = "/marknadsforing-linkoping"
+  to   = "/seo-linkoping/"
+  status = 301
+
+[[redirects]]
+  from = "/marknadsforing-linkoping/"
+  to   = "/seo-linkoping/"
+  status = 301
+
+[[redirects]]
+  from = "/marknadsforing-orebro"
+  to   = "/seo-orebro/"
+  status = 301
+
+[[redirects]]
+  from = "/marknadsforing-orebro/"
+  to   = "/seo-orebro/"
+  status = 301
+
+[[redirects]]
+  from = "/marknadsforing-jonkoping"
+  to   = "/seo-jonkoping/"
+  status = 301
+
+[[redirects]]
+  from = "/marknadsforing-jonkoping/"
+  to   = "/seo-jonkoping/"
+  status = 301
