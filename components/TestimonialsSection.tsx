@@ -35,6 +35,16 @@ const caseStudyPreviews = [
     timeframe: { sv: "2,5 mån", en: "2.5 mo" },
     avatar: "HS",
   },
+  {
+    slug: "rs-bilvard",
+    client: "RS Bilvård",
+    industry: { sv: "Bilvård & Detailing · Jönköping", en: "Car care & detailing · Jönköping" },
+    before: "36%",
+    after: "67%",
+    label: { sv: "synlighet i Map Pack", en: "Map Pack visibility" },
+    timeframe: { sv: "5 veckor", en: "5 weeks" },
+    avatar: "RB",
+  },
 ];
 
 const testimonials = [

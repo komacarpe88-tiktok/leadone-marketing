@@ -82,9 +82,11 @@ export const caseStudies: CaseStudy[] = [
     status: { label: "Verifierad förbättring", variant: "verified" },
     teaser: "Från 0% till 44% lokal synlighet för 'rekond jönköping' på fem veckor",
     startingPoint:
-      "RS Bilvård är en bilvårds- och detailingverkstad i Jönköping. Utgångsläge och bakgrundsinformation fylls i av klienten.",
+      "RS Bilvård är en bilvårds- och detailingverkstad i Jönköping. Vid mätningens start den 2 juli syntes profilen inte alls för sökningen \"Rekond Jönköping\" — 0 % synlighet över hela mätområdet.",
     actions: [
-      "Åtgärder och optimeringar fylls i av klienten — detta fält ska inte genereras påhittat.",
+      "Geo-grid-spårning av fem centrala sökord kopplade till bilvård och rekond i Jönköping",
+      "Löpande optimering av Google Business Profile utifrån var synligheten faktiskt föll bort",
+      "Uppföljning av samtal, webbplatsklick, vägbeskrivningar och profilvisningar månad för månad",
     ],
     timeframe: "2 juli – 4 aug 2026",
     gbpStats: [

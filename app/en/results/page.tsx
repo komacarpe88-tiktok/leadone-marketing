@@ -24,6 +24,24 @@ export const metadata: Metadata = {
 };
 
 const EN: Record<string, { startingPoint: string; beforeMetric: string; afterMetric: string; actions: string[]; statLabel: string; secondaryLabel: string; timeframeLabel: string; duration?: string; before: string; what: string; after: string }> = {
+  "rs-bilvard": {
+    startingPoint:
+      "RS Bilvård is a car-care and detailing workshop in Jönköping. When tracking began on July 2nd, the profile had 0% visibility across the measured area for the search \"Rekond Jönköping\" (car detailing Jönköping).",
+    beforeMetric: "Map Pack visibility",
+    afterMetric: "Map Pack visibility",
+    actions: [
+      "Geo-grid tracking of five core car-care and detailing search terms in Jönköping",
+      "Ongoing Google Business Profile optimisation based on where visibility was actually dropping off",
+      "Monthly tracking of calls, website clicks, direction requests and profile views",
+    ],
+    statLabel: "Average Map Pack top-3 visibility (5 keywords)",
+    secondaryLabel: "",
+    timeframeLabel: "in 5 weeks",
+    duration: "5 weeks",
+    before: "Situation",
+    what: "What we did",
+    after: "Results · after",
+  },
   "zvizzer-bilvard": {
     startingPoint:
       "ZviZZer Bilvård is a car-care centre in Malmö. Its average rank position on Google Maps was 8.7.",
