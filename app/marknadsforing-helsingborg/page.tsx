@@ -128,7 +128,7 @@ export default function MarknadsforingHelsingborgPage() {
               Digital marknadsföring · Helsingborg
             </p>
             <h1 className="text-[2.6rem] md:text-[3.4rem] lg:text-[4rem] font-bold tracking-[-0.03em] text-[#F4F4F5] leading-[1.06] max-w-[24ch] mb-6">
-              Marknadsföring i Helsingborg — fokuserad på det som faktiskt ger kunder
+              Digital marknadsföring i Helsingborg
             </h1>
             <p className="text-[17px] text-zinc-400 leading-relaxed max-w-[58ch] mb-10">
               Vi är inte en fullservicebyrå som gör lite av allt. LeadOne är specialister på lokal digital synlighet — Google Maps, Google Business Profile, recensioner och lokal SEO — för företag i Helsingborg.
