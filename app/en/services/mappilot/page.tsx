@@ -73,7 +73,7 @@ const jsonLd = {
 
 export default function MapPilotEnPage() {
   const cases = getAllCaseStudies().filter(
-    (cs) => cs.slug === "angelique-hud-kropp" || cs.slug === "hjeronymus-salongen"
+    (cs) => cs.slug === "angelique-hud-kropp" || cs.slug === "hjeronymus-salongen" || cs.slug === "zvizzer-bilvard"
   );
 
   return (
@@ -233,7 +233,7 @@ export default function MapPilotEnPage() {
                 </h2>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[860px] mx-auto mb-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1100px] mx-auto mb-4">
                 {cases.map((cs) => (
                   <div key={cs.slug} className="rounded-2xl p-6 flex flex-col gap-3"
                     style={{ background: "#0A0A0D", border: "1px solid var(--border)" }}>
