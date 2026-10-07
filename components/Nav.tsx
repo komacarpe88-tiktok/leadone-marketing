@@ -207,6 +207,13 @@ export default function Nav() {
                       >
                         {[
                           { label: "Marknadsföring Helsingborg", href: "/marknadsforing-helsingborg/" },
+                          { label: "Marknadsföring Stockholm",  href: "/marknadsforing-stockholm/"  },
+                          { label: "Marknadsföring Göteborg",    href: "/marknadsforing-goteborg/"    },
+                          { label: "Marknadsföring Malmö",       href: "/marknadsforing-malmo/"       },
+                          { label: "Marknadsföring Uppsala",    href: "/marknadsforing-uppsala/"    },
+                          { label: "Marknadsföring Linköping",  href: "/marknadsforing-linkoping/"  },
+                          { label: "Marknadsföring Örebro",     href: "/marknadsforing-orebro/"     },
+                          { label: "Marknadsföring Jönköping",   href: "/marknadsforing-jonkoping/"   },
                           { label: "SEO Helsingborg", href: "/seo-helsingborg/" },
                           { label: "SEO Stockholm",  href: "/seo-stockholm/"  },
                           { label: "SEO Göteborg",    href: "/seo-goteborg/"    },
@@ -376,6 +383,13 @@ export default function Nav() {
                         <div className="pb-3 flex flex-col gap-1">
                           {[
                             { label: "Marknadsföring Helsingborg", href: "/marknadsforing-helsingborg/" },
+                            { label: "Marknadsföring Stockholm",  href: "/marknadsforing-stockholm/"  },
+                            { label: "Marknadsföring Göteborg",    href: "/marknadsforing-goteborg/"    },
+                            { label: "Marknadsföring Malmö",       href: "/marknadsforing-malmo/"       },
+                            { label: "Marknadsföring Uppsala",    href: "/marknadsforing-uppsala/"    },
+                            { label: "Marknadsföring Linköping",  href: "/marknadsforing-linkoping/"  },
+                            { label: "Marknadsföring Örebro",     href: "/marknadsforing-orebro/"     },
+                            { label: "Marknadsföring Jönköping",   href: "/marknadsforing-jonkoping/"   },
                             { label: "SEO Helsingborg", href: "/seo-helsingborg/" },
                             { label: "SEO Stockholm",  href: "/seo-stockholm/"  },
                             { label: "SEO Göteborg",    href: "/seo-goteborg/"    },

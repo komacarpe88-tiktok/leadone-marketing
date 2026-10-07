@@ -45,6 +45,13 @@ export default function FooterSection({ locale = "sv" }: { locale?: Locale }) {
                 ["MapPilot™", locale === "en" ? "/en/services/mappilot" : "/tjanster/mappilot"],
                 ...(locale === "sv" ? [
                   ["Marknadsföring Helsingborg", "/marknadsforing-helsingborg/"],
+                  ["Marknadsföring Stockholm",   "/marknadsforing-stockholm/"],
+                  ["Marknadsföring Göteborg",    "/marknadsforing-goteborg/"],
+                  ["Marknadsföring Malmö",       "/marknadsforing-malmo/"],
+                  ["Marknadsföring Uppsala",     "/marknadsforing-uppsala/"],
+                  ["Marknadsföring Linköping",   "/marknadsforing-linkoping/"],
+                  ["Marknadsföring Örebro",      "/marknadsforing-orebro/"],
+                  ["Marknadsföring Jönköping",   "/marknadsforing-jonkoping/"],
                   ["SEO Helsingborg", "/seo-helsingborg/"],
                   ["SEO Stockholm",   "/seo-stockholm/"],
                   ["SEO Göteborg",    "/seo-goteborg/"],
