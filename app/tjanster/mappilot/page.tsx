@@ -157,7 +157,7 @@ export default function MapPilotPage() {
           <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
             <div className="text-center mb-14">
               <h2 className="text-[2rem] md:text-[2.4rem] font-bold tracking-[-0.025em] text-[#F4F4F5]">
-                Igång en gång. Sedan <em className="not-italic text-accent">rullar</em> det.
+                Tre dagars uppstart. Sedan är du på <em className="not-italic text-accent">autopilot</em>.
               </h2>
             </div>
 
@@ -169,7 +169,7 @@ export default function MapPilotPage() {
               />
               {[
                 { n: "01", title: "Gratis rankinganalys", desc: "15 minuter. Vi visar var du syns idag och vad som håller dig tillbaka." },
-                { n: "02", title: "Vi sätter upp allt", desc: "Profilen optimeras, du listas i 50+ kataloger och recensionssystemet kopplas in. Klart inom 30 dagar." },
+                { n: "02", title: "Vi sätter upp allt", desc: "Profilen optimeras, du listas i 50+ kataloger och recensionssystemet kopplas in. Klart inom tre dagar." },
                 { n: "03", title: "MapPilot™ jobbar varje vecka", desc: "Inlägg, bilder, recensioner och svar, automatiskt. Du får en sammanfattning varje vecka och en rankingrapport varje månad." },
               ].map((step) => (
                 <div key={step.n} className="relative flex flex-col items-center text-center md:items-start md:text-left">

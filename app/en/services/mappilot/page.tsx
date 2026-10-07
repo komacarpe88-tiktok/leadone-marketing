@@ -157,7 +157,7 @@ export default function MapPilotEnPage() {
           <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
             <div className="text-center mb-14">
               <h2 className="text-[2rem] md:text-[2.4rem] font-bold tracking-[-0.025em] text-[#F4F4F5]">
-                Set up once. Then it <em className="not-italic text-accent">runs</em>.
+                Three days to set up. Then you're on <em className="not-italic text-accent">autopilot</em>.
               </h2>
             </div>
 
@@ -169,7 +169,7 @@ export default function MapPilotEnPage() {
               />
               {[
                 { n: "01", title: "Free ranking analysis", desc: "15 minutes. We show you where you appear today and what's holding you back." },
-                { n: "02", title: "We set everything up", desc: "Your profile gets optimized, you're listed in 50+ directories and the review system is connected. Done within 30 days." },
+                { n: "02", title: "We set everything up", desc: "Your profile gets optimized, you're listed in 50+ directories and the review system is connected. Done within three days." },
                 { n: "03", title: "MapPilot™ works every week", desc: "Posts, photos, reviews and replies, automatically. You get a summary every week and a ranking report every month." },
               ].map((step) => (
                 <div key={step.n} className="relative flex flex-col items-center text-center md:items-start md:text-left">
