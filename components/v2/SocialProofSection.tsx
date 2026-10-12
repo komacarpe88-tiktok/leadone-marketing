@@ -7,7 +7,7 @@ const cases = [
     category: "Hudvård & skönhet",
     before: 28,
     after: 108,
-    months: 3,
+    months: "3",
     quote:
       "Innan LeadOne hittade ingen oss på Google. Nu ringer det varje dag — och vi har kö på alla behandlingar.",
     name: "Angelique",
@@ -20,7 +20,7 @@ const cases = [
     category: "Salong & skönhet",
     before: 13,
     after: 80,
-    months: 4,
+    months: "2,5",
     quote:
       "Vi låg på sida 2 i över ett år. Nu är vi topp 1 på nästan alla sökningar i Kungsbacka.",
     name: "Hjeronymus",
@@ -80,7 +80,7 @@ function CaseCard({
   client, location, category, before, after, months, quote, name, rank1, rank2,
 }: {
   client: string; location: string; category: string; before: number; after: number;
-  months: number; quote: string; name: string; rank1: string; rank2: string;
+  months: string; quote: string; name: string; rank1: string; rank2: string;
 }) {
   const pct = Math.round(((after - before) / before) * 100);
   return (

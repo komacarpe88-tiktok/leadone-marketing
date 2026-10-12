@@ -2,19 +2,18 @@
 
 import { motion, useReducedMotion } from "motion/react";
 
+// Real, verifiable clients only — each name is traceable to an actual case
+// study (lib/case-studies.ts) or a named Google review. No invented logos.
 const CLIENTS = [
-  { id: "le", name: "Lindqvist Elektriker",    init: "LE" },
-  { id: "cp", name: "Café Piran",              init: "CP" },
-  { id: "vt", name: "Vestergaard Tandläkare",  init: "VT" },
-  { id: "os", name: "Öresund Städservice",     init: "ÖS" },
-  { id: "hf", name: "Aktiv Fysioterapi", init: "AF" },
-  { id: "nk", name: "Nordiskt Kök",            init: "NK" },
-  { id: "sb", name: "Sundström Bygg",          init: "SB" },
-  { id: "ar", name: "Åkelius Redovisning",     init: "ÅR" },
+  { id: "zb", name: "ZviZZer Bilvård",         init: "ZB" },
+  { id: "rb", name: "RS Bilvård",              init: "RB" },
+  { id: "ah", name: "Angelique Hud & Kropp",   init: "AH" },
+  { id: "hs", name: "Hjeronymus Salongen",     init: "HS" },
+  { id: "dl", name: "Detail Lounge AB",        init: "DL" },
 ];
 
 // Row 2 starts mid-list so the two rows look visually different
-const CLIENTS_R2 = [...CLIENTS.slice(4), ...CLIENTS.slice(0, 4)];
+const CLIENTS_R2 = [...CLIENTS.slice(2), ...CLIENTS.slice(0, 2)];
 
 // Edge-fade mask applied to each row wrapper
 const MASK: React.CSSProperties = {
@@ -104,7 +103,7 @@ export default function TrustedBySection() {
           }}
         />
         <p className="text-[11px] text-zinc-600 tracking-[0.26em] uppercase font-mono whitespace-nowrap shrink-0">
-          Betrodd av svenska företag i hela landet
+          Lokala företag vi arbetar med
         </p>
         <div
           className="h-px flex-1"

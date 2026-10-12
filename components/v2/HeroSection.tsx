@@ -59,8 +59,8 @@ export default function V2Hero() {
 
         {/* Right — proof cards */}
         <div className="v2-hero-proof" style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-          <ProofCard client="Angelique Hud & Kropp" location="Helsingborg" before={28} after={108} months={3} keywords={["ansiktsbehandling helsingborg", "hudterapeut helsingborg"]} />
-          <ProofCard client="Hjeronymus Salongen" location="Kungsbacka" before={13} after={80} months={4} keywords={["peeling kungsbacka", "ansiktsbehandling kungsbacka"]} />
+          <ProofCard client="Angelique Hud & Kropp" location="Helsingborg" before={28} after={108} months="3" keywords={["ansiktsbehandling helsingborg", "hudterapeut helsingborg"]} />
+          <ProofCard client="Hjeronymus Salongen" location="Kungsbacka" before={13} after={80} months="2,5" keywords={["peeling kungsbacka", "ansiktsbehandling kungsbacka"]} />
         </div>
       </div>
 
@@ -69,7 +69,7 @@ export default function V2Hero() {
   );
 }
 
-function ProofCard({ client, location, before, after, months, keywords }: { client: string; location: string; before: number; after: number; months: number; keywords: string[] }) {
+function ProofCard({ client, location, before, after, months, keywords }: { client: string; location: string; before: number; after: number; months: string; keywords: string[] }) {
   const pct = Math.round(((after - before) / before) * 100);
   return (
     <div className="v2-card" style={{ width: "100%", padding: "1.5rem", display: "flex", flexDirection: "column", gap: "1rem" }}>

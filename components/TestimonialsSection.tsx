@@ -47,42 +47,37 @@ const caseStudyPreviews = [
   },
 ];
 
+// Real Google reviews. The Swedish text for Sandra and Detail Lounge AB is
+// written from Google's English auto-translation of their original Swedish
+// review (the "visa original" source text wasn't retrievable) — it conveys
+// the same content, but is not a verbatim quote of their original wording.
 const testimonials = [
   {
     quote: {
-      sv: "LeadOne förändrade hur vi syns på Google. Inom fem månader gick vi från osynliga till tre nya kunder som kom in varje dag tack vare Maps.",
-      en: "LeadOne changed how we appear on Google. Within five months we went from invisible to three new customers walking in every day thanks to Maps.",
+      sv: "Fantastisk service från början till slut! Väldigt personligt och professionellt bemötande. Jag fick hjälp med även de små detaljerna och justeringarna som verkligen gjorde stor skillnad. Kan varmt rekommendera!",
+      en: "Fantastic service from start to finish! Very personal and professional treatment. They even helped me with the small details and adjustments that really made a big difference. Highly recommend!",
     },
-    name: "Mikael Lindqvist",
-    title: { sv: "Ägare — Lindqvist Elektriker", en: "Owner — Lindqvist Elektriker" },
-    avatar: "ML",
+    name: "RS Bilvård",
+    title: { sv: "Recension från Google", en: "Review from Google" },
+    avatar: "RB",
   },
   {
     quote: {
-      sv: "De förstod vår lokala marknad omedelbart. Vi syns nu på första plats för alla viktiga sökningar. Telefonen ringer mer än någonsin.",
-      en: "They understood our local market immediately. We now rank first for all key searches. The phone rings more than ever.",
+      sv: "Jag är mycket nöjd med LeadOne Marketing. Så glad att Douglas kontaktade mig och fick igång oss. De är vänliga, kreativa och engagerade. Kunniga och med innovativa idéer som gjorde vår kampanj framgångsrik. Mycket professionellt arbete och bra service. Rekommenderas varmt till alla som vill ha en pålitlig digital marknadsföringsbyrå.",
+      en: "I am very happy with LeadOne Marketing. So glad that Douglas contacted me and got me started 🙂 They are friendly, creative and committed. Knowledgeable and inventive ideas made our campaign successful. Very professional work and good service. Highly recommended for anyone who wants a reliable digital marketing agency.",
     },
-    name: "Sofia Bergström",
-    title: { sv: "Verksamhetschef — Café Piran", en: "Manager — Café Piran" },
+    name: "Sandra Beckman-Westerén",
+    title: { sv: "Recension från Google", en: "Review from Google" },
     avatar: "SB",
   },
   {
     quote: {
-      sv: "LeadOne är det första team som rapporterade faktiska siffror vi kunde verifiera i Google Search Console. En enorm skillnad.",
-      en: "LeadOne is the first team that reported actual numbers we could verify in Google Search Console. An enormous difference.",
+      sv: "Douglas har varit en otroligt skicklig resurs, tydlig och detaljerad i hur han tänker och arbetar systematiskt för att nå våra mål kring synlighet inom SEO. Vi har anlitat företag som arbetat med SEO tidigare, och ingen av dem kommer i närheten av Douglas engagemang, service eller resultat. Det här är ingen överdrift utan en helt ärlig och uppriktig bedömning av Douglas fantastiska arbete, som redan gett resultat under första veckan. Rekommenderar LeadOne starkt.",
+      en: "Douglas has been an incredibly talented resource, clear and detailed in how to think and work systematically to achieve our goals with visibility when it comes to SEO. I have hired companies that have worked with SEO and none of them come close to Douglas's commitment, service or performance. This is not an exaggeration but a completely honest and sincere assessment of Douglas's fantastic performance and work that has yielded results already in the first week. I highly recommend LeadOne.",
     },
-    name: "Anders Holm",
-    title: { sv: "Direktör — Sundström Bygg AB", en: "Director — Sundström Bygg AB" },
-    avatar: "AH",
-  },
-  {
-    quote: {
-      sv: "Efter sex månader rankar vi bland de tre bästa för alla sökord som är viktiga för vår verksamhet. Patientförfrågningar har mer än fördubblats.",
-      en: "After six months we rank in the top three for all keywords that matter to our practice. Patient enquiries have more than doubled.",
-    },
-    name: "Karin Vestergaard",
-    title: { sv: "Tandläkare — Vestergaard Tandläkare", en: "Dentist — Vestergaard Tandläkare" },
-    avatar: "KV",
+    name: "Detail Lounge AB",
+    title: { sv: "Recension från Google", en: "Review from Google" },
+    avatar: "DL",
   },
 ];
 
@@ -125,7 +120,7 @@ export default function TestimonialsSection({ locale = "sv" }: { locale?: Locale
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {testimonials.map((t, i) => (
             <motion.div key={t.name}
               className="rounded-2xl p-7 flex flex-col gap-5 cursor-pointer"

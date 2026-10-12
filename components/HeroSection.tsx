@@ -151,8 +151,8 @@ export default function HeroSection() {
                 </svg>
               </div>
               <div>
-                <p className="font-mono text-[13px] font-medium text-accent leading-none mb-1">+218% visningar</p>
-                <p className="text-[11px] text-zinc-500 leading-snug">Lindqvist Elektriker, 5 månader</p>
+                <p className="font-mono text-[13px] font-medium text-accent leading-none mb-1">+56% profilvisningar</p>
+                <p className="text-[11px] text-zinc-500 leading-snug">RS Bilvård, 4 veckor</p>
               </div>
             </motion.div>
           </motion.div>
