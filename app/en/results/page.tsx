@@ -431,7 +431,26 @@ export default function ResultsPage() {
 
                   {/* Ranking keywords */}
                   {cs.rankingKeywords && cs.rankingKeywords.length > 0 && (
-                    <RankingGrid keywords={cs.rankingKeywords} />
+                    <div className="mb-8">
+                      {cs.rankingAvgHighlight && (
+                        <div
+                          className="rounded-2xl p-5 md:p-6 mb-4 flex flex-wrap items-center gap-4"
+                          style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
+                        >
+                          <span className="text-[2.2rem] md:text-[2.6rem] font-bold tracking-[-0.03em] text-zinc-500 leading-none tabular-nums">
+                            {cs.rankingAvgHighlight.before}
+                          </span>
+                          <svg width="24" height="14" viewBox="0 0 28 16" fill="none" aria-hidden="true" className="shrink-0">
+                            <path d="M0 8h24M20 2l6 6-6 6" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                          <span className="text-[2.2rem] md:text-[2.6rem] font-bold tracking-[-0.03em] text-[#F4F4F5] leading-none tabular-nums">
+                            {cs.rankingAvgHighlight.after}
+                          </span>
+                          <p className="text-[13px] text-zinc-400">Average ranking for their 10 most important keywords</p>
+                        </div>
+                      )}
+                      <RankingGrid keywords={cs.rankingKeywords} />
+                    </div>
                   )}
 
                   {idx < arr.length - 1 && (

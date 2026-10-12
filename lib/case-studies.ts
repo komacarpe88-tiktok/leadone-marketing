@@ -43,6 +43,7 @@ export interface CaseStudy {
     afterAlt: string;
   };
   rankingKeywords?: RankingKeyword[];
+  rankingAvgHighlight?: { before: string; after: string; label: string }; // avg. position across the full keyword set, when it differs from rankingKeywords (which may show a subset)
   gbpStats?: { label: string; before: number; after: number; unit: string; period: string }[];
   geoTimeline?: GeoTimelineKeyword[];
   geoGridKeywords?: GeoGridKeyword[];
@@ -255,6 +256,11 @@ export const caseStudies: CaseStudy[] = [
       { keyword: "vaxning kungsbacka",           rank: 3.33, solv: 55.56, date: "Jun 2026" },
       { keyword: "microneedling kungsbacka",     rank: 4.22, solv: 22.22, date: "Jul 2026" },
     ],
+    rankingAvgHighlight: {
+      before: "5,7",
+      after: "2,8",
+      label: "Genomsnittlig ranking för de 10 viktigaste sökorden",
+    },
     geoGridSummary: { before: 37, after: 67, label: "Genomsnittlig synlighet i Map Pack topp 3 för 3 sökord" },
     geoGridKeywords: [
       {
