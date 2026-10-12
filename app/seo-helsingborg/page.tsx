@@ -128,6 +128,7 @@ export default function SeoHelsingborgPage() {
   const cases = getAllCaseStudies().filter(
     (cs) => cs.slug === "hjeronymus-salongen" || cs.slug === "angelique-hud-kropp" || cs.slug === "rs-bilvard"
   );
+  const featuredCase = getAllCaseStudies().find((cs) => cs.slug === "angelique-hud-kropp");
 
   return (
     <>
@@ -511,6 +512,93 @@ export default function SeoHelsingborgPage() {
             </div>
           </div>
         </section>
+
+        {/* ── Utvalt case: Helsingborgsföretag ─────────────────── */}
+        {featuredCase && (
+          <section className="py-20 lg:py-28 border-b" style={{ borderColor: "var(--border)" }}>
+            <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+              <p className="text-[11px] uppercase tracking-[0.22em] font-mono mb-5" style={{ color: "var(--accent)" }}>
+                Lokalt verifierat resultat · Helsingborg
+              </p>
+              <h2 className="text-[2rem] md:text-[2.6rem] font-bold tracking-[-0.03em] text-[#F4F4F5] leading-tight mb-10 max-w-[32ch]">
+                {featuredCase.client} i {featuredCase.city} — {featuredCase.teaser.toLowerCase()}
+              </h2>
+
+              <div
+                className="rounded-2xl overflow-hidden"
+                style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr]">
+                  {/* Left: narrative + keyword rankings */}
+                  <div className="p-8 lg:p-10">
+                    <p className="text-[12px] font-mono uppercase tracking-[0.15em] mb-4" style={{ color: "var(--accent)" }}>
+                      Läget innan
+                    </p>
+                    <p className="text-[15px] text-zinc-400 leading-relaxed mb-8">
+                      {featuredCase.startingPoint}
+                    </p>
+
+                    {featuredCase.actions && featuredCase.actions.length > 0 && (
+                      <>
+                        <p className="text-[12px] font-mono uppercase tracking-[0.15em] mb-4" style={{ color: "var(--accent)" }}>
+                          Vad vi gjorde
+                        </p>
+                        <ul className="flex flex-col gap-2.5 mb-2">
+                          {featuredCase.actions.map((a) => (
+                            <li key={a} className="flex items-start gap-2.5 text-[14px] text-zinc-400 leading-relaxed">
+                              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" className="mt-0.5 shrink-0" style={{ color: "var(--accent)" }} aria-hidden="true">
+                                <polyline points="2,7 5,10 11,3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                              </svg>
+                              {a}
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
+                  </div>
+
+                  {/* Right: before/after numbers + ranking table */}
+                  <div className="p-8 lg:p-10" style={{ background: "#0A0A0D", borderTop: "1px solid var(--border)" }}>
+                    <div className="flex items-center gap-6 mb-8 pb-8" style={{ borderBottom: "1px solid var(--border)" }}>
+                      <div>
+                        <p className="text-[11px] font-mono uppercase tracking-[0.15em] text-zinc-600 mb-1">Innan</p>
+                        <p className="text-[1.6rem] font-bold font-mono text-zinc-500">{featuredCase.beforeMetric?.value}</p>
+                      </div>
+                      <svg width="20" height="11" viewBox="0 0 28 16" fill="none" aria-hidden="true" className="shrink-0">
+                        <path d="M0 8h24M20 2l6 6-6 6" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      <div>
+                        <p className="text-[11px] font-mono uppercase tracking-[0.15em] mb-1" style={{ color: "var(--accent)" }}>Efter {featuredCase.timeframe}</p>
+                        <p className="text-[1.6rem] font-bold font-mono" style={{ color: "var(--accent)" }}>{featuredCase.afterMetric?.value}</p>
+                      </div>
+                    </div>
+
+                    {featuredCase.rankingKeywords && featuredCase.rankingKeywords.length > 0 && (
+                      <>
+                        <p className="text-[12px] font-mono uppercase tracking-[0.15em] mb-4 text-zinc-500">
+                          Ranking per sökord i Helsingborg
+                        </p>
+                        <div className="flex flex-col gap-2.5">
+                          {featuredCase.rankingKeywords.map((kw) => (
+                            <div key={kw.keyword} className="flex items-center justify-between gap-3 text-[13px]">
+                              <span className="text-zinc-400 truncate">{kw.keyword}</span>
+                              <span className="font-mono font-bold shrink-0" style={{ color: "var(--accent)" }}>
+                                #{kw.rank.toFixed(1)} · {Math.round(kw.solv)}% synlighet
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                        <p className="text-[11px] text-zinc-600 mt-5">
+                          Snittposition och andel av geo-grid-mätpunkter där profilen syns i topp 3, {featuredCase.rankingKeywords[0]?.date}.
+                        </p>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* ── Case studies ─────────────────────────────────────── */}
         {cases.length > 0 && (
