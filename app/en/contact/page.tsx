@@ -1,7 +1,7 @@
 ﻿import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import FooterSection from "@/components/FooterSection";
-import { Phone, EnvelopeSimple, MapPin } from "@phosphor-icons/react/dist/ssr";
+import { Phone, EnvelopeSimple, MapPin, WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 
 export const metadata: Metadata = {
   title: "Contact | LeadOne Marketing",
@@ -26,6 +26,16 @@ export default function ContactPageEn() {
               <div>
                 <p className="text-[11px] text-zinc-500 uppercase tracking-widest font-mono mb-0.5">Phone</p>
                 <p className="text-[15px] text-zinc-300 group-hover:text-white transition-colors">+1 681-641-1867</p>
+              </div>
+            </a>
+
+            <a href="https://wa.me/46763912181" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-2xl p-5 transition-colors duration-200 group" style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
+              <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ background: "rgba(201,168,76,0.1)" }}>
+                <WhatsappLogo size={18} style={{ color: "var(--accent)" }} aria-hidden="true" />
+              </div>
+              <div>
+                <p className="text-[11px] text-zinc-500 uppercase tracking-widest font-mono mb-0.5">WhatsApp</p>
+                <p className="text-[15px] text-zinc-300 group-hover:text-white transition-colors">+46 763 91 21 81</p>
               </div>
             </a>
 

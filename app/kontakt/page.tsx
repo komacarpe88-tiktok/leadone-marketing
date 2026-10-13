@@ -5,7 +5,7 @@ import Image from "next/image";
 import Nav from "@/components/Nav";
 import ScrollProgress from "@/components/ScrollProgress";
 import FooterSection from "@/components/FooterSection";
-import { Phone, EnvelopeSimple, Clock, MapPin } from "@phosphor-icons/react";
+import { Phone, EnvelopeSimple, Clock, MapPin, WhatsappLogo } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "motion/react";
 
 
@@ -106,6 +106,32 @@ export default function KontaktPage() {
                     </motion.div>
                     <div>
                       <p className="text-[13px] text-zinc-500 mb-0.5">Telefon</p>
+                      <p className="text-[16px] font-semibold text-[#F4F4F5] group-hover:text-accent transition-colors duration-200">
+                        +46 763 91 21 81
+                      </p>
+                    </div>
+                  </motion.a>
+
+                  <motion.a
+                    href="https://wa.me/46763912181"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 rounded-2xl p-5 cursor-pointer group"
+                    style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
+                    initial={reduce ? false : { opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.15 }}
+                    whileHover={{ y: -4, borderColor: "rgba(201,168,76,0.3)", transition: { duration: 0.2 } }}
+                  >
+                    <motion.div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+                      style={{ background: "var(--accent-dim)" }}
+                      whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+                    >
+                      <WhatsappLogo size={19} weight="fill" style={{ color: "var(--accent)" }} aria-hidden="true" />
+                    </motion.div>
+                    <div>
+                      <p className="text-[13px] text-zinc-500 mb-0.5">WhatsApp</p>
                       <p className="text-[16px] font-semibold text-[#F4F4F5] group-hover:text-accent transition-colors duration-200">
                         +46 763 91 21 81
                       </p>
