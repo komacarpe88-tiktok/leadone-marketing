@@ -134,12 +134,28 @@ export default function EnglishBookPage() {
                     <p className="text-[11px] text-zinc-500">15 min · Google Meet</p>
                   </div>
                 </div>
+                {/* TEMP: booking iframe hidden during A2P 10DLC verification — chat widget must be
+                    the only opt-in form on the site. Restore the iframe below once approved. */}
+                {/*
                 <div className="bg-white">
                   <iframe
                     src="https://api.leadconnectorhq.com/widget/booking/tLul2UjJ4lCOYMicz8eX"
                     style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "680px", display: "block" }}
                     title="Book analysis call"
                   />
+                </div>
+                */}
+                <div className="p-10 text-center" style={{ background: "var(--surface)" }}>
+                  <p className="text-[15px] text-zinc-300 leading-relaxed mb-2">
+                    Book directly via the chat widget in the bottom right — or call us.
+                  </p>
+                  <a
+                    href="tel:+16816411867"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-[14px] mt-3 hover:bg-[#D4B87A] transition-colors duration-200"
+                    style={{ background: "var(--accent)", color: "#08080A" }}
+                  >
+                    +1 681-641-1867
+                  </a>
                 </div>
               </motion.div>
             </div>
