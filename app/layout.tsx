@@ -231,6 +231,15 @@ export default function RootLayout({
           data-widget-id="69401fe0cd1517fa28a99c85"
           strategy="lazyOnload"
         />
+        {/* Temporary second widget for A2P 10DLC verification on the new GHL sub-account.
+            Remove once verification is complete and accounts are consolidated. */}
+        <Script
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="6acf9894f56fd8562e5f10c6"
+          data-source="WEB_USER"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
