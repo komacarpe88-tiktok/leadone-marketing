@@ -9,7 +9,7 @@ import { Phone, EnvelopeSimple, Clock, MapPin, WhatsappLogo } from "@phosphor-ic
 import { motion, useReducedMotion } from "motion/react";
 
 
-const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/tLul2UjJ4lCOYMicz8eX";
+const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/FobCje3B7FFWQ55TGzoJ";
 
 export default function KontaktPage() {
   const reduce = useReducedMotion();
@@ -270,7 +270,7 @@ export default function KontaktPage() {
                   <iframe
                     src={BOOKING_URL}
                     style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "680px", display: "block" }}
-                    id="tLul2UjJ4lCOYMicz8eX_kontakt"
+                    id="FobCje3B7FFWQ55TGzoJ_kontakt"
                     title="Boka samtal med LeadOne"
                   />
                 </div>

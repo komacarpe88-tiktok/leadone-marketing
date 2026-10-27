@@ -116,7 +116,7 @@ export default function V2Boka() {
             }}
           >
             <iframe
-              src="https://api.leadconnectorhq.com/widget/booking/tLul2UjJ4lCOYMicz8eX"
+              src="https://api.leadconnectorhq.com/widget/booking/FobCje3B7FFWQ55TGzoJ"
               style={{
                 width: "100%",
                 minHeight: "700px",

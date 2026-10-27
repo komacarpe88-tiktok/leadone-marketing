@@ -73,7 +73,8 @@ public/assets/
 
 ## Booking / integrations
 - **All CTA buttons** link to `/boka` (internal page)
-- **Calendar iframe**: `https://api.leadconnectorhq.com/widget/booking/tLul2UjJ4lCOYMicz8eX`
+- **Calendar iframe (SV)**: `https://api.leadconnectorhq.com/widget/booking/FobCje3B7FFWQ55TGzoJ` — used on `/boka`, `/kontakt`, `/v2/boka`
+- **Calendar iframe (EN)**: `https://api.leadconnectorhq.com/widget/booking/tLul2UjJ4lCOYMicz8eX` — used on `/en/book`
 - **Calendar link**: `https://api.leadconnectorhq.com/widget/bookings/discovery-call-recensionssystem`
 - **Chat widget ID**: `69401fe0cd1517fa28a99c85` (loaded in layout.tsx via next/script afterInteractive)
 - **Phone (SV)**: `+46 763 91 21 81` / `tel:+46763912181` (SMS also uses this number)

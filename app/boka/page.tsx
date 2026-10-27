@@ -207,9 +207,9 @@ export default function BokaPage() {
 
                 <div className="bg-white">
                   <iframe
-                    src="https://api.leadconnectorhq.com/widget/booking/tLul2UjJ4lCOYMicz8eX"
+                    src="https://api.leadconnectorhq.com/widget/booking/FobCje3B7FFWQ55TGzoJ"
                     style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "680px", display: "block" }}
-                    id="tLul2UjJ4lCOYMicz8eX_1780256383792"
+                    id="FobCje3B7FFWQ55TGzoJ_1793097935059"
                     title="Boka analyssamtal"
                   />
                 </div>
