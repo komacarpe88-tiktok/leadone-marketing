@@ -224,14 +224,11 @@ export default function RootLayout({
           gtag('config', 'G-T6709ZLTCC');
           gtag('config', 'AW-17824404848');
         `}</Script>
-        {/* LeadConnector chat widget — A2P 10DLC sub-account (6acf...10c6).
-            TEMP: old widget (69401...c85) removed per GHL compliance check,
-            which fails if more than one widget script is present on the site. */}
+        {/* LeadConnector chat widget */}
         <Script
-          src="https://widgets.leadconnectorhq.com/loader.js"
-          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
-          data-widget-id="6acf9894f56fd8562e5f10c6"
-          data-source="WEB_USER"
+          src="https://beta.leadconnectorhq.com/loader.js"
+          data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="69401fe0cd1517fa28a99c85"
           strategy="lazyOnload"
         />
       </body>

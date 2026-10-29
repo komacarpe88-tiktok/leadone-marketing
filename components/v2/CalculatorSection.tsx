@@ -305,20 +305,7 @@ export default function V2Calculator() {
             )}
 
             {/* Step 2 — Lead gate */}
-            {/* TEMP: lead-gate form disabled during A2P 10DLC verification — chat widget must be
-                the only opt-in form on the site. Restore the `step === "gate"` block below once approved. */}
             {step === "gate" && (
-              <div style={{ padding: "2rem", display: "flex", flexDirection: "column", gap: "1.5rem", alignItems: "center", textAlign: "center" }}>
-                <p className="v2-body-text" style={{ fontSize: "var(--v2-text-sm)", margin: 0 }}>
-                  Fyll i chatten längst ned till höger så skickar vi din personliga Revenue Gap-analys.
-                </p>
-                <button type="button" onClick={() => setStep("inputs")} style={{ background: "none", border: "none", color: "var(--v2-text-tertiary)", fontSize: "var(--v2-text-xs)", cursor: "pointer", display: "flex", alignItems: "center", gap: "0.375rem" }}>
-                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M12 7H2M7 12l-5-5 5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                  Tillbaka
-                </button>
-              </div>
-            )}
-            {false && step === "gate" && (
               <form onSubmit={handleSubmit} style={{ padding: "2rem", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
                 <p className="v2-body-text" style={{ fontSize: "var(--v2-text-sm)", margin: 0 }}>
                   Vi skickar din personliga Revenue Gap-analys till din inbox — inklusive en konkret åtgärdslista. Utan spam, utan bindning.

@@ -106,9 +106,6 @@ export default function V2Boka() {
           </div>
 
           {/* Right — calendar */}
-          {/* TEMP: booking iframe hidden during A2P 10DLC verification — chat widget must be
-              the only opt-in form on the site. Restore the iframe below once approved. */}
-          {/*
           <div
             style={{
               background: "var(--v2-bg-raised)",
@@ -129,42 +126,6 @@ export default function V2Boka() {
               title="Boka kostnadsfri Google Revenue Gap Analysis"
               loading="lazy"
             />
-          </div>
-          */}
-          <div
-            style={{
-              background: "var(--v2-bg-raised)",
-              border: "1px solid var(--v2-border)",
-              borderRadius: "var(--v2-radius-xl)",
-              padding: "3rem",
-              minHeight: "700px",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              gap: "1.5rem",
-            }}
-          >
-            <p style={{ color: "var(--v2-text-secondary)", fontSize: "1rem", maxWidth: "32ch" }}>
-              Boka direkt via chatten längst ned till höger — eller ring oss.
-            </p>
-            <a
-              href="tel:+46763912181"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                padding: "0.9rem 1.75rem",
-                borderRadius: "999px",
-                fontWeight: 600,
-                fontSize: "0.9rem",
-                background: "var(--v2-gold)",
-                color: "#08080A",
-              }}
-            >
-              +46 763 91 21 81
-            </a>
           </div>
         </div>
       </main>

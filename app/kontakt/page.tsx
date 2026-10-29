@@ -266,9 +266,6 @@ export default function KontaktPage() {
                     <p className="text-[11px] text-zinc-500">15 min · Direkt med Douglas</p>
                   </div>
                 </div>
-                {/* TEMP: booking iframe hidden during A2P 10DLC verification — chat widget must be
-                    the only opt-in form on the site. Restore the iframe below once approved. */}
-                {/*
                 <div className="bg-white">
                   <iframe
                     src={BOOKING_URL}
@@ -276,19 +273,6 @@ export default function KontaktPage() {
                     id="FobCje3B7FFWQ55TGzoJ_kontakt"
                     title="Boka samtal med LeadOne"
                   />
-                </div>
-                */}
-                <div className="p-10 text-center" style={{ background: "var(--surface)" }}>
-                  <p className="text-[15px] text-zinc-300 leading-relaxed mb-2">
-                    Boka direkt via chatten längst ned till höger — eller ring oss.
-                  </p>
-                  <a
-                    href="tel:+46763912181"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-[14px] mt-3 hover:bg-[#D4B87A] transition-colors duration-200"
-                    style={{ background: "var(--accent)", color: "#08080A" }}
-                  >
-                    +46 763 91 21 81
-                  </a>
                 </div>
               </motion.div>
             </div>
