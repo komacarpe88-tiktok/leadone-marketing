@@ -12,7 +12,7 @@ const offerPoints = [
 ];
 
 const nextSteps = [
-  "I'll call you at the time you booked",
+  "We'll meet on Google Meet via the link in your booking confirmation, at the time you booked",
   "Need to reschedule? Call or email me directly — no booking link needed",
 ];
 

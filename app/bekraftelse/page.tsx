@@ -12,7 +12,7 @@ const offerPoints = [
 ];
 
 const nextSteps = [
-  "Jag ringer dig på den tid du bokade",
+  "Vi möts på Google Meet via länken i din bokningsbekräftelse, på den tid du bokade",
   "Behöver du omboka? Ring eller maila mig direkt — ingen bokningslänk krävs",
 ];
 
